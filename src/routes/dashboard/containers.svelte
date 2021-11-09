@@ -62,6 +62,7 @@
     </main>
 </main>
 
+<!-- TODO: Navigating to /dashboard/containers has incorrect table styling unless you go to /dashboard/dns first -->
 <style lang="scss">
   main {
     max-width: 900px;
