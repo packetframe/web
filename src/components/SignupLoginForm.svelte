@@ -84,6 +84,7 @@
         } else if (!errored) {
             fetch("http://localhost:8080/auth/login", {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -95,9 +96,10 @@
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success) {
-                        alert(data.message)
+                        console.log(data)
                     } else {
-                        alert(data.message)
+                        emailError = "Invalid username or password"
+                        passwordError = emailError
                     }
                 })
         }
