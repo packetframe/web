@@ -1,8 +1,10 @@
 <script>
-    import RecordTable from "../../components/RecordTable";
     import RecordField from "../../components/RecordField";
     import Title from "../../components/Title";
     import Select from "../../components/Select";
+    import Button from "../../components/Button/Button.svelte";
+    import Card from "../../components/Card/Card.svelte";
+    import RecordTable from "../../components/RecordTable/RecordTable.svelte";
 
     let records = [
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
@@ -16,7 +18,7 @@
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
     ];
-    let zones = ["example.com", "packetframe.com"];
+    let zones = ["test.com"];
     let zone = zones[0];
 </script>
 
@@ -24,11 +26,20 @@
     <Title>
         <div slot="header">DNS</div>
         <div slot="items">
-            <Select bind:value={zone} items={zones} isSearchable/>
+            {#if zones.length > 0}
+                <Select bind:value={zone} items={zones} isSearchable/>
+            {/if}
         </div>
     </Title>
-    <div style="margin: 12px">
-        <RecordField/>
-    </div>
-    <RecordTable {records}/>
+    {#if zones.length > 0}
+        <div style="margin: 12px">
+            <RecordField/>
+        </div>
+        <RecordTable {records}/>
+    {:else}
+        <!-- TODO: Button has extra space on the left -->
+        <Card title="Add a domain to get started">
+            <Button variant="filled" on:click={() => {window.location = "/dashboard/onboarding"}}>Add Domain</Button>
+        </Card>
+    {/if}
 </main>
