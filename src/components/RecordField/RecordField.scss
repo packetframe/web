@@ -1,0 +1,30 @@
+@import "./variables";
+
+.pf-record-field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  width: 100%;
+
+  .pf-btn {
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}
+
+.pf-record-field__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.pf-record-field__small-select {
+  width: 90px;
+}
+
+.small {
+  flex: 0 0 auto !important;
+  width: 90px;
+}

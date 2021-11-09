@@ -1,0 +1,72 @@
+@import "./variables";
+
+.pf-input {
+  display: flex;
+  flex-direction: column;
+  color: $input-color;
+  font-size: $label-font-size;
+  margin: $spacer;
+  flex: 1 1 auto;
+
+  &.focus:not(.error) {
+    color: $input-color-focused;
+    .pf-input__icon {
+      color: $input-color-focused;
+      border-color: $input-border-color-focused;
+    }
+  }
+
+  .pf-input__main {
+    border: $input-border-width solid $input-border-color;
+    border-radius: $input-border-radius;
+    padding: $input-padding;
+    font-size: $input-font-size;
+    color: $input-color;
+    height: $spacer * 8.5; // TODO: make this based on size system
+    flex: 1 1 auto;
+    min-width: 0px;
+
+    &.icon {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      margin-left: -1px;
+    }
+  }
+
+  .pf-input__main:focus {
+    border-color: $input-border-color-focused;
+    color: $input-border-color-focused;
+    outline: none;
+  }
+
+  &.error {
+    color: $input-color-error;
+    .pf-input__main,
+    .pf-input__icon {
+      border-color: $input-border-color-error !important;
+    }
+  }
+
+  .pf-input__error {
+    color: $input-color-error;
+    font-size: $input-font-size-error;
+    line-height: 1.5;
+    height: $input-font-size-error * 1.5;
+  }
+
+  .pf-input__wrapper {
+    display: flex;
+    width: auto;
+  }
+
+  .pf-input__icon {
+    height: $spacer * 8.5;
+    width: $spacer * 8.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: $input-border-width solid $input-border-color;
+    border-top-left-radius: $input-border-radius;
+    border-bottom-left-radius: $input-border-radius;
+  }
+}

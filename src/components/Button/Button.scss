@@ -1,0 +1,199 @@
+@import "./variables";
+@import "../../styles/ripple";
+
+.pf-btn {
+  display: flex;
+  align-items: center;
+  border-radius: $btn-border-radius;
+  border: $btn-border-width solid $btn-border-color-solid;
+  font-size: 14px; //TODO: Decide on font-size system based on sizes...
+  height: $spacer * 8.5; //TODO: make this dependent on the size-? system
+  background-color: map-get($elevation-colors, "0");
+  color: map-deep-get($packetframe-theme, "text", "primary");
+  cursor: pointer;
+  $transitions: background-color $btn-transition, border-color $btn-transition;
+  margin: $spacer;
+
+  &:focus {
+    outline: none;
+  }
+
+  .pf-btn__content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0rem $spacer * 3; //TODO: Implement adjustable sizes...
+    transition: color $btn-transition, border-color $btn-transition;
+  }
+
+  .pf-btn__icon {
+    background-color: $btn-background;
+    border: $btn-border-width solid $btn-border-color;
+    border-top-left-radius: $btn-border-radius;
+    border-bottom-left-radius: $btn-border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -2px;
+    height: 34px;
+    width: 34px;
+    transition: color $btn-transition, border-color $btn-transition;
+    font-size: map-deep-get($packetframe-theme, "font-size", "large");
+  
+    &.iconOnly {
+      border-radius: $btn-border-radius;
+      border-width: $btn-border-width;
+      margin-left: 0px;
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  // &.rounded {
+  //   border-radius: 9999px;
+  //   .pf-btn__icon {
+  //     height: 34px;
+  //     border-radius: 9999px;
+  //   }
+  // }
+
+  &:not(.disabled):not(.flat):not(.danger) {
+    // These styles should never apply when we are disabled.
+    @include ripple(
+      $btn-background-filled,
+      $btn-background-active,
+      $transitions
+    );
+
+    &:hover:not(.secondary) {
+      .pf-btn__content {
+        transition: color $btn-transition;
+        color: map-get($elevation-colors, "0");
+      }
+    }
+
+    &.filled:not(.secondary) {
+      background-color: $btn-background-filled;
+      color: $btn-background;
+      @include ripple(
+        $btn-background,
+        $btn-background-filled-active,
+        $transitions
+      );
+      &:hover {
+        .pf-btn__content {
+          color: $btn-border-color-solid;
+        }
+      }
+      .pf-btn__icon {
+        color: $btn-border-color-solid;
+      }
+    }
+
+    &.secondary {
+      @include ripple(
+        $btn-background,
+        $btn-background-filled-active,
+        $transitions
+      );
+      color: $btn-border-secondary;
+      border-color: $btn-border-secondary;
+      .pf-btn__icon {
+        color: $btn-border-secondary;
+        border-color: $btn-border-secondary;
+      }
+      &:hover {
+        background-color: $btn-background;
+        .pf-btn__content {
+          color: map-deep-get(
+            $packetframe-theme,
+            "text",
+            "primary"
+          ); //TODO: make this a variable
+        }
+        .pf-btn__icon {
+          color: map-deep-get($packetframe-theme, "text", "primary");
+          border-color: $btn-border-color-solid;
+        }
+        border-color: $btn-border-color-solid;
+      }
+    }
+  }
+
+  &.disabled {
+    border-color: map-deep-get(
+      $packetframe-theme,
+      "text",
+      "disabled"
+    ) !important;
+    color: map-deep-get($packetframe-theme, "text", "disabled") !important;
+    .pf-btn__icon {
+      background-color: inherit;
+      border: inherit;
+    }
+  }
+
+  &.flat {
+    background-color: $btn-background-flat;
+    border-color: $btn-background-flat;
+    .pf-btn__icon {
+      background-color: $btn-icon-background-flat;
+      border-color: $btn-icon-background-flat;
+    }
+  }
+
+  &.danger {
+    &.default {
+      @include ripple(
+        $btn-background-filled-danger,
+        $btn-background-flat-danger,
+        $transitions
+      );
+
+      border-color: $btn-border-danger;
+      color: $btn-color-danger;
+      .pf-btn__icon {
+        border-color: $btn-border-danger;
+      }
+
+      &:hover {
+        .pf-btn__content {
+          color: $btn-color-filled-danger !important;
+        }
+      }
+    }
+
+    &.flat {
+      border-color: $btn-background-flat-danger;
+      background-color: $btn-background-flat-danger;
+      .pf-btn__icon {
+        border-color: $btn-icon-background-flat-danger;
+        background-color: $btn-icon-background-flat-danger;
+      }
+    }
+
+    &.filled {
+      @include ripple(
+        $btn-background,
+        $btn-icon-background-flat-danger,
+        $transitions
+      );
+
+      border-color: $btn-border-danger;
+      background-color: $btn-background-filled-danger;
+      .pf-btn__content {
+        color: $btn-color-filled-danger;
+      }
+      .pf-btn__icon {
+        border-color: $btn-border-danger;
+        color: $btn-border-danger !important;
+      }
+
+      &:hover {
+        .pf-btn__content {
+          color: $btn-color-danger !important;
+        }
+      }
+    }
+  }
+}

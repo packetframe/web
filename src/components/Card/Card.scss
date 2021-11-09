@@ -1,0 +1,19 @@
+@import "./variables";
+
+.pf-card {
+  border: $card-border;
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+  margin: $card-margin;
+  margin-top: $card-margin + 10px;
+  margin-bottom: $card-margin + 10px;
+  font-family: $card-body-font-family;
+  color: $card-body-color;
+  width: var(--width, auto);
+
+  .pf-card__header {
+    font-weight: 600;
+    padding-bottom: $card-padding / 2;
+    color: $card-header-color;
+  }
+}

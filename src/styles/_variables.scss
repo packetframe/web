@@ -1,0 +1,132 @@
+@import "./functions";
+
+// Font families
+$body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !default;
+$heading-font-family: $body-font-family !default;
+
+// Font weights
+$font-weights: () !default;
+$font-weights: map-merge(
+  (
+    "thin": 100,
+    "light": 300,
+    "regular": 400,
+    "medium": 500,
+    "bold": 700,
+    "black": 900,
+  ),
+  $font-weights
+);
+
+// Primary color
+$primary-color: #7d00af;
+$primary-color-light: #d18fde;
+$primary-color-shades: (
+  "50": #f4e4f6,
+  "100": #e3bcea,
+  "200": #d18fde,
+  "300": #be60d0,
+  "400": #b03ac6,
+  "500": #a101bc,
+  "600": #9202b6,
+  "700": #7d00af,
+  "800": #6b00a8,
+  "900": #45009d,
+);
+
+// Secondary color
+$secondary-color: #2600af;
+$secondary-color-light: #b799e7;
+$secondary-color-shades: (
+  "50": #eee6f9,
+  "100": #d4c2f0,
+  "200": #b799e7,
+  "300": #9a6fde,
+  "400": #834ed7,
+  "500": #6c2acf,
+  "600": #6125c8,
+  "700": #521cc0,
+  "800": #4315b9,
+  "900": #2600af,
+);
+
+// Theme stuff
+$packetframe-theme: () !default;
+$packetframe-theme: map-deep-merge(
+  (
+    "text": (
+      "primary": rgba(255, 255, 255, 0.87),
+      "secondary": rgba(255, 255, 255, 0.6),
+      "disabled": rgba(255, 255, 255, 0.38),
+    ),
+    "text-solid": (
+      "primary": #e0e0e0,
+      "secondary": #a0a0a0,
+      "disabled": #6c6c6c,
+    ),
+    "border": (
+      "primary": #fff,
+      "secondary": #a0a0a0,
+      "disabled": #6c6c6c,
+    ),
+    "font-size": (
+      "x-small": 8px,
+      "small": 12px,
+      "default": 14px,
+      "large": 22px,
+      "x-large": 28px,
+    ),
+    "states": (
+      "success": green,
+      "error": #ed2f4f,
+      "error-dark": #7f2030,
+      "error-darker": #31161b,
+    ),
+  ),
+  $packetframe-theme
+);
+
+// Elevation
+$elevation-colors: () !default;
+$elevation-colors: map-merge(
+  (
+    "0": #040404, // 121212
+    "1": #1e1e1e,
+    "2": #232323,
+    "3": #252525,
+    "4": #272727,
+    "6": #2c2c2c,
+    "8": #2e2e2e,
+    "12": #333333,
+    "16": #363636,
+    "24": #383838,
+  ),
+  $elevation-colors
+);
+
+// Accent
+$accent-colors: () !default;
+$accent-colors: map-merge(
+  (
+    "0": #040404, // 121212
+    "1": #333,
+    "2": #444,
+    "3": #666,
+    "4": #888,
+    "5": #999,
+    "6": #eaeaea,
+    "7": #fafafa,
+  ),
+  $accent-colors
+);
+
+// Borders
+$border-radius-root: 4px !default;
+$border-width-root: 1px !default;
+
+// Transitions
+$primary-transition: 0.3s ease !default;
+
+// Spacer
+$spacer: 4px;

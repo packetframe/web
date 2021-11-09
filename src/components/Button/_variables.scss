@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+$btn-border-radius: $border-radius-root !default;
+
+// Default border settings
+$btn-border-color: map-deep-get(
+  $packetframe-theme,
+  "border",
+  "primary"
+) !default;
+$btn-border-color-solid: map-deep-get(
+  $packetframe-theme,
+  "border",
+  "primary"
+) !default;
+$btn-border-width: $border-width-root !default;
+$btn-color: $btn-border-color !default;
+
+// Default background colors
+$btn-background: map-get($elevation-colors, "0") !default;
+$btn-background-active: map-deep-get(
+  $packetframe-theme,
+  "text-solid",
+  "primary"
+) !default;
+
+// Transitions
+$btn-transition: $primary-transition !default;
+
+// Filled variant
+$btn-background-filled: $btn-border-color-solid !default;
+$btn-border-filled: $btn-background !default; // Technically this is not actually applied to all borders
+$btn-background-filled-active: map-get($elevation-colors, "4") !default;
+
+// Flat variant
+$btn-background-flat: map-get($elevation-colors, "8") !default;
+$btn-icon-background-flat: map-get($elevation-colors, "3") !default;
+$btn-color-flat: map-deep-get($packetframe-theme, "text", "primary") !default;
+
+// Secondary variant
+$btn-border-secondary: map-get($accent-colors, "4") !default;
+
+// Danger
+$btn-border-danger: map-deep-get(
+  $packetframe-theme,
+  "states",
+  "error"
+) !default;
+$btn-color-danger: $btn-border-danger !default;
+
+$btn-background-filled-danger: $btn-border-danger !default;
+$btn-color-filled-danger: $btn-border-color !default;
+
+$btn-background-flat-danger: map-deep-get(
+  $packetframe-theme,
+  "states",
+  "error-dark"
+) !default;
+$btn-icon-background-flat-danger: map-deep-get(
+  $packetframe-theme,
+  "states",
+  "error-darker"
+) !default;
