@@ -55,7 +55,7 @@
                     body: JSON.stringify({
                         "email": email,
                         "password": password,
-                        "refer": howDidYouHearAboutUsError
+                        "refer": howDidYouHearAboutUs
                     })
                 })
                     .then((response) => response.json())
