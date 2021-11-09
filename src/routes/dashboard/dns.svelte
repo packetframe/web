@@ -24,7 +24,7 @@
     <Title>
         <div slot="header">DNS</div>
         <div slot="items">
-            <Select bind:selectedValue={zone} items={zones} isSearchable/>
+            <Select bind:value={zone} items={zones} isSearchable/>
         </div>
     </Title>
     <div style="margin: 12px">
