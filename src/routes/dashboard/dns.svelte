@@ -49,7 +49,7 @@
             })
             .then((data) => {
                 if (data.success) {
-                    records = data.data
+                    records = data.data.records
                 } else {
                     alert(data.message)
                 }
