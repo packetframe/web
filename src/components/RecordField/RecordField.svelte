@@ -33,6 +33,7 @@
         error = ""
 
         record.type = type;
+        record.ttl = parseInt(record.ttl)
         record.zone = parentZoneID
         if (record.type === "SRV") {
             record.value = `${priority} ${weight} ${port} ${srvHost}`
@@ -56,7 +57,11 @@
                 if (data.success) {
                     document.location.reload() // TODO: Call loadRecords() in dns.svelte instead
                 } else {
-                    error = data.data.reason[0].FailedField.split("at line")[0]
+                    if (data.data) {
+                        error = data.data.reason[0].FailedField.split("at line")[0]
+                    } else {
+                        alert(data.message)
+                    }
                 }
             })
     }
