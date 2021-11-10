@@ -17,6 +17,7 @@
     let recordTypes = [
         {value: "A", label: "A"},
         {value: "AAAA", label: "AAAA"},
+        {value: "CNAME", label: "CNAME"},
         {value: "MX", label: "MX"},
         {value: "TXT", label: "TXT"},
         {value: "NS", label: "NS"},
