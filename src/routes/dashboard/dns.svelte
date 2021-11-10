@@ -5,6 +5,64 @@
     import Button from "../../components/Button/Button.svelte";
     import Card from "../../components/Card/Card.svelte";
     import RecordTable from "../../components/RecordTable/RecordTable.svelte";
+    import {onMount} from "svelte";
+
+    function loadZones() {
+        fetch("http://localhost:8080/dns/zones", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location = "/dashboard/login"
+                }
+                return response.json()
+            })
+            .then((data) => {
+                if (data.success) {
+                    zones = data.data.zones.map(z => z.zone.slice(0, -1))
+                    zoneIDs = data.data.zones.map(z => z.id)
+                    selectedZone = zones[0]
+                    loadRecords()
+                } else {
+                    alert(data.message)
+                }
+            })
+    }
+
+    function loadRecords() {
+        fetch("http://localhost:8080/dns/records/" + zoneIDs[zones.indexOf(selectedZone)], {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location = "/dashboard/login"
+                }
+                return response.json()
+            })
+            .then((data) => {
+                if (data.success) {
+                    records = data.data
+                } else {
+                    alert(data.message)
+                }
+            })
+    }
+
+    let zones = [];
+    let zoneIDs = [];
+    let selectedZone = zones[0];
+
+    onMount(() => {
+        loadZones()
+    })
 
     let records = [
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
@@ -18,8 +76,6 @@
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
         {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
     ];
-    let zones = ["test.com"];
-    let zone = zones[0];
 </script>
 
 <main>
@@ -27,7 +83,7 @@
         <div slot="header">DNS</div>
         <div slot="items">
             {#if zones.length > 0}
-                <Select bind:value={zone} items={zones} isSearchable/>
+                <Select bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
             {/if}
         </div>
     </Title>
