@@ -71,8 +71,4 @@
         display: flex;
         align-items: center;
     }
-
-    table {
-        margin-bottom: 10px;
-    }
 </style>
