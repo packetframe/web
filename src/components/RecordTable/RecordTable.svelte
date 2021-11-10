@@ -2,6 +2,7 @@
     import Record from "../Record";
 
     type Record = {
+        zone: string,
         id: string,
         label: string,
         type: string,
@@ -15,8 +16,32 @@
     export let handleSelection: (selectionState: boolean, data: Record, e: MouseEvent) => any = () => {
     };
     export let handleDeletion: (data: Record[]) => any = (d) => {
-        console.log(d);
-    };
+        for (const record of d) {
+            fetch("http://localhost:8080/dns/records", {
+                method: "DELETE",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    zone: record.zone,
+                    id: record.id
+                })
+            })
+                .then((response) => {
+                    if (response.status === 401) {
+                        window.location = "/dashboard/login"
+                    }
+                    return response.json()
+                })
+                .then((data) => {
+                    if (!data.success) {
+                        alert(data.message)
+                    }
+                })
+        }
+        // window.location.reload() // TODO: See other TODO about this
+    }
 
     export let records: Record[] = [];
     $: selectionStates = records.map(r => {
