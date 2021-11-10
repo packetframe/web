@@ -61,7 +61,8 @@
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.success) {
-                            alert(data.message)
+                            alert("Account created successfully. Please log in.")
+                            window.location = "/dashboard/login"
                         } else {
                             if (data.data) {
                                 for (const reason of data.data.reason) {
@@ -96,7 +97,7 @@
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.success) {
-                        console.log(data)
+                        window.location = "/dashboard/dns"
                     } else {
                         emailError = "Invalid username or password"
                         passwordError = emailError
