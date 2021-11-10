@@ -27,6 +27,11 @@
                     zoneIDs = data.data.zones.map(z => z.id)
                     selectedZone = zones[0]
                     loadRecords()
+                    if (zones.length > 0) {
+                        recordDisplay = "display"
+                    } else {
+                        recordDisplay = "onboard"
+                    }
                 } else {
                     alert(data.message)
                 }
@@ -56,6 +61,7 @@
             })
     }
 
+    let recordDisplay = "loading";
     let zones = [];
     let zoneIDs = [];
     let selectedZone = zones[0];
@@ -87,9 +93,11 @@
             {/if}
         </div>
     </Title>
-    {#if zones.length > 0}
+    {#if recordDisplay === "loading"}
+        <p style="color: white; margin-left: 4px">Loading...</p>
+    {:else if recordDisplay === "display"}
         <div style="margin: 12px">
-            <RecordField/>
+            <RecordField bind:parentZoneID={zoneIDs[zones.indexOf(selectedZone)]}/>
         </div>
         <RecordTable {records}/>
     {:else}
