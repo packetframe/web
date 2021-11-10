@@ -2,6 +2,7 @@
   import Record from "../Record";
 
   type Record = {
+    id: string,
     label: string,
     type: string,
     ttl: number,

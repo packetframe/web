@@ -8,6 +8,7 @@
         ttl: number;
         value: string;
         proxied: boolean;
+        zone: string;
     };
 
     export let record: Record;
@@ -74,7 +75,7 @@
     <tr class="pf-record__dropdown" class:open class:mobile>
         <td colspan="7" headers="col2" class="pf-record__dropdown-wrap">
             <div class="pf-record__dropdown-anchor">
-                <RecordField bind:type={record.type} bind:record isInDropdown {mobile}/>
+                <RecordField bind:type={record.type} bind:record isInDropdown {mobile} parentZoneID={record.zone}/>
             </div>
         </td>
     </tr>

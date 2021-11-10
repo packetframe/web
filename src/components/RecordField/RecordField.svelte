@@ -6,6 +6,7 @@
 
     export let parentZoneID = "";
     export let record = {
+        id: "",
         zone: "", // Zone ID
         label: "",
         ttl: 86400,
@@ -14,7 +15,7 @@
         proxied: false
     };
 
-    export let error = "";
+    export let type = "A";
     export let isInDropdown = false;
     export let mobile = false;
 
@@ -31,13 +32,14 @@
     function submit() {
         error = ""
 
+        record.type = type;
+        record.zone = parentZoneID
         if (record.type === "SRV") {
             record.value = `${priority} ${weight} ${port} ${srvHost}`
         }
-        record.zone = parentZoneID
 
         fetch("http://localhost:8080/dns/records", {
-            method: "POST",
+            method: record.id === "" ? "POST" : "PUT",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
@@ -62,15 +64,31 @@
     // If the component is in the record edit dropdown, set a static record type
     onMount(() => {
         if (isInDropdown) {
-            recordTypes = [{value: record.type, label: record.type}];
+            recordTypes = [{value: type, label: type}];
         }
     });
 
+    function handleRecordSelect(event) {
+        type = event.detail.value;
+    }
+
+    let error = "";
+
     // SRV record values
-    let srvHost = ""
     let priority = 0;
     let weight = 0;
     let port = 0;
+    let srvHost = "";
+
+    onMount(() => {
+        if (record.type === "SRV") {
+            let srvValueParts = record.value.split(" ");
+            priority = parseInt(srvValueParts[0])
+            weight = parseInt(srvValueParts[1])
+            port = parseInt(srvValueParts[2])
+            srvHost = srvValueParts[3]
+        }
+    })
 </script>
 
 <style global lang="scss" src="./RecordField.scss">
@@ -78,28 +96,29 @@
 
 <div class="pf-record-field" class:mobile>
     <div class="pf-record-field__row">
-        <Input bind:error={error} bind:value={record.label} label="Label"/>
+        <Input bind:error bind:value={record.label} label="Label"/>
         <span class="pf-record-field__small-select">
             <Select bind:value={record.type} isDisabled={isInDropdown}
                     items={recordTypes}
-                    label="Type"/>
+                    label="Type"
+                    on:select={handleRecordSelect}/>
         </span>
         <Input bind:value={record.ttl} class="small" label="TTL" min="0" placeholder="86400" type="number"/>
 
-        {#if record.type === "A"}
+        {#if type === "A"}
             <Input bind:value={record.value} label="IPv4 Address"/>
-        {:else if record.type === "AAAA"}
+        {:else if type === "AAAA"}
             <Input bind:value={record.value} label="IPv6 Address"/>
-        {:else if record.type === "MX"}
+        {:else if type === "MX"}
             <Input class="small" type="number" label="Priority" min="0"/>
             <Input bind:value={record.value} label="Server"/>
-        {:else if record.type === "NS"}
+        {:else if type === "NS"}
             <Input bind:value={record.value} label="Nameserver"/>
-        {:else if record.type === "TXT"}
+        {:else if type === "TXT"}
             <Input bind:value={record.value} label="Value"/>
-        {:else if record.type === "CNAME"}
+        {:else if type === "CNAME"}
             <Input bind:value={record.value} label="Hostname"/>
-        {:else if record.type === "SRV"}
+        {:else if type === "SRV"}
             <Input class="small" type="number" label="Priority" min="0" bind:value={priority}/>
             <Input class="small" type="number" label="Weight" min="0" bind:value={weight}/>
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
