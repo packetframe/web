@@ -65,23 +65,11 @@
     let zones = [];
     let zoneIDs = [];
     let selectedZone = zones[0];
+    let records = [];
 
     onMount(() => {
         loadZones()
     })
-
-    let records = [
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
-        {label: "packetframe.com", type: "AAAA", ttl: 86400, value: "2001:db8::51:3"},
-        {label: "packetframe.com", type: "MX", ttl: 86400, value: "10 mail.example.com."},
-        {label: "packetframe.com", type: "TXT", ttl: 86400, value: "v=DKwIDAQABkfd~jkldakjlfdjjk2klfdsjfdakCCjdkaldfkjIUIDJKALKDjfda'fkd"},
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15", proxied: true},
-        {label: "packetframe.com", type: "SRV", ttl: 86400, value: "23.141.0.15"},
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
-        {label: "packetframe.com", type: "A", ttl: 86400, value: "23.141.0.15"},
-    ];
 </script>
 
 <main>
@@ -94,7 +82,7 @@
         </div>
     </Title>
     {#if recordDisplay === "loading"}
-        <p style="color: white; margin-left: 4px">Loading...</p>
+<!--        <p style="color: white; margin-left: 4px">Loading...</p>-->
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <RecordField bind:parentZoneID={zoneIDs[zones.indexOf(selectedZone)]}/>
