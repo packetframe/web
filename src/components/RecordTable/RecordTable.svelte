@@ -25,7 +25,7 @@
                 },
                 body: JSON.stringify({
                     zone: record.zone,
-                    id: record.id
+                    record: record.id
                 })
             })
                 .then((response) => {
@@ -40,7 +40,7 @@
                     }
                 })
         }
-        // window.location.reload() // TODO: See other TODO about this
+        // window.location.reload() // TODO: This doesn't work because the DELETE reqs are still in flight since they're async
     }
 
     export let records: Record[] = [];
