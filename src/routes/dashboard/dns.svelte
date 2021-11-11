@@ -61,6 +61,36 @@
             })
     }
 
+    function deleteZone() {
+        if (!confirm(`Are you sure you want to delete ${selectedZone}?`)) {
+            return
+        }
+
+        fetch("http://localhost:8080/dns/zones", {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: zoneIDs[zones.indexOf(selectedZone)]
+            })
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location = "/dashboard/login"
+                }
+                return response.json()
+            })
+            .then((data) => {
+                if (data.success) {
+                    window.location.reload()
+                } else {
+                    alert(data.message)
+                }
+            })
+    }
+
     let recordDisplay = "loading";
     let zones = [];
     let zoneIDs = [];
@@ -97,13 +127,14 @@
                 <div style="padding-bottom: 18px">
                     <Card>
                         <div style="display: flex; align-items: center">
-                            <Button icon="person">Add User</Button>
-                            <Button icon="person">Delete User</Button>
-                            <ul style="margin-left: 30px">
-                                <li>User 1</li>
-                                <li>User 2</li>
-                                <li>User 3</li>
-                            </ul>
+                            <Button icon="delete" danger on:click={deleteZone}>Delete Zone</Button>
+<!--                            <Button icon="person">Add User</Button>-->
+<!--                            <Button icon="person">Delete User</Button>-->
+<!--                            <ul style="margin-left: 30px">-->
+<!--                                <li>User 1</li>-->
+<!--                                <li>User 2</li>-->
+<!--                                <li>User 3</li>-->
+<!--                            </ul>-->
                         </div>
                     </Card>
                 </div>
