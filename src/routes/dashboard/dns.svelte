@@ -66,6 +66,7 @@
     let zoneIDs = [];
     let selectedZone = zones[0];
     let records = [];
+    let showMenu = false;
 
     onMount(() => {
         loadZones()
@@ -82,10 +83,31 @@
         </div>
     </Title>
     {#if recordDisplay === "loading"}
-<!--        <p style="color: white; margin-left: 4px">Loading...</p>-->
+        <!--        <p style="color: white; margin-left: 4px">Loading...</p>-->
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
-            <RecordField bind:parentZoneID={zoneIDs[zones.indexOf(selectedZone)]}/>
+            <div style="display: flex; flex-direction: row; align-items: center">
+                <RecordField bind:parentZoneID={zoneIDs[zones.indexOf(selectedZone)]}/>
+                <div style="margin-top: 18px">
+                    <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
+                            on:click={() => {showMenu = !showMenu}}/>
+                </div>
+            </div>
+            {#if showMenu}
+                <div style="padding-bottom: 18px">
+                    <Card>
+                        <div style="display: flex; align-items: center">
+                            <Button icon="person">Add User</Button>
+                            <Button icon="person">Delete User</Button>
+                            <ul style="margin-left: 30px">
+                                <li>User 1</li>
+                                <li>User 2</li>
+                                <li>User 3</li>
+                            </ul>
+                        </div>
+                    </Card>
+                </div>
+            {/if}
         </div>
         <RecordTable {records}/>
     {:else}
