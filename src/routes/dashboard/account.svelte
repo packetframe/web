@@ -20,11 +20,3 @@
         <Button style="margin-top: 18px" variant="filled" danger>Delete Account</Button>
     </Card>
 </main>
-
-<style>
-    main {
-        max-width: 900px;
-        margin: 0 auto;
-        color: white;
-    }
-</style>
