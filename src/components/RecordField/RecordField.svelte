@@ -5,6 +5,7 @@
     import {onMount} from "svelte";
 
     export let parentZoneID = "";
+    export let callback;
     export let record = {
         id: "",
         zone: "", // Zone ID
@@ -55,7 +56,7 @@
             })
             .then((data) => {
                 if (data.success) {
-                    document.location.reload() // TODO: Call loadRecords() in dns.svelte instead
+                    callback()
                 } else {
                     if (data.data) {
                         error = data.data.reason[0].FailedField.split("at line")[0]

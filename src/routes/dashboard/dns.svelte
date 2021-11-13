@@ -180,7 +180,7 @@
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <div style="display: flex; flex-direction: row; align-items: center">
-                <RecordField bind:parentZoneID={selectedZoneID}/>
+                <RecordField bind:parentZoneID={selectedZoneID} callback={loadRecords}/>
                 <div style="margin-top: 18px">
                     <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
                             on:click={() => {showMenu = !showMenu}}/>
@@ -210,7 +210,7 @@
                 </div>
             {/if}
         </div>
-        <RecordTable {records}/>
+        <RecordTable {records} callback={loadRecords}/>
     {:else}
         <!-- TODO: Button has extra space on the left -->
         <Card title="Add a domain to get started">

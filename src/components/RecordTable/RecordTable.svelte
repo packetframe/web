@@ -11,6 +11,7 @@
         proxied: boolean,
     }
 
+    export let callback;
     export let allowDeletion: boolean = true;
     export let allowSelection: boolean = true;
     export let handleSelection: (selectionState: boolean, data: Record, e: MouseEvent) => any = () => {
@@ -37,6 +38,8 @@
                 .then((data) => {
                     if (!data.success) {
                         alert(data.message)
+                    } else {
+                        callback()
                     }
                 })
         }
@@ -80,13 +83,13 @@
             <tr class="pf-record-table__spacer"></tr>
             {#each records as record, i}
                 <tr class="pf-record-table__spacer"></tr>
-                <Record {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
+                <Record {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
             {/each}
         </table>
     {:else}
         <div class="pf-record-table_mobile">
             {#each records as record, i}
-                <Record mobile {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
+                <Record mobile {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
             {/each}
         </div>
     {/if}
