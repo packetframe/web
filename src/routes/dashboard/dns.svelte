@@ -6,6 +6,7 @@
     import Card from "../../components/Card/Card.svelte";
     import RecordTable from "../../components/RecordTable/RecordTable.svelte";
     import {onMount} from "svelte";
+    import Spinner from "../../components/Spinner/Spinner.svelte";
 
     function loadZones() {
         fetch("http://localhost:8080/dns/zones", {
@@ -113,7 +114,7 @@
         </div>
     </Title>
     {#if recordDisplay === "loading"}
-        <!--        <p style="color: white; margin-left: 4px">Loading...</p>-->
+        <Spinner/>
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <div style="display: flex; flex-direction: row; align-items: center">
