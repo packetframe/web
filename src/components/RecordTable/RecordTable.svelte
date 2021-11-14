@@ -57,6 +57,8 @@
         return {data: r, selected: false}
     });
 
+    $: console.log(selectionStates)
+
     let deleteIcon: string = "delete_outline";
 
     let innerWidth;
@@ -89,7 +91,7 @@
             <tr class="pf-record-table__spacer"></tr>
             {#each records as record, i}
                 <tr class="pf-record-table__spacer"></tr>
-                <Record {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={records.length < 3 || i%2 === 0}/>
+                <Record selectedState={selectionStates[i].selected} {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={records.length < 3 || i%2 === 0}/>
             {/each}
         </table>
     {:else}
