@@ -26,6 +26,7 @@
 
   main {
     max-width: 900px;
+    padding: 5px;
     margin: 0 auto;
   }
 
