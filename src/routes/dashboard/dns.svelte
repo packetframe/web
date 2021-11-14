@@ -174,7 +174,8 @@
 <main>
     <Title>
         <div slot="header">DNS</div>
-        <div slot="items">
+        <div slot="items" style="display: flex; width: 100%; justify-content: flex-end; align-items: center;">
+            <Button on:click={() => {showMenu = !showMenu}} class="zone-settings-icon" icon="manage_accounts" />
             {#if zones.length > 0}
                 <Select selectProps={{labelIdentifier: 'zone', optionIdentifier: 'zone', getOptionLabel: getZoneName, getSelectionLabel: getZoneName}} bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
             {/if}
@@ -186,14 +187,6 @@
         </div>
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
-            <div style="display: flex; flex-direction: row; align-items: center">
-                <RecordField parentZoneID={selectedZone.id} callback={loadRecords}/>
-                <div style="margin-top: 18px">
-<!--                    TODO: Mobile responsive -->
-                    <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
-                            on:click={() => {showMenu = !showMenu}}/>
-                </div>
-            </div>
             {#if showMenu}
                 <div style="padding-bottom: 18px">
                     <Card>
@@ -216,6 +209,9 @@
                     </Card>
                 </div>
             {/if}
+            <div style="display: flex; flex-direction: row; align-items: center">
+                <RecordField parentZoneID={selectedZone.id} callback={loadRecords}/>
+            </div>
         </div>
         <RecordTable {records} callback={loadRecords}/>
     {:else}
@@ -224,3 +220,23 @@
         </Card>
     {/if}
 </main>
+
+<style>
+    :global(.zone-settings-icon) {
+        border: none;
+        margin: none;
+        height: 30px !important;
+    }
+
+    :global(.zone-settings-icon span, .zone-settings-icon:hover) {
+        border: none !important;
+        background: #040404 !important;
+        font-size: 20px !important;
+        height: 30px !important;
+        margin: none;
+    }
+
+    :global(.zone-settings-icon:active) {
+        color: white;
+    }
+</style>

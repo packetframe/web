@@ -52,6 +52,7 @@
             class:filled={variant === "filled"}
             class:flat={variant === "flat"}
             class:secondary={variant === "secondary"}
+            class:iconOnly={!$$slots.default}
             {type}
             {style}
             {disabled}
