@@ -16,7 +16,7 @@
         proxied: false
     };
 
-    export let type = "A";
+    // export let type = "A";
     export let isInDropdown = false;
     export let mobile = false;
 
@@ -31,12 +31,12 @@
     ];
 
     function submit() {
-        error = ""
+        error = "";
 
-        record.type = type;
-        record.ttl = parseInt(record.ttl)
-        record.zone = parentZoneID
-        if (record.type === "SRV") {
+        // record["type"] = type;
+        record.ttl = parseInt(record.ttl);
+        record.zone = parentZoneID;
+        if (record["type"] === "SRV") {
             record.value = `${priority} ${weight} ${port} ${srvHost}`
         }
 
@@ -70,12 +70,12 @@
     // If the component is in the record edit dropdown, set a static record type
     onMount(() => {
         if (isInDropdown) {
-            recordTypes = [{value: type, label: type}];
+            recordTypes = [{value: record['type'], label: record['type']}];
         }
     });
 
     function handleRecordSelect(event) {
-        type = event.detail.value;
+        record['type'] = event.detail.value;
     }
 
     let error = "";
@@ -87,7 +87,7 @@
     let srvHost = "";
 
     onMount(() => {
-        if (record.type === "SRV") {
+        if (record["type"] === "SRV") {
             let srvValueParts = record.value.split(" ");
             priority = parseInt(srvValueParts[0])
             weight = parseInt(srvValueParts[1])
@@ -104,27 +104,27 @@
     <div class="pf-record-field__row">
         <Input bind:error bind:value={record.label} label="Label"/>
         <span class="pf-record-field__small-select">
-            <Select bind:value={record.type} isDisabled={isInDropdown}
+            <Select value={record['type']} isDisabled={isInDropdown}
                     items={recordTypes}
                     label="Type"
                     on:select={handleRecordSelect}/>
         </span>
         <Input bind:value={record.ttl} class="small" label="TTL" min="0" placeholder="86400" type="number"/>
 
-        {#if type === "A"}
+        {#if record["type"] === "A"}
             <Input bind:value={record.value} label="IPv4 Address"/>
-        {:else if type === "AAAA"}
+        {:else if record["type"] === "AAAA"}
             <Input bind:value={record.value} label="IPv6 Address"/>
-        {:else if type === "MX"}
+        {:else if record["type"] === "MX"}
             <Input class="small" type="number" label="Priority" min="0"/>
             <Input bind:value={record.value} label="Server"/>
-        {:else if type === "NS"}
+        {:else if record["type"] === "NS"}
             <Input bind:value={record.value} label="Nameserver"/>
-        {:else if type === "TXT"}
+        {:else if record["type"] === "TXT"}
             <Input bind:value={record.value} label="Value"/>
-        {:else if type === "CNAME"}
+        {:else if record["type"] === "CNAME"}
             <Input bind:value={record.value} label="Hostname"/>
-        {:else if type === "SRV"}
+        {:else if record["type"] === "SRV"}
             <Input class="small" type="number" label="Priority" min="0" bind:value={priority}/>
             <Input class="small" type="number" label="Weight" min="0" bind:value={weight}/>
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
