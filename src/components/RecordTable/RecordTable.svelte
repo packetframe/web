@@ -82,13 +82,13 @@
             <tr class="pf-record-table__spacer"></tr>
             {#each records as record, i}
                 <tr class="pf-record-table__spacer"></tr>
-                <Record {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
+                <Record {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={records.length < 3 || i%2 === 0}/>
             {/each}
         </table>
     {:else}
         <div class="pf-record-table_mobile">
             {#each records as record, i}
-                <Record mobile {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={i%2 === 0}/>
+                <Record mobile {callback} {allowDeletion} {allowSelection} handleSelection={(s, d, e) => {selectionStates[i].selected = s; handleSelection(s, d, e)}} {record} zebra={records.length < 3 || i%2 === 0}/>
             {/each}
         </div>
     {/if}
