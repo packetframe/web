@@ -1,17 +1,18 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+    import {page} from '$app/stores';
     import {onMount} from "svelte";
 
     export let elements = [
         {label: "DNS", href: "/dashboard/dns"},
         // {label: "Containers", href: "/dashboard/containers"},
-        {label: "Account", href: "/dashboard/account"}
+        {label: "Account", href: "/dashboard/account"},
+        {label: "Logout", href: "/dashboard/logout"},
     ];
 
     let open = false;
-	let width;
+    let width;
 
-	onMount(() => {
+    onMount(() => {
         fetch("http://localhost:8080/user/info", {
             method: "GET",
             credentials: "include",
@@ -27,13 +28,13 @@
             })
     })
 
-	// $: if ($location !== "") {
-	// 	open = false;
-	// }
+    // $: if ($location !== "") {
+    // 	open = false;
+    // }
 
-	$: if (width > 825) {
-		open = false;
-	}
+    $: if (width > 825) {
+        open = false;
+    }
 </script>
 
 <svelte:window bind:innerWidth={width}></svelte:window>
@@ -48,7 +49,7 @@
         {/each}
     </ul>
     <span class="nav-expand" class:open></span>
-    <span class="material-icons" on:click={() => open = !open} class:open>
+    <span class="material-icons" class:open on:click={() => open = !open}>
         {open ? 'close' : 'menu'}
     </span>
 </nav>
