@@ -25,12 +25,16 @@
             })
             .then((data) => {
                 if (data.success) {
-                    zones = data.data.zones.map(z => z.zone.slice(0, -1))
-                    zoneDocs = data.data.zones
-                    selectedZone = zones[0]
-                    loadRecords()
-                    if (zones.length > 0) {
-                        recordDisplay = "display"
+                    if (data.data.zones) {
+                        zones = data.data.zones.map(z => z.zone.slice(0, -1))
+                        zoneDocs = data.data.zones
+                        selectedZone = zones[0]
+                        loadRecords()
+                        if (zones.length > 0) {
+                            recordDisplay = "display"
+                        } else {
+                            recordDisplay = "onboard"
+                        }
                     } else {
                         recordDisplay = "onboard"
                     }
@@ -184,6 +188,7 @@
             <div style="display: flex; flex-direction: row; align-items: center">
                 <RecordField bind:parentZoneID={selectedZoneID} callback={loadRecords}/>
                 <div style="margin-top: 18px">
+<!--                    TODO: Mobile responsive -->
                     <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
                             on:click={() => {showMenu = !showMenu}}/>
                 </div>
