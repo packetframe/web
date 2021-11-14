@@ -8,6 +8,8 @@
     <p class="footer">&copy; Packetframe 2021</p>
 </main>
 
+<!-- TODO: Navigating to the DNS tab and back to index breaks index styling -->
+
 <svelte:head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
