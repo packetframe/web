@@ -10,6 +10,8 @@
   export let isDisabled = false;
   export let isSearchable = false;
 
+  export let selectProps = {};
+
   import Icon from "./Icon.svelte";
 </script>
 
@@ -19,5 +21,5 @@
 <!-- svelte-ignore a11y-label-has-associated-control -->
 <label class="pf-select" style="{label === '' ? '': 'padding-bottom: 19px;'}" class:icon>
   <div class="pf-select__label">{label}</div>
-  <Select Icon={icon ? Icon : null} iconProps={icon ? {icon} : null} {isSearchable} {items} {isClearable} {isDisabled} showIndicator={showIndicator && !isDisabled} {value} on:select {$$restProps} />
+  <Select Icon={icon ? Icon : null} iconProps={icon ? {icon} : null} {isSearchable} {items} {isClearable} {isDisabled} showIndicator={showIndicator && !isDisabled} bind:value={value} on:select {$$restProps} {...selectProps} />
 </label>

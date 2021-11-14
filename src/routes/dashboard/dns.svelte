@@ -26,9 +26,8 @@
             .then((data) => {
                 if (data.success) {
                     if (data.data.zones) {
-                        zones = data.data.zones.map(z => z.zone.slice(0, -1))
-                        zoneDocs = data.data.zones
-                        selectedZone = zones[0]
+                        zones = data.data.zones;
+                        selectedZone = zones[0];
                         loadRecords()
                         if (zones.length > 0) {
                             recordDisplay = "display"
@@ -45,8 +44,7 @@
     }
 
     function loadRecords() {
-        selectedZoneID = zoneDocs[zones.indexOf(selectedZone)].id;
-        fetch("http://localhost:8080/dns/records/" + selectedZoneID, {
+        fetch("http://localhost:8080/dns/records/" + selectedZone.id, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -66,10 +64,11 @@
                     alert(data.message)
                 }
             })
+        console.log(zones);
     }
 
     function deleteZone() {
-        if (!confirm(`Are you sure you want to delete ${selectedZone}?`)) {
+        if (!confirm(`Are you sure you want to delete ${selectedZone.zone}?`)) {
             return
         }
 
@@ -80,7 +79,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                id: selectedZoneID
+                id: selectedZone.id
             })
         })
             .then((response) => {
@@ -106,7 +105,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                zone: selectedZoneID,
+                zone: selectedZone.id,
                 user: userInputEmail
             })
         })
@@ -134,7 +133,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                zone: selectedZoneID,
+                zone: selectedZone.id,
                 user: userInputEmail
             })
         })
@@ -157,17 +156,22 @@
     // TODO: Fix this zone state management so there aren't so many fields
     let recordDisplay = "loading";
     let zones = [];
-    let zoneDocs = [];
     let selectedZone = zones[0];
-    let selectedZoneID = "";
     let records = [];
     let showMenu = false;
     let userInputEmail = "";
     let userInputEmailError = "";
 
     onMount(() => {
-        loadZones()
+        loadZones();
+        console.log(zones);
     })
+
+    const getZoneName = (option, filterText) => {
+        return option.zone.slice(0, -1);
+    }
+
+    $: console.log(selectedZone, "selected zone")
 </script>
 
 <main>
@@ -175,7 +179,7 @@
         <div slot="header">DNS</div>
         <div slot="items">
             {#if zones.length > 0}
-                <Select bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
+                <Select selectProps={{labelIdentifier: 'zone', optionIdentifier: 'zone', getOptionLabel: getZoneName, getSelectionLabel: getZoneName}} bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
             {/if}
         </div>
     </Title>
@@ -186,7 +190,7 @@
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <div style="display: flex; flex-direction: row; align-items: center">
-                <RecordField bind:parentZoneID={selectedZoneID} callback={loadRecords}/>
+                <RecordField bind:parentZoneID={selectedZone.id} callback={loadRecords}/>
                 <div style="margin-top: 18px">
 <!--                    TODO: Mobile responsive -->
                     <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
@@ -206,7 +210,7 @@
 
                         <p style="margin-left: 5px">Users:</p>
                         <ul style="margin-left: 30px; margin-bottom: 15px">
-                            {#each zoneDocs[zones.indexOf(selectedZone)].user_emails as email}
+                            {#each selectedZone.user_emails as email}
                                 <li on:click={() => {userInputEmail = email}}>{email}</li>
                             {/each}
                         </ul>
