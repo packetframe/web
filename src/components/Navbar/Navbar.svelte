@@ -3,7 +3,7 @@
 
     export const elements = [
         {label: "DNS", href: "/dashboard/dns"},
-        {label: "Containers", href: "/dashboard/containers"},
+        // {label: "Containers", href: "/dashboard/containers"},
         {label: "Account", href: "/dashboard/account"}
     ];
 
