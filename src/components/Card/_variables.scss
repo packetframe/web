@@ -24,5 +24,6 @@ $card-body-font-family: $body-font-family;
 // Header styling
 $card-header-font-weight: 600 !default;
 
-
+// Margin to allow for text to align with inputs and stuff
+$card-inner-margin: $spacer !default;
 

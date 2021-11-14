@@ -11,9 +11,19 @@
   color: $card-body-color;
   width: var(--width, auto);
 
+  @each $component in $components {
+    .#{$component} {
+      margin-left: 0px;
+    }
+  }
+
   .pf-card__header {
     font-weight: 600;
     padding-bottom: $card-padding / 2;
     color: $card-header-color;
+  }
+
+  .pf-card__wrapper {
+    margin: $card-inner-margin;
   }
 }
