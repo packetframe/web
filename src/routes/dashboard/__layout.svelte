@@ -1,9 +1,19 @@
 <script>
     import Navbar from "../../components/Navbar/Navbar.svelte";
     import Footer from "../../components/Footer.svelte";
+    import {onMount} from "svelte";
+
+    let path;
+    onMount(() => {
+        path = window.location.pathname
+    })
 </script>
 
-<Navbar/>
+{#if path !== "/dashboard/signup" && path !== "/dashboard/login"}}
+    <Navbar/>
+{:else}
+    <Navbar elements={[]}/>
+{/if}
 
 <main>
     <slot></slot>
