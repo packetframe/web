@@ -8,7 +8,7 @@
         type: string;
         ttl: number;
         value: string;
-        proxied: boolean;
+        proxy: boolean;
         zone: string;
     };
 
@@ -58,7 +58,7 @@
         <td class="pf-record__ttl">{record.ttl}</td>
         <td class="pf-record__value">{record.value}</td>
         <td class="pf-record__icon">
-            {#if record.proxied}
+            {#if record.proxy}
                 <span class="material-icons-round">cloud_queue</span>
             {/if}
         </td>

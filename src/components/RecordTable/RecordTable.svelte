@@ -8,7 +8,7 @@
         type: string,
         ttl: number,
         value: string,
-        proxied: boolean,
+        proxy: boolean,
     }
 
     export let callback: () => void;
@@ -16,7 +16,14 @@
     export let allowSelection: boolean = true;
     export let handleSelection: (selectionState: boolean, data: Record, e: MouseEvent) => any = () => {
     };
+
+    // TODO: The left side checkbox square is still selected after deleting
+
     export let handleDeletion: (data: Record[]) => any = (d) => {
+        if (!confirm(`Are you sure you want to delete ${d.length > 1 ? "these records" : "this record"}?`)) {
+            return
+        }
+
         for (const record of d) {
             fetch("http://localhost:8080/dns/records", {
                 method: "DELETE",

@@ -13,8 +13,39 @@
         ttl: 86400,
         type: "A",
         value: "",
-        proxied: false
+        proxy: false
     };
+
+    function deleteSelfRecord() {
+        if (!confirm("Are you sure you want to delete this record?")) {
+            return
+        }
+
+        fetch("http://localhost:8080/dns/records", {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                zone: record.zone,
+                record: record.id
+            })
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location.pathname = "/dashboard/login"
+                }
+                return response.json()
+            })
+            .then((data) => {
+                if (!data.success) {
+                    alert(data.message)
+                } else {
+                    callback()
+                }
+            })
+    }
 
     // export let type = "A";
     export let isInDropdown = false;
@@ -130,11 +161,10 @@
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
             <Input bind:value={srvHost} label="Target"/>
         {/if}
-        <Button icon={record.proxied ? "cloud_queue" : "cloud_off"} on:click={() => record.proxied = !record.proxied} variant="secondary"/>
+<!--        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
         <Button on:click={submit} variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
-            <!-- TODO: Actually make this delete -->
-            <Button danger icon="delete_outline" on:click={() => alert("Are you sure you want to delete this record?")}/>
+            <Button danger icon="delete_outline" on:click={deleteSelfRecord}/>
         {/if}
     </div>
 </div>
