@@ -192,8 +192,8 @@
                 <div style="padding-bottom: 18px">
                     <Card>
                         <div style="display: flex; align-items: center">
-                            <Input bind:error={userInputEmailError} bind:value={userInputEmail} fixErrorHeight={false} label="Email" placeholder="Enter email..." style="margin-bottom: 10px" type="text"/>
-                            <div style="display: flex; margin-top: 6px;">
+                            <Input bind:error={userInputEmailError} bind:value={userInputEmail} fixErrorHeight={true} label="Email" placeholder="Enter email..." type="text"/>
+                            <div style="display: flex;">
                                 <Button variant="secondary" icon="person" on:click={addUser}>Add User</Button>
                                 <Button variant="secondary" icon="person" on:click={removeUser}>Delete User</Button>
                             </div>
