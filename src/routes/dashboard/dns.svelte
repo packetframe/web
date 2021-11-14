@@ -60,13 +60,10 @@
             .then((data) => {
                 if (data.success) {
                     records = data.data.records
-                    console.log(records);
-
                 } else {
                     alert(data.message)
                 }
             })
-        console.log(records);
     }
 
     function deleteZone() {
@@ -172,8 +169,6 @@
     const getZoneName = (option, filterText) => {
         return option.zone.slice(0, -1);
     }
-
-    $: console.log(selectedZone, "selected zone")
 </script>
 
 <main>
