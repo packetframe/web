@@ -9,7 +9,7 @@
     })
 </script>
 
-{#if path !== "/dashboard/signup" && path !== "/dashboard/login"}}
+{#if path !== "/dashboard/signup" && path !== "/dashboard/login"}
     <Navbar/>
 {:else}
     <Navbar elements={[]}/>
