@@ -3,6 +3,7 @@
     import Card from "../../components/Card";
     import Button from "../../components/Button";
     import Title from "../../components/Title";
+    import {onMount} from "svelte";
 
     function deleteUser() {
         if (!confirm("Are you sure you want to delete your account? This action is irreversible.")) {
@@ -16,7 +17,12 @@
                 "Content-Type": "application/json",
             },
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location = "/dashboard/login"
+                }
+                return response.json()
+            })
             .then((data) => {
                 if (data.success) {
                     window.location = "/"
@@ -68,6 +74,34 @@
             })
     }
 
+    onMount(() => {
+        fetch("http://localhost:8080/user/info", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.status === 401) {
+                    window.location = "/dashboard/login"
+                }
+                return response.json()
+            })
+            .then((data) => {
+                if (data.success) {
+                    console.log(data.data.user)
+                    email = data.data.user.email;
+                    loading = false;
+                } else {
+                    alert(data.message)
+                }
+            })
+    })
+
+    let loading = true;
+    let email;
+
     let password;
     let passwordError;
     let passwordRepeat;
@@ -78,6 +112,11 @@
     <Title>
         <div slot="header">Account</div>
     </Title>
+    <Card title="User Information">
+        {#if !loading}
+            Email: {email}
+        {/if}
+    </Card>
     <Card title="Change Password">
         <Input bind:error={passwordError} bind:value={password} fixErrorHeight={false} label="New password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
         <Input bind:error={passwordRepeatError} bind:value={passwordRepeat} fixErrorHeight={false} label="Repeat new password" placeholder="Enter password..." type="password"/>
