@@ -220,7 +220,7 @@
     {:else}
         <!-- TODO: Button has extra space on the left -->
         <Card title="Add a domain to get started">
-            <Button variant="filled" on:click={() => {window.location = "/dashboard/onboarding"}}>Add Domain</Button>
+            <Button variant="filled" href={"/dashboard/onboarding"}>Add Domain</Button>
         </Card>
     {/if}
 </main>
