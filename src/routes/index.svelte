@@ -1,20 +1,9 @@
 <main>
-    <p class="upper">
-        Under Construction
-        <br>
-        <span>Early 2022</span>
-    </p>
     <img src="construction.png" alt="Under Construction">
     <p class="footer">&copy; Packetframe 2021</p>
 </main>
 
 <!-- TODO: Navigating to the DNS tab and back to index breaks index styling -->
-
-<svelte:head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-</svelte:head>
 
 <style global>
     main {
@@ -52,32 +41,11 @@
         background: #b03ac6;
     }
 
-    p {
-        font-family: 'Rock Salt', cursive;
-        text-align: center;
-    }
-
-    p.upper {
-        position: absolute;
-        color: #161616;
-        font-size: 52px;
-        font-weight: bold;
-        text-space: 10px;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-    }
-
-    p.upper span {
-        font-size: 32px;
-    }
-
     p.footer {
         position: absolute;
         color: #161616;
         font-size: 10px;
-        font-weight: bold;
-        text-space: 10px;
+        opacity: 0.4;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
