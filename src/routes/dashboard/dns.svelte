@@ -97,6 +97,8 @@
     }
 
     function addUser() {
+        userInputEmailError = ""
+
         fetch("http://localhost:8080/dns/zones/user", {
             method: "PUT",
             credentials: "include",
