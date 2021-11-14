@@ -1,7 +1,8 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import {onMount} from "svelte";
 
-    export const elements = [
+    export let elements = [
         {label: "DNS", href: "/dashboard/dns"},
         // {label: "Containers", href: "/dashboard/containers"},
         {label: "Account", href: "/dashboard/account"}
@@ -9,6 +10,22 @@
 
     let open = false;
 	let width;
+
+	onMount(() => {
+        fetch("http://localhost:8080/user/info", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success && data.data.admin) {
+                    elements = [...elements, {label: "Admin", href: "/dashboard/admin"}]
+                }
+            })
+    })
 
 	// $: if ($location !== "") {
 	// 	open = false;
