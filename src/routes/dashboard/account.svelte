@@ -19,13 +19,13 @@
         })
             .then((response) => {
                 if (response.status === 401) {
-                    window.location = "/dashboard/login"
+                    window.location.pathname = "/dashboard/login"
                 }
                 return response.json()
             })
             .then((data) => {
                 if (data.success) {
-                    window.location = "/"
+                    window.location.pathname = "/"
                 } else {
                     alert(data.message)
                 }
@@ -50,14 +50,14 @@
         })
             .then((response) => {
                 if (response.status === 401) {
-                    window.location = "/dashboard/login"
+                    window.location.pathname = "/dashboard/login"
                 }
                 return response.json()
             })
             .then((data) => {
                 if (data.success) {
                     alert("Password changed successfully. Please log in again.")
-                    window.location = "/dashboard/login"
+                    window.location.pathname = "/dashboard/login"
                 } else {
                     if (data.data) {
                         for (const reason of data.data.reason) {
@@ -84,7 +84,7 @@
         })
             .then((response) => {
                 if (response.status === 401) {
-                    window.location = "/dashboard/login"
+                    window.location.pathname = "/dashboard/login"
                 }
                 return response.json()
             })

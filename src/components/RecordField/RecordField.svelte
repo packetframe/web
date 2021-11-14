@@ -50,7 +50,7 @@
         })
             .then((response) => {
                 if (response.status === 401) {
-                    window.location = "/dashboard/login"
+                    window.location.pathname = "/dashboard/login"
                 }
                 return response.json()
             })

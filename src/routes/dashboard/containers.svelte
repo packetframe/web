@@ -3,7 +3,7 @@
     import {onMount} from "svelte";
 
     onMount(() => {
-        window.location = "/dashboard"
+        window.location.pathname = "/dashboard"
     })
     // End temp redirect
 
