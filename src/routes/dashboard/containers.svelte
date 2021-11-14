@@ -1,4 +1,12 @@
 <script>
+    // Begin temp redirect
+    import {onMount} from "svelte";
+
+    onMount(() => {
+        window.location = "/dashboard"
+    })
+    // End temp redirect
+
     import Input from "../../components/Input";
     import Button from "../../components/Button";
     import Title from "../../components/Title";
