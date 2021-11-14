@@ -60,11 +60,13 @@
             .then((data) => {
                 if (data.success) {
                     records = data.data.records
+                    console.log(records);
+
                 } else {
                     alert(data.message)
                 }
             })
-        console.log(zones);
+        console.log(records);
     }
 
     function deleteZone() {
@@ -190,7 +192,7 @@
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <div style="display: flex; flex-direction: row; align-items: center">
-                <RecordField bind:parentZoneID={selectedZone.id} callback={loadRecords}/>
+                <RecordField parentZoneID={selectedZone.id} callback={loadRecords}/>
                 <div style="margin-top: 18px">
 <!--                    TODO: Mobile responsive -->
                     <Button variant={showMenu ? "" : "secondary"} icon="expand_more"
