@@ -5,7 +5,7 @@
     import {onMount} from "svelte";
 
     export let parentZoneID = "";
-    export let callback;
+    export let callback: () => void;
     export let record = {
         id: "",
         zone: "", // Zone ID
