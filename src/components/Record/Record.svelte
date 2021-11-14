@@ -3,6 +3,7 @@
     import Button from "../Button";
 
     type Record = {
+        id: string,
         label: string;
         type: string;
         ttl: number;
@@ -11,7 +12,7 @@
         zone: string;
     };
 
-    export let callback;
+    export let callback: () => void;
     export let record: Record;
     export let zebra = false;
     export let mobile = false;
@@ -76,7 +77,7 @@
     <tr class="pf-record__dropdown" class:open class:mobile>
         <td colspan="7" headers="col2" class="pf-record__dropdown-wrap">
             <div class="pf-record__dropdown-anchor">
-                <RecordField {callback} bind:type={record.type} bind:record isInDropdown {mobile} parentZoneID={record.zone}/>
+                <RecordField {callback} {record} isInDropdown {mobile} parentZoneID={record.zone}/>
             </div>
         </td>
     </tr>
