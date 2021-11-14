@@ -6,10 +6,12 @@
 </script>
 
 <div class={`pf-card ${userClasses}`} style={width ? `--width:${width}` : ``}>
-    {#if title}
-    <h3 class="pf-card__header">{title}</h3>
-    {/if}
-    <slot></slot>
+    <div class="pf-card__wrapper">
+        {#if title}
+        <h3 class="pf-card__header">{title}</h3>
+        {/if}
+        <slot></slot>
+    </div>
 </div>
 
 <style global lang="scss" src="./Card.scss">

@@ -11,7 +11,7 @@
         proxied: boolean,
     }
 
-    export let callback;
+    export let callback: () => void;
     export let allowDeletion: boolean = true;
     export let allowSelection: boolean = true;
     export let handleSelection: (selectionState: boolean, data: Record, e: MouseEvent) => any = () => {
