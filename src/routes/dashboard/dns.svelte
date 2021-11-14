@@ -176,7 +176,9 @@
         </div>
     </Title>
     {#if recordDisplay === "loading"}
-        <Spinner/>
+        <div style="margin: 25px">
+            <Spinner/>
+        </div>
     {:else if recordDisplay === "display"}
         <div style="margin: 12px">
             <div style="display: flex; flex-direction: row; align-items: center">
