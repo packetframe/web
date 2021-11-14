@@ -43,7 +43,6 @@
                     }
                 })
         }
-        // window.location.reload() // TODO: This doesn't work because the DELETE reqs are still in flight since they're async
     }
 
     export let records: Record[] = [];
