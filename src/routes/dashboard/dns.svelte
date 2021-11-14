@@ -202,8 +202,7 @@
                         <p style="margin-left: 5px">Users:</p>
                         <ul style="margin-left: 30px; margin-bottom: 15px">
                             {#each zoneDocs[zones.indexOf(selectedZone)].user_emails as email}
-                                <!-- TODO: Make this autofill the email input box -->
-                                <li on:click={() => {userInputEmail = {email}}}>{email}</li>
+                                <li on:click={() => {userInputEmail = email}}>{email}</li>
                             {/each}
                         </ul>
 
