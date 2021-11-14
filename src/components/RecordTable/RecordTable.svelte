@@ -17,6 +17,10 @@
     export let handleSelection: (selectionState: boolean, data: Record, e: MouseEvent) => any = () => {
     };
     export let handleDeletion: (data: Record[]) => any = (d) => {
+        if (!confirm(`Are you sure you want to delete ${d.length > 1 ? "these records" : "this record"}?`)) {
+            return
+        }
+
         for (const record of d) {
             fetch("http://localhost:8080/dns/records", {
                 method: "DELETE",
