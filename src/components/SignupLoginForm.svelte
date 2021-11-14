@@ -125,6 +125,7 @@
                 {mode === "signup" ? "Login" : "Signup"}
             </a>
         </p>
+<!-- TODO: Enter to submit -->
         <Button
                 on:click={handleClick}
                 style="margin-top: 18px"

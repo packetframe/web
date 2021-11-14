@@ -133,6 +133,7 @@
         <Button icon={record.proxied ? "cloud_queue" : "cloud_off"} on:click={() => record.proxied = !record.proxied} variant="secondary"/>
         <Button on:click={submit} variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
+            <!-- TODO: Actually make this delete -->
             <Button danger icon="delete_outline" on:click={() => alert("Are you sure you want to delete this record?")}/>
         {/if}
     </div>
