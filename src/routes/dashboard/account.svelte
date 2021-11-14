@@ -57,7 +57,7 @@
                         for (const reason of data.data.reason) {
                             if (reason.Tag === "min") {
                                 passwordError = `Password must be at least ${reason.Value} characters`
-                            } else if (reason.Tag == "max") {
+                            } else if (reason.Tag === "max") {
                                 passwordError = `Password must be less than ${reason.Value + 1} characters`
                             }
                         }
