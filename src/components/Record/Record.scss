@@ -234,6 +234,7 @@
     border-bottom-left-radius: $record-border-radius;
     border-bottom-right-radius: $record-border-radius;
     transition: ease height 0.3s;
+    width: 100%;
   }
 
   .pf-record__dropdown-anchor {
