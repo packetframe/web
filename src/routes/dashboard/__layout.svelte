@@ -15,7 +15,7 @@
     <Navbar elements={[]}/>
 {/if}
 
-<main>
+<main class="pf-layout">
     <slot></slot>
     <Footer/>
 </main>
@@ -24,7 +24,7 @@
   @import "../../styles/global";
   @import "../../styles/generic/reset";
 
-  main {
+  main.pf-layout {
     max-width: 900px;
     padding: 5px;
     margin: 0 auto;
