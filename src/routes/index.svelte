@@ -1,19 +1,19 @@
-<main>
-    <img src="construction.png" alt="Under Construction">
+<main class="index-wrapper">
+    <img class="construction" src="construction.png" alt="Under Construction">
     <p class="footer">&copy; Packetframe 2021</p>
 </main>
 
 <!-- TODO: Navigating to the DNS tab and back to index breaks index styling -->
 
 <style global>
-    main {
+    main.index-wrapper {
         width: 100%;
         height: 100%;
         position: relative;
         overflow: hidden;
     }
 
-    img {
+    img.construction {
         width: 100%;
         height: 100%;
         object-fit: cover;
