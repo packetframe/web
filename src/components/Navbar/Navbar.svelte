@@ -19,7 +19,12 @@
                 "Content-Type": "application/json",
             },
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (response.status === 401 && $page.path !== "/dashboard/login") {
+                    window.location.pathname = "/dashboard/login"
+                }
+                return response.json()
+            })
             .then((data) => {
                 if (data.success && data.data.admin) {
                     elements = [...elements, {label: "Admin", href: "/dashboard/admin"}]
