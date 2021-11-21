@@ -19,7 +19,7 @@
             .then((response) => response.json())
             .then((data) => {
                 if (!data.success) {
-                    alert(data.data.message)
+                    alert(data.message)
                 } else {
                     users = data.data.users;
                 }
