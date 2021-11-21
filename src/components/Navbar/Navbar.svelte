@@ -6,7 +6,6 @@
         {label: "DNS", href: "/dashboard/dns"},
         // {label: "Containers", href: "/dashboard/containers"},
         {label: "Account", href: "/dashboard/account"},
-        {label: "Logout", href: "/dashboard/logout"},
     ];
 
     let open = false;
@@ -42,7 +41,7 @@
 <nav class="pf-nav">
     <a href="/"><h1>Packetframe</h1></a>
     <ul class:open>
-        {#each elements as item}
+        {#each [...elements, {label: "Logout", href: "/dashboard/logout"}] as item}
             <li class:active={$page.path === item.href}>
                 <a href={item.href}>{item.label}</a>
             </li>
