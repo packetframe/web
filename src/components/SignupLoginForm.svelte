@@ -142,6 +142,7 @@
         padding-top: 15px;
         padding-left: 15px;
         padding-right: 15px;
+        margin: auto;
     }
 
     p {
