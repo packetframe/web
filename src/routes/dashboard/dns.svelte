@@ -154,7 +154,6 @@
             })
     }
 
-    // TODO: Fix this zone state management so there aren't so many fields
     let recordDisplay = "loading";
     let zones = [];
     let selectedZone = zones[0];
