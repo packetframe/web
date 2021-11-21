@@ -52,6 +52,27 @@
             })
     }
 
+    function impersonateUser() {
+        fetch("http://localhost:8080/admin/user/impersonate", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: selectedUser["email"],
+            })
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.success) {
+                    alert(data.data.message)
+                } else {
+                    window.location.pathname = "/dashboard/dns"
+                }
+            })
+    }
+
     function getUserEmail(option, filterText) {
         return option["email"];
     }
@@ -77,7 +98,7 @@
             </ul>
 
             <div class="button-group">
-<!--                <Button icon="person" variant="secondary">Impersonate</Button>-->
+                <Button icon="person" variant="secondary" on:click={impersonateUser}>Impersonate</Button>
                 <Button
                         variant="secondary"
                         icon={selectedUser["groups"].includes("core.ENABLED") ? "hide_source" : "task_alt"}
