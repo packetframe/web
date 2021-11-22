@@ -99,7 +99,7 @@
                     if (data.success) {
                         window.location.pathname = "/dashboard/dns"
                     } else {
-                        emailError = data.data.message
+                        emailError = data.message
                         passwordError = emailError
                     }
                 })
