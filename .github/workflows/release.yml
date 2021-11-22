@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Create archive
+        run: tar -czvf packetframe-web-$(git describe --tags `git rev-list --tags --max-count=1`).tar.gz -C build .
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: packetframe-web-*.tar.gz
