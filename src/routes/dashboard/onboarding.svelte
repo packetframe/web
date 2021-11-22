@@ -9,7 +9,7 @@
 
     function submit() {
         zoneError = ""
-        fetch("$apiServer/dns/zones", {
+        fetch("/api/dns/zones", {
             method: "POST",
             credentials: "include",
             headers: {

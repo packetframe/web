@@ -25,7 +25,7 @@
         }
 
         for (const record of d) {
-            fetch("$apiServer/dns/records", {
+            fetch("/api/dns/records", {
                 method: "DELETE",
                 credentials: "include",
                 headers: {

@@ -5,9 +5,7 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
     // Consult https://github.com/sveltejs/svelte-preprocess
     // for more information about preprocessors
-    preprocess: preprocess({
-        replace: [['$apiServer', process.env.PFWEB_DEV ? "http://localhost:8080" : "https://v4.packetframe.com/api"]],
-    }),
+    preprocess: preprocess(),
 
     kit: {
         // hydrate the <div id="svelte"> element in src/app.html

@@ -10,7 +10,7 @@
             return
         }
 
-        fetch("$apiServer/user/delete", {
+        fetch("/api/user/delete", {
             method: "DELETE",
             credentials: "include",
             headers: {
@@ -40,7 +40,7 @@
         passwordError = ""
         passwordRepeat = ""
 
-        fetch("$apiServer/user/password", {
+        fetch("/api/user/password", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -75,7 +75,7 @@
     }
 
     onMount(() => {
-        fetch("$apiServer/user/info", {
+        fetch("/api/user/info", {
             method: "GET",
             credentials: "include",
             headers: {

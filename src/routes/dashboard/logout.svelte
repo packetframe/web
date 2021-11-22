@@ -2,7 +2,7 @@
     import {onMount} from "svelte";
 
     onMount(() => {
-        fetch("$apiServer/user/logout", {
+        fetch("/api/user/logout", {
             credentials: "include",
             method: "POST",
             headers: {
