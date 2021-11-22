@@ -47,7 +47,7 @@
                 errored = true
             }
             if (!errored) {
-                fetch("http://localhost:8080/user/signup", {
+                fetch("$apiServer/user/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -83,7 +83,7 @@
                     })
             }
         } else if (!errored) {
-            fetch("http://localhost:8080/user/login", {
+            fetch("$apiServer/user/login", {
                 method: "POST",
                 credentials: "include",
                 headers: {

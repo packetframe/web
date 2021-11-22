@@ -10,7 +10,7 @@
     import Input from "../../components/Input/Input.svelte";
 
     function loadZones() {
-        fetch("http://localhost:8080/dns/zones", {
+        fetch("$apiServer/dns/zones", {
             method: "GET",
             credentials: "include",
             headers: {
@@ -44,7 +44,7 @@
     }
 
     function loadRecords() {
-        fetch("http://localhost:8080/dns/records/" + selectedZone.id, {
+        fetch("$apiServer/dns/records/" + selectedZone.id, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -71,7 +71,7 @@
             return
         }
 
-        fetch("http://localhost:8080/dns/zones", {
+        fetch("$apiServer/dns/zones", {
             method: "DELETE",
             credentials: "include",
             headers: {
@@ -99,7 +99,7 @@
     function addUser() {
         userInputEmailError = ""
 
-        fetch("http://localhost:8080/dns/zones/user", {
+        fetch("$apiServer/dns/zones/user", {
             method: "PUT",
             credentials: "include",
             headers: {
@@ -127,7 +127,7 @@
     }
 
     function removeUser() {
-        fetch("http://localhost:8080/dns/zones/user", {
+        fetch("$apiServer/dns/zones/user", {
             method: "DELETE",
             credentials: "include",
             headers: {

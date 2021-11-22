@@ -9,7 +9,7 @@
     let selectedUser;
 
     function loadUsers() {
-        fetch("http://localhost:8080/admin/user/list", {
+        fetch("$apiServer/admin/user/list", {
             method: "GET",
             credentials: "include",
             headers: {
@@ -31,7 +31,7 @@
     })
 
     function setUserGroup(enabled) {
-        fetch("http://localhost:8080/admin/user/groups", {
+        fetch("$apiServer/admin/user/groups", {
             method: enabled ? "PUT" : "DELETE",
             credentials: "include",
             headers: {
@@ -53,7 +53,7 @@
     }
 
     function impersonateUser() {
-        fetch("http://localhost:8080/admin/user/impersonate", {
+        fetch("$apiServer/admin/user/impersonate", {
             method: "POST",
             credentials: "include",
             headers: {

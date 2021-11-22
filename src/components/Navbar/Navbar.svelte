@@ -12,7 +12,7 @@
     let width;
 
     onMount(() => {
-        fetch("http://localhost:8080/user/info", {
+        fetch("$apiServer/user/info", {
             method: "GET",
             credentials: "include",
             headers: {

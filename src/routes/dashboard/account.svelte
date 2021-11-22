@@ -10,7 +10,7 @@
             return
         }
 
-        fetch("http://localhost:8080/user/delete", {
+        fetch("$apiServer/user/delete", {
             method: "DELETE",
             credentials: "include",
             headers: {
@@ -40,7 +40,7 @@
         passwordError = ""
         passwordRepeat = ""
 
-        fetch("http://localhost:8080/user/password", {
+        fetch("$apiServer/user/password", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -75,7 +75,7 @@
     }
 
     onMount(() => {
-        fetch("http://localhost:8080/user/info", {
+        fetch("$apiServer/user/info", {
             method: "GET",
             credentials: "include",
             headers: {

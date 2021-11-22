@@ -21,7 +21,7 @@
             return
         }
 
-        fetch("http://localhost:8080/dns/records", {
+        fetch("$apiServer/dns/records", {
             method: "DELETE",
             credentials: "include",
             headers: {
@@ -71,7 +71,7 @@
             record.value = `${priority} ${weight} ${port} ${srvHost}`
         }
 
-        fetch("http://localhost:8080/dns/records", {
+        fetch("$apiServer/dns/records", {
             method: record.id === "" ? "POST" : "PUT",
             credentials: "include",
             headers: {
