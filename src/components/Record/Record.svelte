@@ -63,6 +63,7 @@
             {/if}
         </td>
         <td class="pf-record__arrow">
+            <!-- TODO: This arrow doesn't load at first (see other todo about moving to a npm package) -->
             <span class="material-icons-round">expand_more</span>
         </td>
     {/if}

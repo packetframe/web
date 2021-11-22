@@ -84,6 +84,7 @@
                 {:else if allowSelection}
                     <th class="pf-record-table__header"></th>
                 {/if}
+                <!-- TODO: When expanding a zone with the arrow icon, the label and type table headers jump around -->
                 {#each ["Label", "Type", "TTL", "Value", "", ""] as head}
                     <th class="pf-record-table__header">{head}</th>
                 {/each}

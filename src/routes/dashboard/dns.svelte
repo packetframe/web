@@ -176,6 +176,7 @@
     <Title>
         <div slot="header">DNS</div>
         <div slot="items" style="display: flex; width: 100%; justify-content: flex-end; align-items: center;">
+            <!-- TODO: This icon has tiny left/right border when statically built -->
             <Button on:click={() => {showMenu = !showMenu}} class="zone-settings-icon {showMenu ? 'active' : ''}" icon="manage_accounts" />
             {#if zones.length > 0}
                 <Select selectProps={{labelIdentifier: 'zone', optionIdentifier: 'zone', getOptionLabel: getZoneName, getSelectionLabel: getZoneName}} bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
