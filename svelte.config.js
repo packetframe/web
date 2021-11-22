@@ -6,7 +6,7 @@ const config = {
     // Consult https://github.com/sveltejs/svelte-preprocess
     // for more information about preprocessors
     preprocess: preprocess({
-        replace: [['$apiServer', process.env.PFWEB_DEV ? "http://localhost:8080" : "https://api.packetframe.com"]],
+        replace: [['$apiServer', process.env.PFWEB_DEV ? "http://localhost:8080" : "https://v4.packetframe.com/api"]],
     }),
 
     kit: {
