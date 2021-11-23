@@ -148,6 +148,5 @@
 
     p {
         margin-top: 15px;
-        margin-left: 4px;
     }
 </style>
