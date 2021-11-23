@@ -69,6 +69,8 @@
         record.zone = parentZoneID;
         if (record["type"] === "SRV") {
             record.value = `${priority} ${weight} ${port} ${srvHost}`
+        } else if (record["type"] === "MX") {
+            record.value = `${mxPriority} ${mxHost}`
         }
 
         fetch("/api/dns/records", {
@@ -117,6 +119,10 @@
     let port = 0;
     let srvHost = "";
 
+    // MX record values
+    let mxPriority = 0;
+    let mxHost = "";
+
     onMount(() => {
         if (record["type"] === "SRV") {
             let srvValueParts = record.value.split(" ");
@@ -124,6 +130,10 @@
             weight = parseInt(srvValueParts[1])
             port = parseInt(srvValueParts[2])
             srvHost = srvValueParts[3]
+        } else if (record["type"] === "MX") {
+            let mxValueParts = record.value.split(" ");
+            mxPriority = parseInt(mxValueParts[0]);
+            mxHost = mxValueParts[1];
         }
     })
 </script>
@@ -147,8 +157,8 @@
         {:else if record["type"] === "AAAA"}
             <Input bind:value={record.value} label="IPv6 Address"/>
         {:else if record["type"] === "MX"}
-            <Input class="small" type="number" label="Priority" min="0"/>
-            <Input bind:value={record.value} label="Server"/>
+            <Input bind:value={mxPriority} class="small" type="number" label="Priority" min="0"/>
+            <Input bind:value={mxHost} label="Server"/>
         {:else if record["type"] === "NS"}
             <Input bind:value={record.value} label="Nameserver"/>
         {:else if record["type"] === "TXT"}
