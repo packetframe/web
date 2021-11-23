@@ -3,8 +3,6 @@
     <p class="footer">&copy; Packetframe 2021</p>
 </main>
 
-<!-- TODO: Navigating to the DNS tab and back to index breaks index styling -->
-
 <style global>
     main.index-wrapper {
         width: 100%;
