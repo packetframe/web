@@ -92,7 +92,8 @@
                     callback()
                 } else {
                     if (data.data) {
-                        error = data.data.reason[0].FailedField.split("at line")[0]
+                        let err = data.data.reason[0].FailedField.split("at line")[0].split(": ")[1]
+                        error = err.charAt(0).toUpperCase() + err.slice(1); // Capitalize first letter
                     } else {
                         alert(data.message)
                     }
