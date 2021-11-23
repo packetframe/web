@@ -63,7 +63,6 @@
             {/if}
         </td>
         <td class="pf-record__arrow">
-            <!-- TODO: This arrow doesn't load at first (see other todo about moving to a npm package) -->
             <span class="material-icons-round">expand_more</span>
         </td>
     {/if}
@@ -86,5 +85,3 @@
 
 <style global lang="scss" src="./Record.scss">
 </style>
-
-<!-- TODO: The values in the record row shouldn't be reactive to the input fields, otherwise someone could edit the text box and collapse the dropdown without pressing save, and might think it's been saved -->

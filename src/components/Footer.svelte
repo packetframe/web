@@ -6,6 +6,4 @@
         color: white;
         text-align: center;
     }
-
-/*    TODO: Sticky footer */
 </style>
