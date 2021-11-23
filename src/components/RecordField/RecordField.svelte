@@ -143,7 +143,7 @@
 </style>
 
 <div class="pf-record-field" class:mobile>
-    <div class="pf-record-field__row">
+    <form class="pf-record-field__row" on:submit|preventDefault={submit}>
         <Input bind:error bind:value={record.label} label="Label"/>
         <span class="pf-record-field__small-select">
             <Select value={record['type']} isDisabled={isInDropdown}
@@ -173,9 +173,9 @@
             <Input bind:value={srvHost} label="Target"/>
         {/if}
 <!--        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
-        <Button on:click={submit} variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
+        <Button type="submit" variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
             <Button danger icon="delete_outline" on:click={deleteSelfRecord}/>
         {/if}
-    </div>
+    </form>
 </div>

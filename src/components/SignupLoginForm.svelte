@@ -113,26 +113,27 @@
     </Title>
 
     <Card>
-        <Input bind:error={emailError} bind:value={email} fixErrorHeight={false} label="Email" placeholder="Enter email..." style="margin-bottom: 10px" type="text"/>
-        <Input bind:error={passwordError} bind:value={password} fixErrorHeight={false} label="Password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
-        {#if mode === "signup"}
-            <Input fixErrorHeight={false} bind:error={repeatPasswordError} bind:value={repeatPassword} label="Repeat password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
-            <Input fixErrorHeight={false} bind:error={howDidYouHearAboutUsError} bind:value={howDidYouHearAboutUs} label="How did you hear about Packetframe?" placeholder="I heard about Packetframe from..." type="text"/>
-        {/if}
-        <p>
-            {mode === "signup" ? "Already have an account?" : "Need an account?"}
-            <a href={mode === "signup" ? "/dashboard/login" : "/dashboard/signup"}>
-                {mode === "signup" ? "Login" : "Signup"}
-            </a>
-        </p>
-<!-- TODO: Enter to submit -->
-        <Button
-                on:click={handleClick}
-                style="margin-top: 18px"
-                variant="secondary"
-        >
-            {mode === "login" ? "Login" : "Signup"}
-        </Button>
+        <form on:submit|preventDefault={handleClick}>
+            <Input bind:error={emailError} bind:value={email} fixErrorHeight={false} label="Email" placeholder="Enter email..." style="margin-bottom: 10px" type="text"/>
+            <Input bind:error={passwordError} bind:value={password} fixErrorHeight={false} label="Password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
+            {#if mode === "signup"}
+                <Input fixErrorHeight={false} bind:error={repeatPasswordError} bind:value={repeatPassword} label="Repeat password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
+                <Input fixErrorHeight={false} bind:error={howDidYouHearAboutUsError} bind:value={howDidYouHearAboutUs} label="How did you hear about Packetframe?" placeholder="I heard about Packetframe from..." type="text"/>
+            {/if}
+            <p>
+                {mode === "signup" ? "Already have an account?" : "Need an account?"}
+                <a href={mode === "signup" ? "/dashboard/login" : "/dashboard/signup"}>
+                    {mode === "signup" ? "Login" : "Signup"}
+                </a>
+            </p>
+            <Button
+                    on:click={handleClick}
+                    style="margin-top: 18px"
+                    variant="secondary"
+            >
+                {mode === "login" ? "Login" : "Signup"}
+            </Button>
+        </form>
     </Card>
 </main>
 
