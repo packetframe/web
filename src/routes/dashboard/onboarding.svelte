@@ -22,6 +22,9 @@
             .then((response) => {
                 if (response.status === 401) {
                     window.location.pathname = "/dashboard/login"
+                } else if (response.status === 409) {
+                    zoneError = "Zone already exists"
+                    return
                 }
                 return response.json()
             })
