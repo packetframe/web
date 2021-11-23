@@ -149,4 +149,8 @@
     p {
         margin-top: 15px;
     }
+
+    a {
+        color: #9300cc;
+    }
 </style>
