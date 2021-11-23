@@ -57,8 +57,6 @@
         return {data: r, selected: false}
     });
 
-    $: console.log(selectionStates)
-
     let deleteIcon: string = "delete_outline";
 
     let innerWidth;

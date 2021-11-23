@@ -90,7 +90,6 @@
             })
             .then((data) => {
                 if (data.success) {
-                    console.log(data.data.user)
                     email = data.data.user.email;
                     loading = false;
                 } else {

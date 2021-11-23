@@ -164,7 +164,6 @@
 
     onMount(() => {
         loadZones();
-        console.log(zones);
     })
 
     const getZoneName = (option, filterText) => {
