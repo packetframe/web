@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <style lang="scss" src="./Title.scss" global />
 
 <div class="pf-title">
