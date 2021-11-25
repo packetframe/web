@@ -28,7 +28,7 @@
 
 <main>
     <h1>Packetframe</h1>
-    <img alt="" src="cloud-flat.png">
+    <img alt="" src="/cloud-flat.png">
     <p>
         API: <a href="https://github.com/packetframe/api/releases/v{serverVersion}">v{serverVersion}-{serverCommit}</a> built {serverBuildDate}
         <br>
