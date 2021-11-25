@@ -50,4 +50,8 @@
   ::-moz-selection {
     background: #b03ac6;
   }
+
+  a {
+    color: #b03ac6;
+  }
 </style>
