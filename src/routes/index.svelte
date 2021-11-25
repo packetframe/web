@@ -51,11 +51,11 @@
 
 
     div.wrapper {
-        width: 100vw;
-        height: 100vh;
-        max-width: 100vw;
-        /* overflow-x: hidden; */
-        /* overflow-y: scroll; */
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: rgb(213,59,171);
+        background: linear-gradient(135deg, rgba(213,59,171,1) 30%, rgba(128,32,192,1) 70%); 
     }
     
     img.pf-hole {
@@ -76,7 +76,7 @@
     }
 
     div.pf-bg-delay {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         background-color: transparent;
     }
@@ -131,7 +131,7 @@
     div.growBg {
         top: 0;
         left: 0;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
     }
 
@@ -151,7 +151,7 @@
     }
 
     main.index-wrapper {
-        width: 100vw;
+        width: 100%;
         height: 400%;
         position: relative;
     }
@@ -161,8 +161,9 @@
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         box-sizing: border-box;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
+        position: absolute;
     }
 
     * {
@@ -170,8 +171,8 @@
     }
 
     div#svelte {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
     }
 
     ::selection {
