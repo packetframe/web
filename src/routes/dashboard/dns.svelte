@@ -67,7 +67,7 @@
     }
 
     function deleteZone() {
-        if (!confirm(`Are you sure you want to delete ${selectedZone.zone}?`)) {
+        if (!confirm(`Are you sure you want to delete ${selectedZone.zone.slice(0, -1)}?`)) {
             return
         }
 
