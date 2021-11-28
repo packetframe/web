@@ -200,9 +200,11 @@
 
                         <p style="margin-left: 5px">Users:</p>
                         <ul style="margin-left: 30px; margin-bottom: 15px">
-                            {#each selectedZone.user_emails as email}
-                                <li on:click={() => {userInputEmail = email}}>{email}</li>
-                            {/each}
+                            {#if selectedZone.user_emails}
+                                {#each selectedZone.user_emails as email}
+                                    <li on:click={() => {userInputEmail = email}}>{email}</li>
+                                {/each}
+                            {/if}
                         </ul>
 
                         <Button icon="delete" danger on:click={deleteZone}>Delete Zone</Button>
