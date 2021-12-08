@@ -127,7 +127,7 @@
                 </a>
             </p>
             <Button
-                    on:click={handleClick}
+                    type="submit"
                     style="margin-top: 18px"
                     variant="secondary"
             >
