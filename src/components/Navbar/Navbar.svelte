@@ -20,7 +20,7 @@
             },
         })
             .then((response) => {
-                if (response.status === 401 && $page.path !== "/dashboard/login") {
+                if (response.status === 401 && $page.path !== "/dashboard/login" && $page.path !== "/dashboard/signup") {
                     window.location.pathname = "/dashboard/login"
                 }
                 return response.json()

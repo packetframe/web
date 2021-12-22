@@ -67,7 +67,7 @@
     }
 
     function deleteZone() {
-        if (!confirm(`Are you sure you want to delete ${selectedZone.zone}?`)) {
+        if (!confirm(`Are you sure you want to delete ${selectedZone.zone.slice(0, -1)}?`)) {
             return
         }
 
@@ -175,8 +175,8 @@
     <Title>
         <div slot="header">DNS</div>
         <div slot="items" style="display: flex; width: 100%; justify-content: flex-end; align-items: center;">
-            <Button on:click={() => {showMenu = !showMenu}} class="zone-settings-icon {showMenu ? 'active' : ''}" icon="manage_accounts" />
             {#if zones.length > 0}
+                <Button on:click={() => {showMenu = !showMenu}} class="zone-settings-icon {showMenu ? 'active' : ''}" icon="manage_accounts" />
                 <Select selectProps={{labelIdentifier: 'zone', optionIdentifier: 'zone', getOptionLabel: getZoneName, getSelectionLabel: getZoneName}} bind:value={selectedZone} items={zones} isSearchable on:select={loadRecords}/>
             {/if}
         </div>
@@ -200,9 +200,11 @@
 
                         <p style="margin-left: 5px">Users:</p>
                         <ul style="margin-left: 30px; margin-bottom: 15px">
-                            {#each selectedZone.user_emails as email}
-                                <li on:click={() => {userInputEmail = email}}>{email}</li>
-                            {/each}
+                            {#if selectedZone.user_emails}
+                                {#each selectedZone.user_emails as email}
+                                    <li on:click={() => {userInputEmail = email}}>{email}</li>
+                                {/each}
+                            {/if}
                         </ul>
 
                         <Button icon="delete" danger on:click={deleteZone}>Delete Zone</Button>
