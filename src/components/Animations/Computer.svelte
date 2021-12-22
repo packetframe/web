@@ -1,8 +1,8 @@
 <script>
+    import TextArea from "./TextArea.svelte";
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
-        return `
-┌───────────────────────────────┐
+        return `┌───────────────────────────────┐
 │                               │
 │ ~ ▴ ` + cursor + `                         │
 │                               │
@@ -19,8 +19,7 @@
     }
 
     function renderCommand(command) {
-        return `
-┌───────────────────────────────┐
+        return `┌───────────────────────────────┐
 │                               │
 │ ~ ▴ ` + command + " ".repeat(26 - command.length) + `│
 │                               │
@@ -36,8 +35,7 @@
       └───────────────────┘`
     }
 
-    let complete = `
-┌───────────────────────────────┐
+    let complete = `┌───────────────────────────────┐
 │                               │
 │ ~ ▴ dig packetframe.com       │
 │ ;; opcode: QUERY; status: OK  │
@@ -81,18 +79,5 @@
 </script>
 
 <main>
-    <textarea cols='33' disabled rows='16'>{frames[frame]}</textarea>
+    <TextArea rows="14" cols="33" content={frames[frame]}/>
 </main>
-
-<style>
-    textarea {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 10pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-    }
-</style>

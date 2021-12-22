@@ -1,4 +1,6 @@
 <script>
+    import TextArea from "./TextArea.svelte";
+
     let frames = [
         `               _-o#&&*''''?d:>b\\_
           _o/"'''  '',, dMF9MMMMMHo_
@@ -611,18 +613,5 @@ SMMMMMMH'                   '9M_-MMH::-\\v_   :
 </script>
 
 <main>
-    <textarea cols='50' disabled rows='23'>{frames[frame]}</textarea>
+    <TextArea rows="23" cols="46" content={frames[frame]}/>
 </main>
-
-<style>
-    textarea {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 8pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-    }
-</style>

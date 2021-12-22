@@ -1,8 +1,9 @@
 <script>
+    import TextArea from "./TextArea.svelte";
+
     function render(blink) {
         let eye = blink ? "()" : "<>"
-        return `
-            .-"""-.
+        return `            .-"""-.
            '       \\
           |,.  ,-.  |
           |()   ` + eye + `| |
@@ -29,18 +30,5 @@
 </script>
 
 <main>
-    <textarea cols='32' disabled rows='19'>{render(blink)}</textarea>
+    <TextArea rows="18" cols="30" content={render(blink)}/>
 </main>
-
-<style>
-    textarea {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 8pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-    }
-</style>

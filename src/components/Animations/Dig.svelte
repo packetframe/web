@@ -1,7 +1,8 @@
 <script>
-    let content = `
-┌──────────────────────────────────────────────────────────[n@box:~#]───┐
-│ + - o                                                                 │
+    import TextArea from "./TextArea.svelte";
+
+    let content = `┌──────────────────────────────────────────────────────────[n@box:~#]───┐
+│ x - o                                                                 │
 │                                                                       │
 │                                                                       │
 │ ;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 28724             │
@@ -14,7 +15,7 @@
 │ packetframe.com.    86400    IN    NS    ns1.packetframe.com.         │
 │ packetframe.com.    86400    IN    NS    ns2.packetframe.com.         │
 │                    ┌──────────────────────────────────────────────────┴────────[Packetframe]───┐
-│ ;; Received 81 B   │ + - o                                                                     │
+│ ;; Received 81 B   │ x - o                                                                     │
 │ ;; Time 2021-12-22 │                                                                           │
 │ ;; From 2602:809:30│  ┌────────────────────┐ ┌──────┐ ┌──────┐ ┌──────────────────────┐ ┌───┐  │
 │                    │  │ @                  │ │ A  ▼ │ │ 3600 │ │ 192.0.2.191          │ │ ✓ │  │
@@ -33,23 +34,9 @@
                      │  │ dkim._domainkey       TXT      86400    v=DKIM1;k=rsa;t=s;s=...     │  │
                      │  └─────────────────────────────────────────────────────────────────────┘  │
                      │                                                                           │
-                     └───────────────────────────────────────────────────────────────────────────┘
-`
+                     └───────────────────────────────────────────────────────────────────────────┘`
 </script>
 
 <main>
-    <textarea cols='99' disabled rows='39'>{content}</textarea>
+    <TextArea cols="98" {content} rows="34"/>
 </main>
-
-<style>
-    textarea {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 8pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-    }
-</style>
