@@ -2,6 +2,7 @@
     import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
     import Computer from "../components/Animations/Computer.svelte";
     import Penguin from "../components/Animations/Penguin.svelte";
+    import Dig from "../components/Animations/Dig.svelte";
 
     let screenWidth;
 </script>
@@ -14,22 +15,21 @@
             <div class="containerStyle">
                 <div style="width: clamp(0px, 950px, 95%)">
                     <div class="hero">
-                        <img alt="PacketFrame Icon" src="/static/img/icon.png" style="width: 15rem; display: inline-block"/>
-                        <!--                        <h1><span class="textGradient">PacketFrame CDN</span></h1>-->
                         <h1>Packetframe</h1>
                         <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
-                        <!--						<Button inverted onclick={() => window.location.hash = "#/dashboard"} size="1.2rem">Get Started</Button>-->
+                        <Dig/>
                     </div>
                 </div>
             </div>
         </header>
+
         <div class="featureBlock">
             <div class="featureImageWrapper">
-                <Computer/>
+                <SpinningGlobe/>
             </div>
             <div class="featureCaption">
-                <h1>Built for Developers</h1>
-                <p>Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href="https://packetframe.com/docs/privacy-policy">your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href="https://packetframe.com/docs/api">API</a> and the entire codebase is <a href="https://github.com/packetframe/cdn">open source</a>.</p>
+                <h1>Globally Distributed</h1>
+                <p>There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)</p>
             </div>
         </div>
 
@@ -48,11 +48,11 @@
 
         <div class="featureBlock featureBlockReverse">
             <div class="featureCaption">
-                <h1>Globally Distributed</h1>
-                <p>There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)</p>
+                <h1>Built for Developers</h1>
+                <p>Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href="https://packetframe.com/docs/privacy-policy">your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href="https://packetframe.com/docs/api">API</a> and the entire codebase is <a href="https://github.com/packetframe/cdn">open source</a>.</p>
             </div>
             <div class="featureImageWrapper">
-                <SpinningGlobe/>
+                <Computer/>
             </div>
         </div>
 
