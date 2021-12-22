@@ -607,7 +607,7 @@ SMMMMMMH'                   '9M_-MMH::-\\v_   :
         } else {
             frame++
         }
-    }, 100)
+    }, 90)
 </script>
 
 <main>
@@ -620,7 +620,7 @@ SMMMMMMH'                   '9M_-MMH::-\\v_   :
         letter-spacing: 0;
         line-height: 1.2;
         white-space: pre;
-        font-size: 10pt;
+        font-size: 8pt;
         font-family: monospace, monospace;
         overflow: hidden;
         resize: none;
