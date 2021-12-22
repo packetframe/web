@@ -1,7 +1,7 @@
 <script>
-    import CloudData from "../components/Animations/CloudData.svelte";
     import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
     import Computer from "../components/Animations/Computer.svelte";
+    import Penguin from "../components/Animations/Penguin.svelte";
 
     let screenWidth;
 </script>
@@ -71,7 +71,7 @@
 
         <div class="featureBlock">
             <div class="featureImageWrapper">
-                <img alt="community" class="featureImage" src="/static/img/main/community.svg"/>
+                <Penguin/>
             </div>
             <div class="featureCaption">
                 <h1>Community Centric</h1>
