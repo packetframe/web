@@ -65,7 +65,7 @@
     <main class="index-wrapper">
         <img class="pf-hole" src="pf-hole.png" alt="Under Construction" class:hidden={animateLogo}>
         <img class="pf-cloud" src="cloud-hover.png" alt="flat cloud" class:animate={animateLogo}>
-        <img class="pf-cloud flat" src="cloud-flat-striped.png" alt="flat cloud" class:animate={animateLogo}>
+        <img class="pf-cloud flat" src="cloud-flat-striped.png" alt="flat cloud" class:animate={animateLogo}  class:hidden={!animateLogo}>
         <div class="pf-bg-delay"></div>
         <div class="pf-bg" class:growBg></div>
         <div class="pf-bg-trigger-delay"></div>
@@ -79,14 +79,14 @@
 <div class:hidden={!loadContent}>
     <Navbar/>
 </div>
-<div class="content" class:animate={animateLogo} class:hidden={!loadContent}>
+<div class="content" class:animate={scrollContent} class:hidden={!loadContent}>
 
     <img class="pf-cloud-2" src="cloud-flat-striped.png" alt="flat cloud">
     <h1 class="pf-header-2">Packetframe</h1>
     
     <div class="hero" class:animate={scrollContent}>
         <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
-        <Button href="/dashboard/dns" variant="filled">Get Started</Button>
+        <!-- <Button href="/dashboard/dns" variant="filled">Get Started</Button> -->
     </div>
 
     <Dig/>
@@ -200,7 +200,7 @@
         position: absolute;
         top: 230vh;
         z-index: 20;
-        background-color: gold;
+        background-color: transparent;
         left: 0;
     }
 
@@ -220,7 +220,7 @@
         position: absolute;
         top: 320vh;
         z-index: 20;
-        background-color: gold;
+        background-color: transparent;
     }
 
     .hidden {
@@ -233,7 +233,7 @@
         position: absolute;
         top: 350vh;
         z-index: 25;
-        background-color: gold;
+        background-color: transparent;
     }
 
     div.growBg {
@@ -255,12 +255,12 @@
     }
 
     h1.pf-header-2 {
-        margin-top: 2px;
+        margin-top: 0.25rem;
         margin-bottom: 0px;
     }
 
     .pf-header.animate {
-        top: calc(50% + 25px);
+        top: calc(50% + 24px + 0.25rem);
         transition: ease all 1s;
     }
 
@@ -275,13 +275,18 @@
         padding-bottom: 10rem;
     }
 
+    div.content.animate {
+        padding-top: 2rem;
+        transition: ease padding-top 0.5s;
+    }
+
     img.hidden {
         display: none;
     }
 
     div.hero {
         padding-top: 50vh;
-        padding-bottom: 4rem;
+        padding-bottom: 0rem;
         font-size: 1.25rem;
     }
 
