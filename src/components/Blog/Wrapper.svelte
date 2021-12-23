@@ -29,10 +29,7 @@
   }
 
   .post {
-    font-size: 14pt;
     line-height: 1.75;
-    padding-top: 15px;
-    margin: auto;
     max-width: 800px;
   }
 
@@ -43,5 +40,16 @@
 
   .post :global(blockquote) {
     font-style: italic;
+  }
+
+  h1 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 10px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
   }
 </style>
