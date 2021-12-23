@@ -14,40 +14,7 @@
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <main>
-    <div class="hero">
-        <h1>Packetframe</h1>
-        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
-        <Button href="/dashboard/dns" variant="primary">Get Started</Button>
-        <Dig/>
-    </div>
 
-    <SplashCard
-            text="There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)"
-            title="Globally Distributed"
-    >
-        <SpinningGlobe/>
-    </SplashCard>
-
-    <Connector/>
-
-    <SplashCard
-            reverse
-            text="Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href='https://packetframe.com/docs/privacy-policy'>your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href='https://packetframe.com/docs/api'>API</a> and the entire codebase is <a href='https://github.com/packetframe/cdn'>open source</a>."
-            title="Built for Developers"
-    >
-        <Computer/>
-    </SplashCard>
-
-    <Connector side="right"/>
-
-    <SplashCard
-            text="While the code is written by one person (<a href='https://natesales.net'>me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href='https://fosshost.org'>fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a> and ask away!"
-            title="Community Centric"
-    >
-        <Penguin/>
-    </SplashCard>
-
-    <Footer/>
 </main>
 
 <style global lang="scss">

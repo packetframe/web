@@ -1,7 +1,7 @@
 <script lang="ts">
 
-    export let width = 55;
-    export let height = 6;
+    export let width = 46;
+    export let height = 5;
     export let side: "left" | "right" = "left";
 
     let frames = [];
