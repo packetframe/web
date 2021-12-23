@@ -1,18 +1,31 @@
 @import "./variables";
 
+.sticky {
+  position: sticky;
+}
+
 .pf-nav {
   padding: 10px 20px;
   display: flex;
-  width: calc(100%);
+  width: calc(100% - 40px);
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
-  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
   color: $nav-color;
   background-color: $nav-background-color;
+
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 30px;
+      margin-right: 10px;
+    }
+  }
 
   .nav-expand {
     width: 0px;

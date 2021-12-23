@@ -2,6 +2,8 @@
     import {page} from '$app/stores';
     import {onMount} from "svelte";
 
+    export let sticky = true;
+    export let homepage = false;
     export let elements = [
         {label: "DNS", href: "/dashboard/dns"},
         // {label: "Containers", href: "/dashboard/containers"},
@@ -12,24 +14,32 @@
     let width;
 
     onMount(() => {
-        fetch("/api/user/info", {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((response) => {
-                if (response.status === 401 && $page.path !== "/dashboard/login" && $page.path !== "/dashboard/signup") {
-                    window.location.pathname = "/dashboard/login"
-                }
-                return response.json()
+        if (homepage) {
+            sticky = false;
+            elements = [
+                {label: "Blog", href: "/blog"},
+            ]
+        } else {
+            elements.push({label: "Logout", href: "/dashboard/logout"})
+            fetch("/api/user/info", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
             })
-            .then((data) => {
-                if (data.success && data.data.admin) {
-                    elements = [...elements, {label: "Admin", href: "/dashboard/admin"}]
-                }
-            })
+                .then((response) => {
+                    if (response.status === 401 && $page.path !== "/dashboard/login" && $page.path !== "/dashboard/signup") {
+                        window.location.pathname = "/dashboard/login"
+                    }
+                    return response.json()
+                })
+                .then((data) => {
+                    if (data.success && data.data.admin) {
+                        elements = [...elements, {label: "Admin", href: "/dashboard/admin"}]
+                    }
+                })
+        }
     })
 
     // $: if ($location !== "") {
@@ -43,10 +53,13 @@
 
 <svelte:window bind:innerWidth={width}></svelte:window>
 
-<nav class="pf-nav">
-    <a href="/"><h1>Packetframe</h1></a>
+<nav class="pf-nav" class:sticky={sticky}>
+    <a href="/">
+        <img alt="Logo" src="/static/cloud-flat-striped.png">
+        <h1>Packetframe</h1>
+    </a>
     <ul class:open>
-        {#each [...elements, {label: "Logout", href: "/dashboard/logout"}] as item}
+        {#each elements as item}
             <li class:active={$page.path === item.href}>
                 <a href={item.href}>{item.label}</a>
             </li>
