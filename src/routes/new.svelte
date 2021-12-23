@@ -3,6 +3,7 @@
     import Computer from "../components/Animations/Computer.svelte";
     import Penguin from "../components/Animations/Penguin.svelte";
     import Dig from "../components/Animations/Dig.svelte";
+  import Connector from "../components/Animations/Connector.svelte";
 
     let screenWidth;
 </script>
@@ -33,18 +34,7 @@
             </div>
         </div>
 
-        <div class:shrink={screenWidth <= 950} style="width: clamp(0px, 950px, 95%); display: flex; height: 160px; flex-direction: column;">
-            <div style="display: flex; width: 100%; height: 50%;">
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-                <div class:no-border={screenWidth <= 950} style="border-bottom: 1px solid white; border-right: 1px solid white; border-bottom-right-radius: .375rem; display: flex; flex-grow: 2; height: 100%;"></div>
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-            </div>
-            <div style="display: flex; width: 100%; height: 50%;">
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-                <div class:no-border={screenWidth <= 950} style="border-top-left-radius: 0.375rem; margin-left: -.5rem; border-left: 1px solid white; border-top: 1px solid white; margin-right: 0.5rem; display: flex; flex-grow: 2; height: 100%;"></div>
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-            </div>
-        </div>
+        <Connector />
 
         <div class="featureBlock featureBlockReverse">
             <div class="featureCaption">
@@ -56,18 +46,7 @@
             </div>
         </div>
 
-        <div class:shrink={screenWidth <= 950} style="width: clamp(0px, 950px, 95%); display: flex; height: 160px; flex-direction: column;">
-            <div style="display: flex; width: 100%; height: 50%;">
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-                <div class:no-border={screenWidth <= 950} style="margin-left: -.5rem; margin-right: .5rem; border-bottom: 1px solid white; border-left: 1px solid white; border-bottom-left-radius: .375rem; display: flex; flex-grow: 2; height: 100%;"></div>
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-            </div>
-            <div style="display: flex; width: 100%; height: 50%;">
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-                <div class:no-border={screenWidth <= 950} style="border-top-right-radius: 0.375rem; border-right: 1px solid white; border-top: 1px solid white; display: flex; flex-grow: 2; height: 100%;"></div>
-                <div style="display: flex; flex-grow: 1; height: 100%;"></div>
-            </div>
-        </div>
+        <Connector side="right" />
 
         <div class="featureBlock">
             <div class="featureImageWrapper">
