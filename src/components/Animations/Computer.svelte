@@ -2,55 +2,55 @@
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
         return `
-┌───────────────────────────────┐
-│                               │
-│ ~ ▴ ` + cursor + `                         │
-│                               │
-│                               │
-│                               │
-│                               │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+┌────────────────────────────────┐
+│                                │
+│  ~ ` + cursor + `                           │
+│                                │
+│                                │
+│                                │
+│                                │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
     }
 
     function renderCommand(command) {
         return `
-┌───────────────────────────────┐
-│                               │
-│ ~ ▴ ` + command + " ".repeat(26 - command.length) + `│
-│                               │
-│                               │
-│                               │
-│                               │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+┌────────────────────────────────┐
+│                                │
+│  ~ `+ command + " ".repeat(27 - command.length) + ` │
+│                                │
+│                                │
+│                                │
+│                                │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
     }
 
     let complete = `
-┌───────────────────────────────┐
-│                               │
-│ ~ ▴ dig packetframe.com       │
-│ ;; opcode: QUERY; status: OK  │
-│                               │
-│ ;; QUESTION SECTION:          │
-│ ;; packetframe.com.  IN A     │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+┌────────────────────────────────┐
+│                                │
+│  ~ dig packetframe.com         │
+│  ;; opcode: QUERY; status: OK  │
+│                                │
+│  ;; QUESTION SECTION:          │
+│  ;; packetframe.com.  IN A     │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
 
     let frames = []
 
@@ -80,12 +80,10 @@
     }, 200)
 </script>
 
-<main>
-    <textarea cols='33' disabled rows='16'>{frames[frame]}</textarea>
-</main>
+<pre>{frames[frame]}</pre>
 
 <style>
-    textarea {
+    pre {
         color: white;
         letter-spacing: 0;
         line-height: 1.2;
@@ -94,5 +92,6 @@
         font-family: monospace, monospace;
         overflow: hidden;
         resize: none;
+        text-align: left;
     }
 </style>

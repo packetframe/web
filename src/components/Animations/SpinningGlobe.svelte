@@ -610,12 +610,10 @@ SMMMMMMH'                   '9M_-MMH::-\\v_   :
     }, 90)
 </script>
 
-<main>
-    <textarea cols='50' disabled rows='23'>{frames[frame]}</textarea>
-</main>
+<pre>{frames[frame]}</pre>
 
 <style>
-    textarea {
+    pre {
         color: white;
         letter-spacing: 0;
         line-height: 1.2;

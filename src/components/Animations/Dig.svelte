@@ -38,18 +38,19 @@
 </script>
 
 <main>
-    <textarea cols='99' disabled rows='39'>{content}</textarea>
+    <pre>{content}</pre>
 </main>
 
 <style>
-    textarea {
+    pre {
         color: white;
-        letter-spacing: 0;
+        /* letter-spacing: 0; */
         line-height: 1.2;
         white-space: pre;
         font-size: 8pt;
         font-family: monospace, monospace;
         overflow: hidden;
         resize: none;
+        text-align: left;
     }
 </style>
