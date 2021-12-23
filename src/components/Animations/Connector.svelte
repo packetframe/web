@@ -1,7 +1,7 @@
 <script lang="ts">
 
-    export let width = 70;
-    export let height = 5;
+    export let width = 55;
+    export let height = 6;
     export let side: "left" | "right" = "left";
 
     let frames = [];
@@ -18,16 +18,6 @@
 
     let leftArrow = `▼${" ".repeat(width)}\n`;
     let rightArrow = `${" ".repeat(width)} ▼\n`;
-
-    let total = "";
-    
-    // if (side === "left") {
-    //     total += generateSides("left", -1);
-    //     total += generateSides("right", -1);
-    // } else {
-    //     total += generateSides("right", -1);
-    //     total += generateSides("left", -1);
-    // }
 
     function generateMiddle(side: "left" | "right", arrowIndex: number) {
         let isLeft = side === "left";
@@ -56,7 +46,7 @@
     } 
 
     for (let i = 0; i < width + height*2; i++) {
-        total = "";
+        let total = "";
         if (i < height) {
             total += generateSide(side, i);
             total += generateMiddle(side, -1);
@@ -100,5 +90,12 @@
         overflow: hidden;
         resize: none;
         text-align: left;
+
+        background: #D53BAB;
+        background: -webkit-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        background: -moz-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        background: linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 </style>

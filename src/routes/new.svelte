@@ -1,12 +1,12 @@
 <script>
-    import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
-    import Computer from "../components/Animations/Computer.svelte";
-    import Penguin from "../components/Animations/Penguin.svelte";
-    import Dig from "../components/Animations/Dig.svelte";
-    import Connector from "../components/Animations/Connector.svelte";
-    import Footer from "../components/Footer.svelte";
+  import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
+  import Computer from "../components/Animations/Computer.svelte";
+  import Penguin from "../components/Animations/Penguin.svelte";
+  import Dig from "../components/Animations/Dig.svelte";
+  import Connector from "../components/Animations/Connector.svelte";
+  import SplashCard from "../components/SplashCard";
 
-    let screenWidth;
+  let screenWidth;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}/>
@@ -25,39 +25,30 @@
             </div>
         </header>
 
-        <div class="featureBlock">
-            <div class="featureImageWrapper">
-                <SpinningGlobe/>
-            </div>
-            <div class="featureCaption">
-                <h1>Globally Distributed</h1>
-                <p>There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)</p>
-            </div>
-        </div>
+        <SplashCard
+          title="Globally Distributed"
+          text="There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)"
+        >
+          <SpinningGlobe/>
+        </SplashCard>
 
         <Connector />
 
-        <div class="featureBlock featureBlockReverse">
-            <div class="featureCaption">
-                <h1>Built for Developers</h1>
-                <p>Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href="https://packetframe.com/docs/privacy-policy">your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href="https://packetframe.com/docs/api">API</a> and the entire codebase is <a href="https://github.com/packetframe/cdn">open source</a>.</p>
-            </div>
-            <div class="featureImageWrapper">
-                <Computer/>
-            </div>
-        </div>
+        <SplashCard reverse
+          title="Built for Developers"
+          text="Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href='https://packetframe.com/docs/privacy-policy'>your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href='https://packetframe.com/docs/api'>API</a> and the entire codebase is <a href='https://github.com/packetframe/cdn'>open source</a>."
+        >
+          <Computer/>
+        </SplashCard>
 
         <Connector side="right" />
 
-        <div class="featureBlock">
-            <div class="featureImageWrapper">
-                <Penguin/>
-            </div>
-            <div class="featureCaption">
-                <h1>Community Centric</h1>
-                <p>While the code is written by one person (<a href="https://natesales.net">me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href="https://fosshost.org">fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href="https://libera.chat/guides/connect">Libera.Chat</a> and ask away!</p>
-            </div>
-        </div>
+        <SplashCard
+          title="Community Centric"
+          text="While the code is written by one person (<a href='https://natesales.net'>me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href='https://fosshost.org'>fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a> and ask away!"
+        >
+          <Penguin/>
+        </SplashCard>
     </div>
 
     <Footer/>
