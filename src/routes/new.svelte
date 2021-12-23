@@ -50,6 +50,8 @@
           <Penguin/>
         </SplashCard>
     </div>
+
+    <Footer/>
 </main>
 
 <style global lang="scss">

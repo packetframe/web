@@ -1,4 +1,5 @@
 <script>
+    import TextArea from "./TextArea.svelte";
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
         return `
