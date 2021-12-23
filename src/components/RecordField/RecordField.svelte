@@ -58,7 +58,8 @@
         {value: "MX", label: "MX"},
         {value: "TXT", label: "TXT"},
         {value: "NS", label: "NS"},
-        {value: "SRV", label: "SRV"}
+        {value: "SRV", label: "SRV"},
+        {value: "PTR", label: "PTR"}
     ];
 
     function submit() {
