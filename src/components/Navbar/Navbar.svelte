@@ -56,7 +56,7 @@
 
 <nav class="pf-nav" class:sticky={sticky}>
     <a href="/">
-        <img alt="Logo" src="/static/cloud-flat-striped.png">
+        <img alt="Logo" src="/cloud-flat-striped.png">
         <h1>Packetframe</h1>
     </a>
     <ul class:open>
