@@ -53,9 +53,9 @@
     h2 {
         margin: 1rem 0;
         background: #D53BAB;
-        background: -webkit-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
-        background: -moz-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
-        background: linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        background: -webkit-linear-gradient(to right, #D53BAB 0%, #AB2AFF 100%);
+        background: -moz-linear-gradient(to right, #D53BAB 0%, #AB2AFF 100%);
+        background: linear-gradient(to right, #D53BAB 0%, #AB2AFF 100%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
