@@ -1,9 +1,10 @@
-<script>
-    let dig = `┌──────────────────────────────────────────────────────────[n@box:~#]───┐
+<div class="main">
+    <pre class="dig">
+┌──────────────────────────────────────────────────────────[n@box:~#]───┐
 │ + - o                                                                 │
 │                                                                       │
 │                                                                       │
-│ ;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 28724             │
+│ ;; {"->>"}HEADER{"<<-"} opcode: QUERY; status: NOERROR; id: 28724             │
 │ ;; Flags: qr aa rd; QUERY: 1; ANSWER: 2; AUTHORITY: 0; ADDITIONAL: 0  │
 │                                                                       │
 │ ;; QUESTION SECTION:                                                  │
@@ -18,36 +19,32 @@
 │ ;; From 2602:809:3004::2@53(UDP) in 0.3 ms                            │
 │                                                                       │
 │                                                                       │
-└───────────────────────────────────────────────────────────────────────┘`
-
-    let pf = `┌───────────────────────────────────────────────────────────[Packetframe]───┐
+└───────────────────────────────────────────────────────────────────────┘
+    </pre>
+    <div class="pf">
+        <pre class="pf">
+┌───────────────────────────────────────────────────────────<span class="no-gradient">[Packetframe]</span>───┐
 │ + - o                                                                     │
 │                                                                           │
-│  ┌────────────────────┐ ┌──────┐ ┌──────┐ ┌──────────────────────┐ ┌───┐  │
-│  │ @                  │ │ A  ▼ │ │ 3600 │ │ 192.0.2.191          │ │ ✓ │  │
-│  └────────────────────┘ └──────┘ └──────┘ └──────────────────────┘ └───┘  │
+│  <span class="no-gradient">┌────────────────────┐ ┌──────┐ ┌──────┐ ┌──────────────────────┐ ┌───┐</span>  │
+│  <span class="no-gradient">│ @                  │ │ A  ▼ │ │ 3600 │ │ 192.0.2.191          │ │ x │</span>  │
+│  <span class="no-gradient">└────────────────────┘ └──────┘ └──────┘ └──────────────────────┘ └───┘</span>  │
 │                                                                           │
-│   Label                  Type     TTL      Value                          │
-│  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │ @                     A        86400    192.0.2.191                 │  │
-│  ├─────────────────────────────────────────────────────────────────────┤  │
-│  │ @                     AAAA     86400    2001:db8:191::f             │  │
-│  ├─────────────────────────────────────────────────────────────────────┤  │
-│  │ ingress               CNAME    3600     ingress.cluster-a           │  │
-│  ├─────────────────────────────────────────────────────────────────────┤  │
-│  │ @                     TXT      86400    v=spf1 mx a -all            │  │
-│  ├─────────────────────────────────────────────────────────────────────┤  │
-│  │ dkim._domainkey       TXT      86400    v=DKIM1;k=rsa;t=s;s=...     │  │
-│  └─────────────────────────────────────────────────────────────────────┘  │
+│   <span class="no-gradient">Label                  Type     TTL      Value</span>                          │
+│  <span class="no-gradient">┌─────────────────────────────────────────────────────────────────────┐</span>  │
+│  <span class="no-gradient">│ @                     A        86400    192.0.2.191                 │</span>  │
+│  <span class="no-gradient">├─────────────────────────────────────────────────────────────────────┤</span>  │
+│  <span class="no-gradient">│ @                     AAAA     86400    2001:db8:191::f             │</span>  │
+│  <span class="no-gradient">├─────────────────────────────────────────────────────────────────────┤</span>  │
+│  <span class="no-gradient">│ ingress               CNAME    3600     ingress.cluster-a           │</span>  │
+│  <span class="no-gradient">├─────────────────────────────────────────────────────────────────────┤</span>  │
+│  <span class="no-gradient">│ @                     TXT      86400    v=spf1 mx a -all            │</span>  │
+│  <span class="no-gradient">├─────────────────────────────────────────────────────────────────────┤</span>  │
+│  <span class="no-gradient">│ dkim._domainkey       TXT      86400    v=DKIM1;k=rsa;t=s;s=...     │</span>  │
+│  <span class="no-gradient">└─────────────────────────────────────────────────────────────────────┘</span>  │
 │                                                                           │
-└───────────────────────────────────────────────────────────────────────────┘`
-</script>
-
-
-<div class="main">
-    <pre class="dig">{dig}</pre>
-    <div class="pf">
-        <pre class="pf">{pf}</pre>
+└───────────────────────────────────────────────────────────────────────────┘
+        </pre>
     </div>
 </div>
 
@@ -75,6 +72,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        color: #cccccc;
     }
 
     div.pf {
@@ -93,5 +91,12 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: 0;
+    }
+
+    .no-gradient {
+        color: white !important;
+        background: transparent !important;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
     }
 </style>
