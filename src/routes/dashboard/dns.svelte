@@ -212,7 +212,7 @@
                 </div>
             {/if}
             <div style="display: flex; flex-direction: row; align-items: center">
-                <RecordField parentZoneID={selectedZone.id} callback={loadRecords}/>
+                <RecordField zoneFqdn={selectedZone.zone} parentZoneID={selectedZone.id} callback={loadRecords}/>
             </div>
         </div>
         <RecordTable {records} callback={loadRecords}/>

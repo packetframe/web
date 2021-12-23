@@ -4,6 +4,7 @@
     import Select from "../Select";
     import {onMount} from "svelte";
 
+    export let zoneFqdn = "";
     export let parentZoneID = "";
     export let callback: () => void;
     export let record = {
@@ -51,16 +52,29 @@
     export let isInDropdown = false;
     export let mobile = false;
 
-    let recordTypes = [
-        {value: "A", label: "A"},
-        {value: "AAAA", label: "AAAA"},
-        {value: "CNAME", label: "CNAME"},
-        {value: "MX", label: "MX"},
-        {value: "TXT", label: "TXT"},
-        {value: "NS", label: "NS"},
-        {value: "SRV", label: "SRV"},
-        {value: "PTR", label: "PTR"}
-    ];
+    let recordTypes = [];
+    $: {
+        if (zoneFqdn && zoneFqdn.endsWith(".arpa.")) {
+            console.log("Setting to PTR only")
+            recordTypes = [
+                {value: "PTR", label: "PTR"},
+                {value: "NS", label: "NS"},
+                {value: "TXT", label: "TXT"},
+            ];
+            record["type"] = "PTR";
+        } else {
+            recordTypes = [
+                {value: "A", label: "A"},
+                {value: "AAAA", label: "AAAA"},
+                {value: "CNAME", label: "CNAME"},
+                {value: "MX", label: "MX"},
+                {value: "TXT", label: "TXT"},
+                {value: "NS", label: "NS"},
+                {value: "SRV", label: "SRV"},
+            ];
+            record["type"] = "A";
+        }
+    }
 
     function submit() {
         error = "";
@@ -165,7 +179,7 @@
             <Input bind:value={record.value} label="Nameserver"/>
         {:else if record["type"] === "TXT"}
             <Input bind:value={record.value} label="Value"/>
-        {:else if record["type"] === "CNAME"}
+        {:else if record["type"] === "CNAME" || record["type"] === "PTR"}
             <Input bind:value={record.value} label="Hostname"/>
         {:else if record["type"] === "SRV"}
             <Input class="small" type="number" label="Priority" min="0" bind:value={priority}/>
