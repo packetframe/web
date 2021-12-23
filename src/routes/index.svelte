@@ -83,7 +83,7 @@
 
     <img class="pf-cloud-2" src="cloud-flat-striped.png" alt="flat cloud">
     <h1 class="pf-header-2">Packetframe</h1>
-    
+
     <div class="hero" class:animate={scrollContent}>
         <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
         <!-- <Button href="/dashboard/dns" variant="filled">Get Started</Button> -->
@@ -285,8 +285,9 @@
     }
 
     div.hero {
+        margin-top: 10px;
         padding-top: 50vh;
-        padding-bottom: 0rem;
+        padding-bottom: 0;
         font-size: 1.25rem;
     }
 
