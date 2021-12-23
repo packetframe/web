@@ -77,7 +77,7 @@
 </div>
 
 <div class:hidden={!loadContent}>
-    <Navbar/>
+    <Navbar homepage/>
 </div>
 <div class="content" class:animate={scrollContent} class:hidden={!loadContent}>
 
