@@ -1,9 +1,10 @@
 <script>
-    import TextArea from "./TextArea.svelte";
+    import TextArea from "./Pre.svelte";
 
     function render(blink) {
         let eye = blink ? "()" : "<>"
-        return `            .-"""-.
+        return `
+            .-"""-.
            '       \\
           |,.  ,-.  |
           |()   ` + eye + `| |
@@ -29,6 +30,4 @@
     }, 700)
 </script>
 
-<main>
-    <TextArea rows="18" cols="30" content={render(blink)}/>
-</main>
+<TextArea content={render(blink)}/>

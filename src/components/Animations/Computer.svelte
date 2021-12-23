@@ -1,5 +1,5 @@
 <script>
-    import TextArea from "./TextArea.svelte";
+    import TextArea from "./Pre.svelte";
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
         return `
@@ -81,18 +81,4 @@
     }, 200)
 </script>
 
-<pre>{frames[frame]}</pre>
-
-<style>
-    pre {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 10pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-        text-align: left;
-    }
-</style>
+<TextArea content={frames[frame]}/>

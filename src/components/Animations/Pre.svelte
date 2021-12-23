@@ -1,13 +1,11 @@
 <script>
-    export let content, rows, cols;
+    export let content;
 </script>
 
-<main>
-    <textarea cols={cols} disabled rows={rows}>{content}</textarea>
-</main>
+<pre>{content}</pre>
 
 <style>
-    textarea {
+    pre {
         color: white;
         letter-spacing: 0;
         line-height: 1.2;
@@ -16,7 +14,5 @@
         font-family: monospace, monospace;
         overflow: hidden;
         resize: none;
-        background-color: black;
-        border: none;
     }
 </style>

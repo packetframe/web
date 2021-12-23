@@ -1,4 +1,5 @@
 <script>
+    import TextArea from "./Pre.svelte";
     let frames = [
         `               _-o#&&*''''?d:>b\\_
           _o/"'''  '',, dMF9MMMMMHo_
@@ -610,17 +611,4 @@ SMMMMMMH'                   '9M_-MMH::-\\v_   :
     }, 90)
 </script>
 
-<pre>{frames[frame]}</pre>
-
-<style>
-    pre {
-        color: white;
-        letter-spacing: 0;
-        line-height: 1.2;
-        white-space: pre;
-        font-size: 8pt;
-        font-family: monospace, monospace;
-        overflow: hidden;
-        resize: none;
-    }
-</style>
+<TextArea content={frames[frame]}/>
