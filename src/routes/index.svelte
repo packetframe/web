@@ -35,7 +35,8 @@
 <div class="wrapper">
     <main class="index-wrapper">
         <img class="pf-hole" src="pf-hole.png" alt="Under Construction">
-        <img class="pf-cloud" src="cloud-hover.png" alt="flat cloud">
+        <img class="pf-cloud" src="cloud-hover.png" alt="flat cloud" class:animate={animateLogo}>
+        <img class="pf-cloud flat" src="cloud-flat.png" alt="flat cloud" class:animate={animateLogo}>
         <div class="pf-bg-delay"></div>
         <div class="pf-bg" class:growBg></div>
         <div class="pf-bg-trigger-delay"></div>
@@ -69,10 +70,27 @@
     }
     img.pf-cloud {
         position: fixed;
+        top: calc(50% + 5px);
+        left: calc(50% + 2px);
+        transform: translate(-50%, -50%);
+        z-index: 15;
+        transition: ease all 1s;
+    }
+
+    img.pf-cloud.flat {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 12;
+        z-index: 14;
+        opacity: 1;
+        width: 135px;
+    }
+
+    img.pf-cloud.animate {
+        opacity: 0;
+    }
+
+    img.pf-cloud.flat.animate {
+        opacity: 1;
     }
 
     div.pf-bg-delay {
@@ -90,6 +108,7 @@
         z-index: 11;
         background-color: #161616;
         transition: ease all 1s;
+        box-shadow: rgba(0, 0, 0, 0.431) 30px 20px 20px;
     }
 
     div.pf-bg-trigger-delay {

@@ -3,7 +3,7 @@
     import Computer from "../components/Animations/Computer.svelte";
     import Penguin from "../components/Animations/Penguin.svelte";
     import Dig from "../components/Animations/Dig.svelte";
-    import Footer from "../components/Footer.svelte";
+  import Connector from "../components/Animations/Connector.svelte";
 
     let screenWidth;
 </script>
@@ -11,75 +11,139 @@
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <main>
-    <div class="hero">
-        <h1 class="text-gradient">Packetframe</h1>
-        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts.</p>
-        <Dig/>
-    </div>
+    <div class="wrapper">
+        <header>
+            <div class="containerStyle">
+                <div style="width: clamp(0px, 950px, 95%)">
+                    <div class="hero">
+                        <h1>Packetframe</h1>
+                        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
+                        <Dig/>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <div class="feature-block">
-        <div class="feature-graphic">
-            <SpinningGlobe/>
+        <div class="featureBlock">
+            <div class="featureImageWrapper">
+                <SpinningGlobe/>
+            </div>
+            <div class="featureCaption">
+                <h1>Globally Distributed</h1>
+                <p>There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)</p>
+            </div>
         </div>
-        <div class="feature-caption">
-            <h1>Globally Distributed</h1>
-            <p>Packetframe has a presence in over 40 cities across all 6 consumer-inhabited continents. (We're still working on finding a way to put servers to Antarctica).</p>
-        </div>
-    </div>
 
-    <div class="feature-block feature-blockReverse">
-        <div class="feature-caption">
-            <h1>Built for Developers</h1>
-            <p>Packetframe was built with developers in mind. All functionality of the platform is exposed via the <a href="https://packetframe.com/docs/api">API</a> and the entire codebase is <a href="https://github.com/packetframe">open source</a>.</p>
-        </div>
-        <div class="feature-graphic">
-            <Computer/>
-        </div>
-    </div>
+        <Connector />
 
-    <div class="feature-block">
-        <div class="feature-graphic">
-            <Penguin/>
+        <div class="featureBlock featureBlockReverse">
+            <div class="featureCaption">
+                <h1>Built for Developers</h1>
+                <p>Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href="https://packetframe.com/docs/privacy-policy">your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href="https://packetframe.com/docs/api">API</a> and the entire codebase is <a href="https://github.com/packetframe/cdn">open source</a>.</p>
+            </div>
+            <div class="featureImageWrapper">
+                <Computer/>
+            </div>
         </div>
-        <div class="feature-caption">
-            <h1>Community Centric</h1>
-            <p>The open source community plays a huge role in the CDN infrastructure. Want to get involved? Email info@ or hop in #packetframe on <a href="https://libera.chat/guides/connect">Libera.Chat</a>.</p>
+
+        <Connector side="right" />
+
+        <div class="featureBlock">
+            <div class="featureImageWrapper">
+                <Penguin/>
+            </div>
+            <div class="featureCaption">
+                <h1>Community Centric</h1>
+                <p>While the code is written by one person (<a href="https://natesales.net">me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href="https://fosshost.org">fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href="https://libera.chat/guides/connect">Libera.Chat</a> and ask away!</p>
+            </div>
         </div>
     </div>
 
     <Footer/>
 </main>
 
-<style lang="scss">
-  main {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+<style global lang="scss">
+  @import "../styles/global";
+  @import "../styles/generic/reset";
+
+  main.pf-layout {
+    max-width: 900px;
+    padding: 5px;
+    margin: 0 auto;
   }
 
-  .feature-block .feature-blockReverse h1 {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: #040404;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: #b03ac6;
+  }
+
+  ::-moz-selection {
+    background: #b03ac6;
+  }
+
+  a {
+    color: #b03ac6;
+  }
+
+  main {
+    line-height: 30px;
+    padding-bottom: 30px;
+    color: white;
+  }
+
+  header {
+    margin-bottom: 80px;
+  }
+
+  .no-border {
+    border: none !important;
+  }
+
+  .shrink {
+    height: 50px !important;
+  }
+
+  .featureBlock .featureBlockReverse h1 {
     font-size: 1.2em;
   }
 
-  .feature-block {
+  .containerStyle {
     display: flex;
-    flex-wrap: wrap;
-    width: #{"clamp(0px, 950px, 95%)"};
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
     align-items: center;
-  }
-
-  .feature-block.feature-blockReverse {
+    margin: 50px auto auto;
+    box-sizing: unset;
     flex-wrap: wrap-reverse;
   }
 
-  .feature-caption {
+  .featureBlock {
+    display: flex;
+    margin-top: 0;
+    flex-wrap: wrap;
+    width: #{"clamp(0px, 950px, 95%)"};
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .featureBlock.featureBlockReverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  .featureCaption {
     width: #{"clamp(0px, 500px, 95%)"};
     font-size: larger;
-    line-height: 30px;
     margin-left: 20px;
     margin-right: 20px;
     display: inline-flex;
@@ -97,11 +161,24 @@
     justify-content: center;
   }
 
-  .feature-caption p {
+  .featureCaption p {
     margin-top: 0;
   }
 
-  .feature-graphic {
+  .featureCaption::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -3px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgba(153, 109, 224, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  }
+
+  .featureImageWrapper {
     display: flex;
     flex-grow: 1;
     width: #{"min(50%, 350px)"};
@@ -115,24 +192,26 @@
     margin: 0;
   }
 
+  /* .textGradient {
+      background: linear-gradient(90deg, rgba(255, 164, 252, 1) 0%, rgba(148, 98, 228, 1) 52%, rgba(103, 34, 212, 1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  } */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a {
+    color: #d000ff;
+  }
+
   .hero {
     text-align: center;
     font-size: 1.5em;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    margin: 50px auto 50px;
-    box-sizing: unset;
-    flex-wrap: wrap-reverse;
-    width: #{"clamp(0px, 950px, 95%)"};
-  }
-
-  .hero h1 {
-    margin-bottom: 0;
-  }
-
-  .hero p {
-    margin-bottom: 65px;
   }
 </style>

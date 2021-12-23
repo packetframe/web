@@ -2,53 +2,56 @@
     import TextArea from "./TextArea.svelte";
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
-        return `┌───────────────────────────────┐
-│                               │
-│ ~ ▴ ` + cursor + `                         │
-│                               │
-│                               │
-│                               │
-│                               │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+        return `
+┌────────────────────────────────┐
+│                                │
+│  ~ ` + cursor + `                           │
+│                                │
+│                                │
+│                                │
+│                                │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
     }
 
     function renderCommand(command) {
-        return `┌───────────────────────────────┐
-│                               │
-│ ~ ▴ ` + command + " ".repeat(26 - command.length) + `│
-│                               │
-│                               │
-│                               │
-│                               │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+        return `
+┌────────────────────────────────┐
+│                                │
+│  ~ `+ command + " ".repeat(27 - command.length) + ` │
+│                                │
+│                                │
+│                                │
+│                                │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
     }
 
-    let complete = `┌───────────────────────────────┐
-│                               │
-│ ~ ▴ dig packetframe.com       │
-│ ;; opcode: QUERY; status: OK  │
-│                               │
-│ ;; QUESTION SECTION:          │
-│ ;; packetframe.com.  IN A     │
-│                               │
-└───────────────────────────────┘
-             [____]
-      ┌───────────────────┐
-      │ [──]              │
-      │ [──]              │
-      └───────────────────┘`
+    let complete = `
+┌────────────────────────────────┐
+│                                │
+│  ~ dig packetframe.com         │
+│  ;; opcode: QUERY; status: OK  │
+│                                │
+│  ;; QUESTION SECTION:          │
+│  ;; packetframe.com.  IN A     │
+│                                │
+└────────────────────────────────┘
+              [____]
+      ┌────────────────────┐
+      │ [──]               │
+      │ [──]               │
+      └────────────────────┘`
 
     let frames = []
 
@@ -78,6 +81,18 @@
     }, 200)
 </script>
 
-<main>
-    <TextArea rows="14" cols="33" content={frames[frame]}/>
-</main>
+<pre>{frames[frame]}</pre>
+
+<style>
+    pre {
+        color: white;
+        letter-spacing: 0;
+        line-height: 1.2;
+        white-space: pre;
+        font-size: 10pt;
+        font-family: monospace, monospace;
+        overflow: hidden;
+        resize: none;
+        text-align: left;
+    }
+</style>

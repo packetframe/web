@@ -1,8 +1,7 @@
 <script>
-    import TextArea from "./TextArea.svelte";
-
-    let content = `┌──────────────────────────────────────────────────────────[n@box:~#]───┐
-│ x - o                                                                 │
+    let content = `
+┌──────────────────────────────────────────────────────────[n@box:~#]───┐
+│ + - o                                                                 │
 │                                                                       │
 │                                                                       │
 │ ;; ->>HEADER<<- opcode: QUERY; status: NOERROR; id: 28724             │
@@ -15,7 +14,7 @@
 │ packetframe.com.    86400    IN    NS    ns1.packetframe.com.         │
 │ packetframe.com.    86400    IN    NS    ns2.packetframe.com.         │
 │                    ┌──────────────────────────────────────────────────┴────────[Packetframe]───┐
-│ ;; Received 81 B   │ x - o                                                                     │
+│ ;; Received 81 B   │ + - o                                                                     │
 │ ;; Time 2021-12-22 │                                                                           │
 │ ;; From 2602:809:30│  ┌────────────────────┐ ┌──────┐ ┌──────┐ ┌──────────────────────┐ ┌───┐  │
 │                    │  │ @                  │ │ A  ▼ │ │ 3600 │ │ 192.0.2.191          │ │ ✓ │  │
@@ -38,5 +37,19 @@
 </script>
 
 <main>
-    <TextArea cols="98" {content} rows="34"/>
+    <pre>{content}</pre>
 </main>
+
+<style>
+    pre {
+        color: white;
+        /* letter-spacing: 0; */
+        line-height: 1.2;
+        white-space: pre;
+        font-size: 8pt;
+        font-family: monospace, monospace;
+        overflow: hidden;
+        resize: none;
+        text-align: left;
+    }
+</style>
