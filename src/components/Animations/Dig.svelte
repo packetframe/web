@@ -1,6 +1,5 @@
 <script>
-    let content = `
-┌──────────────────────────────────────────────────────────[n@box:~#]───┐
+    let content = `┌──────────────────────────────────────────────────────────[n@box:~#]───┐
 │ + - o                                                                 │
 │                                                                       │
 │                                                                       │
@@ -36,14 +35,13 @@
                      └───────────────────────────────────────────────────────────────────────────┘`
 </script>
 
-<main>
-    <pre>{content}</pre>
-</main>
+<pre>{content}</pre>
 
 <style>
     pre {
+        margin-top: 25px;
+        margin-bottom: 60px;
         color: white;
-        /* letter-spacing: 0; */
         line-height: 1.2;
         white-space: pre;
         font-size: 8pt;

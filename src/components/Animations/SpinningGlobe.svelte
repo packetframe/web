@@ -1,5 +1,6 @@
 <script>
     import TextArea from "./Pre.svelte";
+
     let frames = [
         `               _-o#&&*''''?d:>b\\_
           _o/"'''  '',, dMF9MMMMMHo_

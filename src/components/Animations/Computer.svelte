@@ -2,8 +2,7 @@
     import TextArea from "./Pre.svelte";
     function renderBlink(showCursor) {
         let cursor = showCursor ? "█" : " "
-        return `
-┌────────────────────────────────┐
+        return `┌────────────────────────────────┐
 │                                │
 │  ~ ` + cursor + `                           │
 │                                │
@@ -20,8 +19,7 @@
     }
 
     function renderCommand(command) {
-        return `
-┌────────────────────────────────┐
+        return `┌────────────────────────────────┐
 │                                │
 │  ~ `+ command + " ".repeat(27 - command.length) + ` │
 │                                │
@@ -37,8 +35,7 @@
       └────────────────────┘`
     }
 
-    let complete = `
-┌────────────────────────────────┐
+    let complete = `┌────────────────────────────────┐
 │                                │
 │  ~ dig packetframe.com         │
 │  ;; opcode: QUERY; status: OK  │

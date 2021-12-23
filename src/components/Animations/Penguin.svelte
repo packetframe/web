@@ -3,8 +3,7 @@
 
     function render(blink) {
         let eye = blink ? "()" : "<>"
-        return `
-            .-"""-.
+        return `            .-"""-.
            '       \\
           |,.  ,-.  |
           |()   ` + eye + `| |

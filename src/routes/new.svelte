@@ -1,56 +1,51 @@
 <script>
-  import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
-  import Computer from "../components/Animations/Computer.svelte";
-  import Penguin from "../components/Animations/Penguin.svelte";
-  import Dig from "../components/Animations/Dig.svelte";
-  import Connector from "../components/Animations/Connector.svelte";
-  import SplashCard from "../components/SplashCard";
-  import Footer from "../components/Footer.svelte";
+    import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
+    import Computer from "../components/Animations/Computer.svelte";
+    import Penguin from "../components/Animations/Penguin.svelte";
+    import Dig from "../components/Animations/Dig.svelte";
+    import Connector from "../components/Animations/Connector.svelte";
+    import SplashCard from "../components/SplashCard";
+    import Button from "../components/Button/Button.svelte";
+    import Footer from "../components/Footer.svelte";
 
-  let screenWidth;
+    let screenWidth;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <main>
-    <div class="wrapper">
-        <header>
-            <div class="containerStyle">
-                <div style="width: clamp(0px, 950px, 95%)">
-                    <div class="hero">
-                        <h1>Packetframe</h1>
-                        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
-                        <Dig/>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <SplashCard
-          title="Globally Distributed"
-          text="There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)"
-        >
-          <SpinningGlobe/>
-        </SplashCard>
-
-        <Connector />
-
-        <SplashCard reverse
-          title="Built for Developers"
-          text="Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href='https://packetframe.com/docs/privacy-policy'>your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href='https://packetframe.com/docs/api'>API</a> and the entire codebase is <a href='https://github.com/packetframe/cdn'>open source</a>."
-        >
-          <Computer/>
-        </SplashCard>
-
-        <Connector side="right" />
-
-        <SplashCard
-          title="Community Centric"
-          text="While the code is written by one person (<a href='https://natesales.net'>me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href='https://fosshost.org'>fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a> and ask away!"
-        >
-          <Penguin/>
-        </SplashCard>
+    <div class="hero">
+        <h1>Packetframe</h1>
+        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
+        <Button href="/dashboard/dns" variant="primary">Get Started</Button>
+        <Dig/>
     </div>
+
+    <SplashCard
+            text="There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)"
+            title="Globally Distributed"
+    >
+        <SpinningGlobe/>
+    </SplashCard>
+
+    <Connector/>
+
+    <SplashCard
+            reverse
+            text="Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href='https://packetframe.com/docs/privacy-policy'>your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href='https://packetframe.com/docs/api'>API</a> and the entire codebase is <a href='https://github.com/packetframe/cdn'>open source</a>."
+            title="Built for Developers"
+    >
+        <Computer/>
+    </SplashCard>
+
+    <Connector side="right"/>
+
+    <SplashCard
+            text="While the code is written by one person (<a href='https://natesales.net'>me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href='https://fosshost.org'>fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a> and ask away!"
+            title="Community Centric"
+    >
+        <Penguin/>
+    </SplashCard>
 
     <Footer/>
 </main>
@@ -92,8 +87,14 @@
 
   main {
     line-height: 30px;
-    padding-bottom: 30px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto auto;
+    box-sizing: unset;
+    flex-wrap: wrap-reverse;
   }
 
   header {
@@ -110,15 +111,6 @@
 
   .featureBlock .featureBlockReverse h1 {
     font-size: 1.2em;
-  }
-
-  .containerStyle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px auto auto;
-    box-sizing: unset;
-    flex-wrap: wrap-reverse;
   }
 
   .featureBlock {
@@ -185,17 +177,6 @@
     margin: 0;
   }
 
-  /* .textGradient {
-      background: linear-gradient(90deg, rgba(255, 164, 252, 1) 0%, rgba(148, 98, 228, 1) 52%, rgba(103, 34, 212, 1) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  } */
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   a {
     color: #d000ff;
   }
@@ -206,5 +187,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: #{"clamp(0px, 950px, 95%)"};
+  }
+
+  .hero h1, p {
+    padding-bottom: 25px;
   }
 </style>

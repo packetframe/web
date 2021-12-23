@@ -1,12 +1,12 @@
 <script lang="ts">
-    export let reverse: boolean = false;
+    export let reverse = false;
     export let title = "";
     export let text = "";
 </script>
 
-<main style="--flexNormal:{reverse ? "row-reverse" : "row"}">
+<main style="--flexNormal:{reverse ? 'row-reverse' : 'row'}">
     <div>
-        <slot />
+        <slot/>
     </div>
     <div class="text">
         <h2>{title}</h2>
@@ -22,12 +22,16 @@
         align-items: center;
         justify-content: center;
         max-width: 900px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
+
     @media (max-width: 768px) {
         main {
             flex-direction: column-reverse;
         }
     }
+
     div {
         display: flex;
         flex-direction: column;
@@ -35,15 +39,18 @@
         justify-content: center;
         align-items: center;
     }
+
     div.text {
         align-items: flex-start !important;
     }
+
     p {
         font-size: 1rem;
         line-height: normal;
     }
+
     h2 {
-        margin: 1rem 0rem;
+        margin: 1rem 0;
         background: #D53BAB;
         background: -webkit-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
         background: -moz-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
