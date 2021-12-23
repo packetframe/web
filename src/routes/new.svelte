@@ -5,6 +5,7 @@
   import Dig from "../components/Animations/Dig.svelte";
   import Connector from "../components/Animations/Connector.svelte";
   import SplashCard from "../components/SplashCard";
+  import Footer from "../components/Footer.svelte";
 
   let screenWidth;
 </script>
