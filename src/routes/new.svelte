@@ -3,7 +3,8 @@
     import Computer from "../components/Animations/Computer.svelte";
     import Penguin from "../components/Animations/Penguin.svelte";
     import Dig from "../components/Animations/Dig.svelte";
-  import Connector from "../components/Animations/Connector.svelte";
+    import Connector from "../components/Animations/Connector.svelte";
+    import Footer from "../components/Footer.svelte";
 
     let screenWidth;
 </script>
