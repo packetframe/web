@@ -1,0 +1,54 @@
+<script lang="ts">
+    export let reverse: boolean = false;
+    export let title = "";
+    export let text = "";
+</script>
+
+<main style="--flexNormal:{reverse ? "row-reverse" : "row"}">
+    <div>
+        <slot />
+    </div>
+    <div class="text">
+        <h2>{title}</h2>
+        <p>{@html text}</p>
+    </div>
+</main>
+
+<style>
+    main {
+        width: auto;
+        display: flex;
+        flex-direction: var(--flexNormal);
+        align-items: center;
+        justify-content: center;
+        max-width: 900px;
+    }
+    @media (max-width: 768px) {
+        main {
+            flex-direction: column-reverse;
+        }
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+    div.text {
+        align-items: flex-start !important;
+    }
+    p {
+        font-size: 1rem;
+        line-height: normal;
+    }
+    h2 {
+        margin: 1rem 0rem;
+        background: #D53BAB;
+        background: -webkit-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        background: -moz-linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        background: linear-gradient(to right, #D53BAB 0%, #8120c0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>
