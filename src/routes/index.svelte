@@ -21,11 +21,7 @@
     onMount(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    growBg = true;
-                } else {
-                    growBg = false;
-                }
+                growBg = entry.isIntersecting;
             })
         })
 
@@ -85,14 +81,14 @@
     <h1 class="pf-header-2">Packetframe</h1>
 
     <div class="hero" class:animate={scrollContent}>
-        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta, contact for more information.</p>
+        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta; if you're affiliated with an open source project, reach out for more information.</p>
         <!-- <Button href="/dashboard/dns" variant="filled">Get Started</Button> -->
     </div>
 
     <Dig/>
 
     <SplashCard
-            text="There are currently 41 PoPs across 38 cities and with a presence in all 6 consumer-inhabited continents. (If you know of a datacenter in Antarctica, let me know!)"
+            text="Packetframe is present on all 6 consumer-inhabited continents in over 40 cities. (If you know of a datacenter in Antarctica, let me know!)"
             title="Globally Distributed"
     >
         <SpinningGlobe/>
@@ -102,7 +98,7 @@
 
     <SplashCard
             reverse
-            text="Packetframe was built with developers in mind. With the Packetframe CDN, the only thing kept private is <a href='https://packetframe.com/docs/privacy-policy'>your data</a> and keys to the infrastructure. Everything else is open and accessible. All functionality of the platform is exposed via the <a href='https://packetframe.com/docs/api'>API</a> and the entire codebase is <a href='https://github.com/packetframe/cdn'>open source</a>."
+            text="Packetframe was built with developers in mind. All functionality of the platform is exposed via the API and the entire codebase is <a href='https://github.com/packetframe'>open source</a>."
             title="Built for Developers"
     >
         <Computer/>
@@ -111,7 +107,7 @@
     <Connector side="right"/>
 
     <SplashCard
-            text="While the code is written by one person (<a href='https://natesales.net'>me!</a>), the open source community plays a huge role in the CDN infrastructure. Special thanks to <a href='https://fosshost.org'>fosshost</a> for their support and partnership in the project. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a> and ask away!"
+            text="The open source community plays a huge role in the CDN infrastructure. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a>."
             title="Community Centric"
     >
         <Penguin/>
@@ -122,7 +118,6 @@
 
 
 <style global>
-
     div.wrapper {
         width: 100%;
         height: 100%;
