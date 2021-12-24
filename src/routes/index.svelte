@@ -1,16 +1,12 @@
 <script>
+    import {onMount} from "svelte";
     import Computer from "../components/Animations/Computer.svelte";
     import Connector from "../components/Animations/Connector.svelte";
     import Dig from "../components/Animations/Dig.svelte";
     import Penguin from "../components/Animations/Penguin.svelte";
     import SpinningGlobe from "../components/Animations/SpinningGlobe.svelte";
-
-    import Button from "../components/Button";
     import Footer from "../components/Footer.svelte";
-
     import SplashCard from "../components/SplashCard";
-
-    import { onMount } from "svelte";
     import Navbar from "../components/Navbar";
 
     let growBg = false;
@@ -49,7 +45,9 @@
                     loadContent = true;
                     document.body.scrollTop = 0; // For Safari
                     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-                    setTimeout(() => {scrollContent = true}, 500);
+                    setTimeout(() => {
+                        scrollContent = true
+                    }, 500);
                 } else {
                     // loadContent = false;
                 }
@@ -58,19 +56,18 @@
 
         observer3.observe(document.getElementById("pf-bg-trigger-3"))
     })
-
 </script>
 
 <div class="wrapper" class:hidden={loadContent}>
     <main class="index-wrapper">
-        <img class="pf-hole" src="pf-hole.png" alt="Under Construction" class:hidden={animateLogo}>
-        <img class="pf-cloud" src="cloud-hover.png" alt="flat cloud" class:animate={animateLogo}>
-        <img class="pf-cloud flat" src="cloud-flat-striped.png" alt="flat cloud" class:animate={animateLogo}  class:hidden={!animateLogo}>
+        <img alt="Under Construction" class="pf-hole" class:hidden={animateLogo} src="pf-hole.png">
+        <img alt="flat cloud" class="pf-cloud" class:animate={animateLogo} src="cloud-hover.png">
+        <img alt="flat cloud" class="pf-cloud flat" class:animate={animateLogo} class:hidden={!animateLogo} src="cloud-flat-striped.png">
         <div class="pf-bg-delay"></div>
         <div class="pf-bg" class:growBg></div>
         <div class="pf-bg-trigger-delay"></div>
-        <div class="pf-bg-trigger" id="pf-bg-trigger" class:fixed={animateLogo}></div>
-        <div class="pf-bg-trigger-2" id="pf-bg-trigger-2" class:sticky={animateLogo}></div>
+        <div class="pf-bg-trigger" class:fixed={animateLogo} id="pf-bg-trigger"></div>
+        <div class="pf-bg-trigger-2" class:sticky={animateLogo} id="pf-bg-trigger-2"></div>
         <h1 class="pf-header" class:animate={animateLogo}>Packetframe</h1>
     </main>
     <div class="pf-bg-trigger-3" id="pf-bg-trigger-3"></div>
@@ -80,8 +77,7 @@
     <Navbar homepage/>
 </div>
 <div class="content" class:animate={scrollContent} class:hidden={!loadContent}>
-
-    <img class="pf-cloud-2" src="cloud-flat-striped.png" alt="flat cloud">
+    <img alt="flat cloud" class="pf-cloud-2" src="cloud-flat-striped.png">
     <h1 class="pf-header-2">Packetframe</h1>
 
     <div class="hero" class:animate={scrollContent}>
@@ -98,7 +94,7 @@
         <SpinningGlobe/>
     </SplashCard>
 
-    <Connector />
+    <Connector/>
 
     <SplashCard
             reverse
@@ -117,7 +113,7 @@
         <Penguin/>
     </SplashCard>
 
-    <Footer />
+    <Footer/>
 </div>
 
 
@@ -127,10 +123,10 @@
         width: 100%;
         height: 100%;
         position: relative;
-        background: rgb(213,59,171);
-        background: linear-gradient(135deg, rgba(213,59,171,1) 30%, rgba(128,32,192,1) 70%); 
+        background: rgb(213, 59, 171);
+        background: linear-gradient(135deg, rgba(213, 59, 171, 1) 30%, rgba(128, 32, 192, 1) 70%);
     }
-    
+
     img.pf-hole {
         width: 100%;
         height: 100%;
@@ -140,6 +136,7 @@
         left: 0;
         z-index: 10;
     }
+
     img.pf-cloud {
         position: fixed;
         top: calc(50% + 5px);
@@ -226,7 +223,7 @@
     .hidden {
         display: none !important;
     }
-    
+
     div.pf-bg-trigger-3 {
         width: 10px;
         height: 10px;
