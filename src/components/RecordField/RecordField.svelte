@@ -54,25 +54,27 @@
 
     let recordTypes = [];
     $: {
-        if (zoneFqdn && zoneFqdn.endsWith(".arpa.")) {
-            console.log("Setting to PTR only")
-            recordTypes = [
-                {value: "PTR", label: "PTR"},
-                {value: "NS", label: "NS"},
-                {value: "TXT", label: "TXT"},
-            ];
-            record["type"] = "PTR";
-        } else {
-            recordTypes = [
-                {value: "A", label: "A"},
-                {value: "AAAA", label: "AAAA"},
-                {value: "CNAME", label: "CNAME"},
-                {value: "MX", label: "MX"},
-                {value: "TXT", label: "TXT"},
-                {value: "NS", label: "NS"},
-                {value: "SRV", label: "SRV"},
-            ];
-            record["type"] = "A";
+        if (!isInDropdown) {
+            if (zoneFqdn && zoneFqdn.endsWith(".arpa.")) {
+                console.log("Setting to PTR only")
+                recordTypes = [
+                    {value: "PTR", label: "PTR"},
+                    {value: "NS", label: "NS"},
+                    {value: "TXT", label: "TXT"},
+                ];
+                record["type"] = "PTR";
+            } else {
+                recordTypes = [
+                    {value: "A", label: "A"},
+                    {value: "AAAA", label: "AAAA"},
+                    {value: "CNAME", label: "CNAME"},
+                    {value: "MX", label: "MX"},
+                    {value: "TXT", label: "TXT"},
+                    {value: "NS", label: "NS"},
+                    {value: "SRV", label: "SRV"},
+                ];
+                record["type"] = "A";
+            }
         }
     }
 
@@ -161,10 +163,10 @@
     <form class="pf-record-field__row" on:submit|preventDefault={submit}>
         <Input bind:error bind:value={record.label} label="Label"/>
         <span class="pf-record-field__small-select">
-            <Select value={record['type']} isDisabled={isInDropdown}
-                    items={recordTypes}
+            <Select isDisabled={isInDropdown} items={recordTypes}
                     label="Type"
-                    on:select={handleRecordSelect}/>
+                    on:select={handleRecordSelect}
+                    value={record['type']}/>
         </span>
         <Input bind:value={record.ttl} class="small" label="TTL" min="0" placeholder="86400" type="number"/>
 
@@ -187,7 +189,7 @@
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
             <Input bind:value={srvHost} label="Target"/>
         {/if}
-<!--        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
+        <!--        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
         <Button type="submit" variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
             <Button danger icon="delete_outline" on:click={deleteSelfRecord}/>
