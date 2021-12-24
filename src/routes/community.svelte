@@ -34,23 +34,17 @@
             <div slot="header">Community</div>
         </Title>
 
-        <h2>Infrastructure Sponsors</h2>
-        <div class="sponsor-group">
+        <div class="content">
+            <h2>Infrastructure Sponsors</h2>
             {#each infrastructureSponsors as sponsor}
-                <div class="sponsor">
-                    <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
-                    <p>{sponsor.tagline}</p>
-                </div>
+            <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
+            <p>{sponsor.tagline}</p>
             {/each}
-        </div>
 
-        <h2>Service Sponsors</h2>
-        <div class="sponsor-group">
+            <h2>Service Sponsors</h2>
             {#each serviceSponsors as sponsor}
-                <div class="sponsor">
-                    <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
-                    <p>{sponsor.tagline}</p>
-                </div>
+            <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
+            <p>{sponsor.tagline}</p>
             {/each}
         </div>
     </div>
@@ -68,20 +62,8 @@
     flex-direction: column;
   }
 
-  .sponsor-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .sponsor {
-    display: flex;
-    justify-content: center;
-    margin-top: 85px;
-    flex-wrap: wrap;
-    max-width: 200px;
-    margin-left: auto;
-    margin-right: auto;
+  .content {
+    margin-left: 4px;
+    margin-right: 4px;
   }
 </style>
