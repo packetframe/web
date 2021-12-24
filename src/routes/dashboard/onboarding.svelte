@@ -43,7 +43,7 @@
         <div slot="header">Domain Onboarding</div>
     </Title>
     <Card title="Add a domain">
-        <p>Make sure your domain's nameservers are configured to <b>ns1.packetframe.com</b> and <b>ns2.packetframe.com</b>.</p>
+        <p>Make sure your domain's nameservers are configured to <b>ns1v4.packetframe.com</b> and <b>ns2v4.packetframe.com</b>.</p>
         <Input bind:value={zone} bind:error={zoneError} fixErrorHeight={false} label="Domain" placeholder="example.com" type="text"/>
         <Button style="margin-top: 18px" variant="secondary" on:click={submit}>Add</Button>
     </Card>
