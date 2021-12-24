@@ -43,12 +43,6 @@
         align-items: flex-start !important;
     }
 
-    p {
-        font-size: 1rem;
-        line-height: normal;
-        margin-top: 0px;
-    }
-
     h2 {
         margin: 1rem 0;
         background: #D53BAB;

@@ -299,23 +299,8 @@
         position: relative;
     }
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-        box-sizing: border-box;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-
     * {
         box-sizing: border-box;
-    }
-
-    div#svelte {
-        width: 100%;
-        height: 100%;
     }
 
     ::selection {
@@ -328,15 +313,5 @@
 
     a {
         color: #d000ff;
-    }
-
-    p.footer {
-        position: absolute;
-        color: #161616;
-        font-size: 10px;
-        opacity: 0.4;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
     }
 </style>
