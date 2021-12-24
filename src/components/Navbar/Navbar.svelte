@@ -19,6 +19,7 @@
             elements = [
                 {label: "Blog", href: "/blog"},
                 {label: "Community", href: "/community"},
+                {label: "Dashboard", href: "/dashboard"},
             ]
         } else {
             elements.push({label: "Logout", href: "/dashboard/logout"})
