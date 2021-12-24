@@ -273,7 +273,7 @@
         align-items: center;
         margin: 0 auto;
         padding-top: calc(50vh - 44px - 92px);
-        padding-bottom: 10rem;
+        padding-bottom: 10px;
     }
 
     div.content.animate {
