@@ -14,6 +14,10 @@
     let loadContent = false;
     let scrollContent = false;
 
+    // Comment out to enable fancy scroll animation
+    loadContent = true;
+    scrollContent = true;
+
     onMount(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
