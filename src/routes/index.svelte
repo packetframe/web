@@ -8,6 +8,7 @@
     import Footer from "../components/Footer.svelte";
     import SplashCard from "../components/SplashCard";
     import Navbar from "../components/Navbar";
+    import Email from "../components/Email.svelte";
 
     let growBg = false;
     let animateLogo = false;
@@ -82,42 +83,41 @@
 
     <div class="hero" class:animate={scrollContent}>
         <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta; if you're affiliated with an open source project, reach out for more information.</p>
-        <!-- <Button href="/dashboard/dns" variant="filled">Get Started</Button> -->
     </div>
 
     <Dig/>
 
-    <SplashCard
-            text="Packetframe is present on all 6 consumer-inhabited continents in over 40 cities. (If you know of a datacenter in Antarctica, let me know!)"
-            title="Globally Distributed"
-    >
+    <SplashCard title="Globally Distributed">
+        <div slot="text">
+            Packetframe is present on all 6 consumer-inhabited continents in over 40 cities. (If you know of a datacenter in Antarctica, let me know!)
+        </div>
         <SpinningGlobe/>
     </SplashCard>
 
     <Connector/>
 
-    <SplashCard
-            reverse
-            text="Packetframe was built with developers in mind. All functionality of the platform is exposed via the API and the entire codebase is <a href='https://github.com/packetframe'>open source</a>."
-            title="Built for Developers"
-    >
+    <SplashCard reverse title="Built for Developers">
+        <div slot="text">
+            Packetframe was built with developers in mind. All functionality of the platform is exposed via the API and the entire codebase is <a href='https://github.com/packetframe'>open source</a>.
+        </div>
         <Computer/>
     </SplashCard>
 
     <Connector side="right"/>
 
-    <SplashCard
-            text="The open source community plays a huge role in the CDN infrastructure. Want to get involved? Feel free to send an email to or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a>."
-            title="Community Centric"
-    >
+    <SplashCard title="Community Centric">
+        <div slot="text">
+            The open source community plays a huge role in the CDN infrastructure. Want to get involved? Feel free to send an email to
+            <Email/>
+            or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a>.
+        </div>
         <Penguin/>
     </SplashCard>
 
     <Footer/>
 </div>
 
-
-<style global>
+<style>
     div.wrapper {
         width: 100%;
         height: 100%;

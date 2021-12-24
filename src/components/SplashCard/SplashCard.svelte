@@ -1,7 +1,6 @@
 <script lang="ts">
     export let reverse = false;
     export let title = "";
-    export let text = "";
 </script>
 
 <main style="--flexNormal:{reverse ? 'row-reverse' : 'row'}">
@@ -10,7 +9,7 @@
     </div>
     <div class="text">
         <h2>{title}</h2>
-        <p>{@html text}</p>
+        <slot name="text"></slot>
     </div>
 </main>
 

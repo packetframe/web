@@ -2,6 +2,7 @@
     import Footer from "../components/Footer.svelte";
     import Title from "../components/Title/Title.svelte";
     import Navbar from "../components/Navbar/Navbar.svelte";
+    import Email from "../components/Email.svelte";
 
     let infrastructureSponsors = [
         {link: "https://fosshost.org/", name: "Fosshost", tagline: "The Fosshost project is a non-profit organisation that exists to serve the hosting needs of the global open source community."},
@@ -35,6 +36,8 @@
         </Title>
 
         <div class="content">
+            <p>Packetframe is fueled by the community. If you're interested in helping out or supporting the project in any way, contact <Email/>. The sponsors below have been instrumental in providing infrastructure or other services to the project - huge thanks to all of the amazing supporters!</p>
+
             <h2>Infrastructure Sponsors</h2>
             {#each infrastructureSponsors as sponsor}
             <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
