@@ -5,17 +5,22 @@
 }
 
 .pf-nav {
-  padding: 10px 20px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   width: calc(100% - 40px);
   align-items: center;
-  margin: 0 auto;
   justify-content: space-between;
   top: 0;
   left: 0;
   z-index: 1000;
   color: $nav-color;
   background-color: $nav-background-color;
+
+  h1 {
+    margin: 0 !important;
+  }
 
   a {
     text-decoration: none;
