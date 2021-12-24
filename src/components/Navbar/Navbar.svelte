@@ -16,10 +16,9 @@
     onMount(() => {
         if (homepage) {
             sticky = false;
-            // TODO: Uncomment
             elements = [
-                // {label: "Blog", href: "/blog"},
-                // {label: "Community", href: "/community"},
+                {label: "Blog", href: "/blog"},
+                {label: "Community", href: "/community"},
             ]
         } else {
             elements.push({label: "Logout", href: "/dashboard/logout"})
