@@ -11,7 +11,7 @@
         line-height: 1.2;
         white-space: pre;
         font-size: 8pt;
-        font-family: monospace, monospace;
+        font-family: 'Courier New', monospace;
         overflow: hidden;
         resize: none;
     }
