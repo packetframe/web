@@ -287,6 +287,11 @@
         font-size: 1.25rem;
     }
 
+    .hero p {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
     div.hero.animate {
         padding-top: 0px;
         transition: ease padding-top 1s;
