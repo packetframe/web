@@ -4,13 +4,15 @@
 
     export let title;
     export let date;
+    export let author;
 </script>
 
 <main>
     <Navbar homepage={true}/>
 
     <h1>{title}</h1>
-    <p>{date}</p>
+    <p style="margin-bottom: 2px">{date}</p>
+    <p>{author}</p>
 
     <div class="post">
         <slot/>

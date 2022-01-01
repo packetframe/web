@@ -9,6 +9,7 @@
     import SplashCard from "../components/SplashCard";
     import Navbar from "../components/Navbar";
     import Email from "../components/Email.svelte";
+    import NotificationBar from "../components/NotificationBar.svelte";
 
     let growBg = false;
     let animateLogo = false;
@@ -74,9 +75,12 @@
     <div class="pf-bg-trigger-3" id="pf-bg-trigger-3"></div>
 </div>
 
+<NotificationBar/>
+
 <div class:hidden={!loadContent}>
     <Navbar homepage/>
 </div>
+
 <div class="content" class:animate={scrollContent} class:hidden={!loadContent}>
     <img alt="flat cloud" class="pf-cloud-2" src="cloud-flat-striped.png">
     <h1 class="pf-header-2">Packetframe</h1>
@@ -113,6 +117,15 @@
         </div>
         <Penguin/>
     </SplashCard>
+
+    <div class="footer-container">
+        <div class="footer-column">
+            <a href="https://portal.as34553.net">Peering</a>
+        </div>
+        <div class="footer-column">
+            <a href="/community">Community</a>
+        </div>
+    </div>
 
     <Footer/>
 </div>
@@ -318,5 +331,16 @@
 
     a {
         color: #d000ff;
+    }
+
+
+    .footer-container a {
+        color: white;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5px;
     }
 </style>
