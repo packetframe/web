@@ -118,15 +118,6 @@
         <Penguin/>
     </SplashCard>
 
-    <div class="footer-container">
-        <div class="footer-column">
-            <a href="https://portal.as34553.net">Peering</a>
-        </div>
-        <div class="footer-column">
-            <a href="/community">Community</a>
-        </div>
-    </div>
-
     <Footer/>
 </div>
 
@@ -331,16 +322,5 @@
 
     a {
         color: #d000ff;
-    }
-
-
-    .footer-container a {
-        color: white;
-    }
-
-    .footer-container {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 5px;
     }
 </style>
