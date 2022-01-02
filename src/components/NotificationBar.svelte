@@ -29,5 +29,7 @@
 
     span {
         cursor: pointer;
+        display: flex;
+        align-items: center;
     }
 </style>
