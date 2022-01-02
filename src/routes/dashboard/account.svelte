@@ -112,8 +112,8 @@
         <div slot="header">Account</div>
     </Title>
     <Card title="User Information">
-        {#if !loading}
-            Email: {email}
+        Email: {#if !loading}
+            {email}
         {/if}
     </Card>
     <Card title="Change Password">
