@@ -87,6 +87,7 @@
         <Select bind:value={selectedUser} isSearchable items={users} label="User" selectProps={{labelIdentifier: 'email', optionIdentifier: 'email', getOptionLabel: getUserEmail, getSelectionLabel: getUserEmail}}/>
 
         {#if selectedUser}
+            <p>Refer: {selectedUser["refer"]}</p>
             <p>Groups:</p>
             <ul style="margin-left: 30px; margin-bottom: 15px">
                 {#if selectedUser["groups"].length === 0}
