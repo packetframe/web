@@ -4,9 +4,11 @@
     import Input from "../../components/Input/Input.svelte";
     import Button from "../../components/Button/Button.svelte";
     import {onMount} from "svelte";
+    import Spinner from "../../components/Spinner/Spinner.svelte";
 
     let mode = "request";
 
+    let loading = false;
     let token;
     let email;
     let password;
@@ -17,6 +19,7 @@
     let repeatPasswordError = "";
 
     onMount(() => {
+        loading = false;
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get("token")) {
             token = urlParams.get("token")
@@ -54,6 +57,7 @@
 
         if (!errored) {
             if (mode === "request") {
+                loading = true
                 fetch("/api/user/request_password_reset", {
                     method: "POST",
                     credentials: "include",
@@ -66,6 +70,7 @@
                 })
                     .then((response) => response.json())
                     .then((data) => {
+                        loading = false
                         if (data.success) {
                             alert(data.message)
                             window.location.pathname = "/dashboard/dns"
@@ -78,6 +83,7 @@
                         }
                     })
             } else { // confirm
+                loading = true
                 fetch("/api/user/confirm_password_reset", {
                     method: "POST",
                     headers: {
@@ -91,6 +97,7 @@
                 })
                     .then((response) => response.json())
                     .then((data) => {
+                        loading = false
                         if (data.success) {
                             alert(data.message)
                             window.location.pathname = "/dashboard/login"
@@ -133,13 +140,17 @@
                 Already have an account?
                 <a href="/dashboard/login">Login</a>
             </p>
-            <Button
-                    style="margin-top: 18px"
-                    type="submit"
-                    variant="secondary"
-            >
-                Submit
-            </Button>
+            {#if loading}
+                <Spinner/>
+            {:else}
+                <Button
+                        style="margin-top: 18px"
+                        type="submit"
+                        variant="secondary"
+                >
+                    Submit
+                </Button>
+            {/if}
         </form>
     </Card>
 </main>
