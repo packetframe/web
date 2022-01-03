@@ -1,18 +1,13 @@
 <script>
     import Navbar from "../../components/Navbar/Navbar.svelte";
     import Footer from "../../components/Footer.svelte";
-    import {onMount} from "svelte";
-
-    let path;
-    onMount(() => {
-        path = window.location.pathname
-    })
+    import {page} from '$app/stores';
 </script>
 
-{#if path !== "/dashboard/signup" && path !== "/dashboard/login" && path !== "/dashboard/password_reset"}
-    <Navbar/>
-{:else}
+{#if $page.path === "/dashboard/signup" || $page.path !== "/dashboard/login" || $page.path !== "/dashboard/password_reset"}
     <Navbar elements={[]}/>
+{:else}
+    <Navbar/>
 {/if}
 
 <main class="pf-layout">
