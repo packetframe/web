@@ -11,6 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+        height: auto;
+        flex-wrap: wrap;
+    }
 
     .pf-title__header {
         font-size: $title-font-size;

@@ -2,27 +2,24 @@
     import {page} from '$app/stores';
     import {onMount} from "svelte";
 
-    export let sticky = true;
     export let homepage = false;
     export let elements = [
-        {label: "DNS", href: "/dashboard/dns"},
-        // {label: "Containers", href: "/dashboard/containers"},
-        {label: "Account", href: "/dashboard/account"},
+        {label: "Blog", href: "/blog"},
+        {label: "Community", href: "/community"},
+        {label: "Dashboard", href: "/dashboard"},
     ];
 
     let open = false;
     let width;
 
     onMount(() => {
-        if (homepage) {
-            sticky = false;
+        if (!homepage) {
             elements = [
-                {label: "Blog", href: "/blog"},
-                {label: "Community", href: "/community"},
-                {label: "Dashboard", href: "/dashboard"},
-            ]
-        } else {
-            elements.push({label: "Logout", href: "/dashboard/logout"})
+                {label: "DNS", href: "/dashboard/dns"},
+                // {label: "Containers", href: "/dashboard/containers"},
+                {label: "Account", href: "/dashboard/account"},
+            ];
+
             fetch("/api/user/info", {
                 method: "GET",
                 credentials: "include",
@@ -30,7 +27,7 @@
                     "Content-Type": "application/json",
                 },
             })
-                .then((response) => {
+                .then((response) => { // If not logged in...
                     if (response.status === 401 && $page.path !== "/dashboard/login" && $page.path !== "/dashboard/signup" && $page.path !== "/dashboard/password_reset") {
                         window.location.pathname = "/dashboard/login"
                     }
@@ -55,7 +52,7 @@
 
 <svelte:window bind:innerWidth={width}></svelte:window>
 
-<nav class="pf-nav" class:sticky={sticky}>
+<nav class="pf-nav">
     <a href="/">
         <img alt="Logo" src="/cloud-flat-striped.png">
         <h1>Packetframe</h1>

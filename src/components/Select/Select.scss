@@ -8,6 +8,8 @@
   width: auto;
   font-size: 14px;
   color: $select-color;
+  flex-shrink: 0;
+  flex-grow: 1;
 
   --border: #{$select-border-width} solid #{$select-border-color};
   --borderRadius: #{$select-border-radius};
@@ -53,6 +55,7 @@
 
   .listContainer {
     border: #{$select-border-width} solid #{$select-list-border-color};
+    text-align: right;
   }
 
   .selectedItem {
@@ -61,6 +64,12 @@
 
   .selectContainer {
     --padding: #{$select-padding} !important;
+    justify-content: flex-end;
+
+    input {
+      text-align: right;
+      padding-right: 38px !important;
+    }
 
     &.focused {
       --indicatorColor: #{$select-color-focused};
