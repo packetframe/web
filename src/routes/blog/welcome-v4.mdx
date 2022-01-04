@@ -8,7 +8,17 @@ layout: blog
 
 Packetframe has a new control plane! 🎉
 
-To kick off the new year, the API, dashboard, and node orchestrator have been completely rewritten to improve the stability and feature set. (See the [api](https://github.com/packetframe/api), [web](https://github.com/packetframe/web), and [infra](https://github.com/packetframe/infra) repos for the full source)
+To kick off the new year, the API, dashboard, and node orchestrator have been completely rewritten to improve the stability and feature set.
+
+A few notable improvements:
+
+- A new API supporting dynamic record edits directly or automated with [dnscontrol](https://github.com/StackExchange/dnscontrol/pull/1347)
+- Shiny new dashboard (thanks [Seth](https://github.com/knightss27)!)
+- Decreased record update time with incremental zone deployment
+- Distributed active anycast monitoring with [Verfploeter](https://github.com/natesales/go-verfploeter) and [bifocal](https://github.com/natesales/bifocal)
+- A [/blog](blog) with a plan to focus on technical subjects (anycast, DNS, etc), occasionally featuring our amazing [sponsors](/community)
+
+See the [api](https://github.com/packetframe/api), [web](https://github.com/packetframe/web), and [infra](https://github.com/packetframe/infra) repos for the full source.
 
 Legacy accounts have been migrated to the new dashboard but will require a password reset due to a change in the argon2id hashing parameters. Head over to https://packetframe.com/dashboard/password_reset
 
