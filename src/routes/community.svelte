@@ -45,6 +45,9 @@
             {/each}
 
             <h2>Service Sponsors</h2>
+            <h3><a href="https://betteruptime.com/">Better Uptime</a></h3>
+            <a target="_blank" href="https://betteruptime.com/"><img style="width: 130px; height: 52px;" alt="Better Uptime Website Monitoring" src="https://betteruptime.com/assets/static_assets/badges/dark.png" /></a>
+
             {#each serviceSponsors as sponsor}
             <h3><a href={sponsor.link}>{sponsor.name}</a></h3>
             <p>{sponsor.tagline}</p>
