@@ -4,7 +4,7 @@ Based on ICEcoder default theme by Matt Pass, used in code editor available at h
 
 .cm-s-default {
     color: #666;
-    background: #131313 !important;
+    background: #0a0a0a !important;
 }
 
 .cm-s-default span.cm-keyword {
@@ -110,7 +110,7 @@ Based on ICEcoder default theme by Matt Pass, used in code editor available at h
 }
 
 .cm-s-default .CodeMirror-gutters {
-    background: #1d1d1b;
+    background: #1a1a1a;
     min-width: 41px;
     border-right: 0;
 }

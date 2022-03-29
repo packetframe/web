@@ -21,10 +21,18 @@
 }
 
 .pf-record-field__small-select {
-  width: 90px;
+  width: 115px;
 }
 
 .small {
   flex: 0 0 auto !important;
   width: 90px;
+}
+
+.editor-container {
+  border: 1px solid #fafafa;
+  border-radius: 4px;
+  padding: 2px;
+  color: #fafafa;
+  margin: 0 4px 15px;
 }
