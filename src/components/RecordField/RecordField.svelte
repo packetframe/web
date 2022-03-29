@@ -131,16 +131,32 @@
     onMount(() => {
         if (isInDropdown) {
             recordTypes = [{value: record['type'], label: record['type']}];
+            if (record["type"] === "SCRIPT") {
+                loadCodeMirror(record["value"]);
+            }
         }
     });
 
-    function loadCodeMirror() {
-        let editorSelector = document.querySelector(".editor")
-        editorSelector.innerHTML = ""
-        cm = CodeMirror(editorSelector, {
-            lineNumbers: true,
-            mode: "javascript",
-            value: `async function handleQuery(query) {
+    function loadCodeMirror(value) {
+        showScriptEditor = true
+
+        // TODO: This is (presumably) required because the editor DOM element hasn't loaded yet
+        setTimeout(() => {
+            let editorSelector = document.querySelector(".editor")
+            editorSelector.innerHTML = ""
+            cm = CodeMirror(editorSelector, {
+                lineNumbers: true,
+                mode: "javascript",
+                value: value
+            })
+        }, 100)
+    }
+
+    function handleRecordSelect(event) {
+        record['type'] = event.detail.value;
+
+        if (record["type"] === "SCRIPT") {
+            loadCodeMirror(`async function handleQuery(query) {
     return {
         "authoritative": true,
         "rrs": [
@@ -153,19 +169,8 @@
         ]
     }
 }
-`
-        })
-    }
+`)
 
-    function handleRecordSelect(event) {
-        record['type'] = event.detail.value;
-
-        if (event.detail.value === "SCRIPT") {
-            showScriptEditor = true
-            // TODO: This is (presumably) required because the editor DOM element hasn't loaded yet
-            setTimeout(() => {
-                loadCodeMirror()
-            }, 100)
         } else {
             showScriptEditor = false
         }
