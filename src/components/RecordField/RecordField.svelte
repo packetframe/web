@@ -1,4 +1,4 @@
-<script lang="ts">
+<script defer lang="ts">
     import Input from "../Input";
     import Button from "../Button";
     import Select from "../Select";
@@ -52,11 +52,13 @@
     export let isInDropdown = false;
     export let mobile = false;
 
+    let cm;
+    let showScriptEditor;
+
     let recordTypes = [];
     $: {
         if (!isInDropdown) {
             if (zoneFqdn && zoneFqdn.endsWith(".arpa.")) {
-                console.log("Setting to PTR only")
                 recordTypes = [
                     {value: "PTR", label: "PTR"},
                     {value: "NS", label: "NS"},
@@ -72,6 +74,7 @@
                     {value: "TXT", label: "TXT"},
                     {value: "NS", label: "NS"},
                     {value: "SRV", label: "SRV"},
+                    {value: "SCRIPT", label: "SCRIPT"}
                 ];
                 record["type"] = "A";
             }
@@ -88,6 +91,8 @@
             record.value = `${priority} ${weight} ${port} ${srvHost}`
         } else if (record["type"] === "MX") {
             record.value = `${mxPriority} ${mxHost}`
+        } else if (record["type"] === "SCRIPT") {
+            record.value = cm.getValue()
         }
 
         fetch("/api/dns/records", {
@@ -110,7 +115,11 @@
                 } else {
                     if (data.data) {
                         let err = data.data.reason[0].FailedField.split("at line")[0].split(": ")[1]
-                        error = err.charAt(0).toUpperCase() + err.slice(1); // Capitalize first letter
+                        if (err !== undefined) {
+                            error = err.charAt(0).toUpperCase() + err.slice(1); // Capitalize first letter
+                        } else {
+                            error = JSON.stringify(data.data.reason)
+                        }
                     } else {
                         alert(data.message)
                     }
@@ -122,11 +131,49 @@
     onMount(() => {
         if (isInDropdown) {
             recordTypes = [{value: record['type'], label: record['type']}];
+            if (record["type"] === "SCRIPT") {
+                loadCodeMirror(record["value"]);
+            }
         }
     });
 
+    function loadCodeMirror(value) {
+        showScriptEditor = true
+
+        // TODO: This is (presumably) required because the editor DOM element hasn't loaded yet
+        setTimeout(() => {
+            let editorSelector = document.querySelector(".editor")
+            editorSelector.innerHTML = ""
+            cm = CodeMirror(editorSelector, {
+                lineNumbers: true,
+                mode: "javascript",
+                value: value
+            })
+        }, 100)
+    }
+
     function handleRecordSelect(event) {
         record['type'] = event.detail.value;
+
+        if (record["type"] === "SCRIPT") {
+            loadCodeMirror(`async function handleQuery(query) {
+    return {
+        "authoritative": true,
+        "rrs": [
+            {
+                name: query.name,
+                ttl: 86400,
+                type: "TXT",
+                value: "Hello World"
+            }
+        ]
+    }
+}
+`)
+
+        } else {
+            showScriptEditor = false
+        }
     }
 
     let error = "";
@@ -168,7 +215,9 @@
                     on:select={handleRecordSelect}
                     value={record['type']}/>
         </span>
-        <Input bind:value={record.ttl} class="small" label="TTL" min="0" placeholder="86400" type="number"/>
+        {#if !showScriptEditor}
+            <Input bind:value={record.ttl} class="small" label="TTL" min="0" placeholder="86400" type="number"/>
+        {/if}
 
         {#if record["type"] === "A"}
             <Input bind:value={record.value} label="IPv4 Address"/>
@@ -189,10 +238,16 @@
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
             <Input bind:value={srvHost} label="Target"/>
         {/if}
-        <!--        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
+        <!--<Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>-->
         <Button type="submit" variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
             <Button danger icon="delete_outline" on:click={deleteSelfRecord}/>
         {/if}
     </form>
+
+    {#if showScriptEditor}
+        <div class="editor-container">
+            <div class="editor"></div>
+        </div>
+    {/if}
 </div>
