@@ -164,7 +164,7 @@
                 name: query.name,
                 ttl: 86400,
                 type: "TXT",
-                value: "Hello World"
+                value: "\"Hello World\""
             }
         ]
     }
