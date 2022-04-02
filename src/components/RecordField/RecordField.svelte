@@ -54,6 +54,7 @@
 
     let cm;
     let showScriptEditor;
+    let cmEditor; // This is bound to the codemirror div
 
     let recordTypes = [];
     $: {
@@ -142,14 +143,13 @@
 
         // TODO: This is (presumably) required because the editor DOM element hasn't loaded yet
         setTimeout(() => {
-            let editorSelector = document.querySelector(".editor")
-            editorSelector.innerHTML = ""
-            cm = CodeMirror(editorSelector, {
+            cmEditor.innerHTML = ""
+            cm = CodeMirror(cmEditor, {
                 lineNumbers: true,
                 mode: "javascript",
                 value: value
             })
-        }, 100)
+        }, 50)
     }
 
     function handleRecordSelect(event) {
@@ -164,7 +164,7 @@
                 name: query.name,
                 ttl: 86400,
                 type: "TXT",
-                value: "Hello World"
+                value: '"Hello World"'
             }
         ]
     }
@@ -247,7 +247,7 @@
 
     {#if showScriptEditor}
         <div class="editor-container">
-            <div class="editor"></div>
+            <div bind:this="{cmEditor}"></div>
         </div>
     {/if}
 </div>
