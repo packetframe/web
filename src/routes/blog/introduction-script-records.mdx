@@ -1,0 +1,48 @@
+---
+id: introducing-script-records
+title: Introducing the SCRIPT DNS record type
+date: April 1, 2022
+author: Nate Sales
+layout: blog
+---
+
+Ever wanted to define your DNS records as code? How about programmatically adjusting answers on the fly? Maybe you want to use your [favorite](https://github.com/natesales/q) [DNS](https://dig.lookup.dog) [query](https://www.knot-dns.cz/docs/latest/html/man_kdig.html) [tool](https://linux.die.net/man/1/dig) to decide which dessert to have?
+
+_Introducing the SCRIPT record type!_
+
+SCRIPT records contain a JavaScript function that's executed on each DNS query to determine the corresponding answer. Contrary to standard records that all DNS server implementations understand, `SCRIPT` isn't a valid RR type and isn't part of any normal DNS server.
+
+Let's say you're in need of a tasty dessert but don't want to leave your command line:
+
+```bash
+~ $ dig +short TXT dessert.script.packetframe.com @script-ns.packetframe.com
+"Salted Caramel Cake with Whipped Cream"
+```
+
+Under the hood, this is just a simple asynchronous JavaScript function that calls out to an API to retreive random desserts.
+
+```js
+async function handleQuery(query) {
+  return await fetch("https://random-data-api.com/api/dessert/random_dessert")
+    .then(resp => resp.json())
+    .then(data => {
+      return {
+      "authoritative": true,
+      "rrs": [
+        {
+          name: query.name,
+          ttl: 300,
+          type: "TXT",
+          value: '"' + data["flavor"] + " " + data["variety"] + " with " + data["topping"] + '"'
+        }
+      ]
+    }
+  })
+}
+```
+
+More practically speaking, SCRIPT records simplify popular GeoIP DNS routing and open up a whole new range of new DNS-based load balancing, DDoS mitigation, and traffic engineering possibilities.
+
+As always, the code behind SCRIPT records is entirely open source, found in the [api](https://github.com/packetframe/api) repo. A standalone programmable DNS implementation is available at https://github.com/packetframe/progdns if you want to run your own instance without managing a full Packetframe controlplane.
+
+And last, no, this isn't a joke! SCRIPT records are very much not a joke and we'd love to hear what you build with them!
