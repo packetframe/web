@@ -43,6 +43,30 @@ async function handleQuery(query) {
 
 More practically speaking, SCRIPT records simplify popular GeoIP DNS routing and open up a whole new range of new DNS-based load balancing, DDoS mitigation, and traffic engineering possibilities.
 
+We pass a `query` object to `handleQuery` and await the promise. Here's a quick example of what that `query` object currently contains:
+
+```bash
+~ $ dig +short +subnet=192.0.2.0/24 TXT query.script.packetframe.com @script-ns.packetframe.com
+"{'name':'query.script.packetframe.com.','type':'TXT','subnet':'192.0.2.0/24/0','cookie':'d551f2af83ce9fda'}"
+```
+
+```js
+async function handleQuery(query) {
+    return {
+        "authoritative": true,
+        "rrs": [
+            {
+                name: query.name,
+                ttl: 86400,
+                type: "TXT",
+                value: JSON.stringify(query).replaceAll('"', "'")
+            }
+        ]
+    }
+}
+
+```
+
 As always, the code behind SCRIPT records is entirely open source, found in the [api](https://github.com/packetframe/api) repo. A standalone programmable DNS implementation is available at https://github.com/packetframe/progdns if you want to run your own instance without managing a full Packetframe controlplane.
 
-And last, no, this isn't a joke! SCRIPT records are very much not a joke and we'd love to hear what you build with them!
+And last, no, this isn't a joke! Select the SCRIPT record type from the dashboard, try it out, and let us know what you build with them!
