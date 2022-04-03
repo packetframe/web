@@ -31,7 +31,7 @@
                 },
             })
                 .then((response) => {
-                    if (response.status === 401 && $page.path !== "/dashboard/login" && $page.path !== "/dashboard/signup" && $page.path !== "/dashboard/password_reset") {
+                    if (response.status === 401 && $page.url.pathname !== "/dashboard/login" && $page.url.pathname !== "/dashboard/signup" && $page.url.pathname !== "/dashboard/password_reset") {
                         window.location.pathname = "/dashboard/login"
                     }
                     return response.json()
@@ -62,7 +62,7 @@
     </a>
     <ul class:open>
         {#each elements as item}
-            <li class:active={$page.path === item.href}>
+            <li class:active={$page.url.pathname === item.href}>
                 <a href={item.href}>{item.label}</a>
             </li>
         {/each}

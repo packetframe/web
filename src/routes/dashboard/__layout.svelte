@@ -4,7 +4,7 @@
     import {page} from '$app/stores';
 </script>
 
-{#if $page.path === "/dashboard/signup" || $page.path !== "/dashboard/login" || $page.path !== "/dashboard/password_reset"}
+{#if $page.url.pathname === "/dashboard/signup" || $page.url.pathname !== "/dashboard/login" || $page.url.pathname !== "/dashboard/password_reset"}
     <Navbar elements={[]}/>
 {:else}
     <Navbar/>
