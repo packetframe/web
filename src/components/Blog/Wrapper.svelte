@@ -10,12 +10,16 @@
 <main>
     <Navbar homepage={true}/>
 
-    <h1>{title}</h1>
-    <p style="margin-bottom: 2px">{date}</p>
-    <p>{author}</p>
+    <div class="post-wrapper">
+        <div style="text-align: center;">
+            <h1>{title}</h1>
+            <p style="margin-bottom: 2px">{date}</p>
+            <p>{author}</p>
+        </div>
 
-    <div class="post">
-        <slot/>
+        <div class="post">
+            <slot/>
+        </div>
     </div>
 
     <Footer/>
@@ -32,12 +36,14 @@
 
     .post {
         line-height: 1.75;
+    }
+
+    .post-wrapper {
         max-width: 800px;
     }
 
     @media only screen and (max-width: 800px) {
-        .post {
-            line-height: 1.75;
+        .post-wrapper {
             max-width: 90vw;
         }
     }
@@ -55,7 +61,6 @@
         margin-top: 30px;
         padding-top: 0;
         margin-bottom: 10px;
-        text-align: center;
     }
 
     p {
