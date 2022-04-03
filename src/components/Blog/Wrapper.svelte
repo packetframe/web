@@ -22,36 +22,44 @@
 </main>
 
 <style lang="scss">
-  main {
-    width: 100%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    main {
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .post {
-    line-height: 1.75;
-    max-width: 800px;
-  }
+    .post {
+        line-height: 1.75;
+        max-width: 800px;
+    }
 
-  .post :global(pre) {
-    max-width: 100%;
-    overflow: scroll;
-  }
+    @media only screen and (max-width: 800px) {
+        .post {
+            line-height: 1.75;
+            max-width: 90vw;
+        }
+    }
 
-  .post :global(blockquote) {
-    font-style: italic;
-  }
+    .post :global(pre) {
+        max-width: 100%;
+        overflow: scroll;
+    }
 
-  h1 {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 10px;
-  }
+    .post :global(blockquote) {
+        font-style: italic;
+    }
 
-  p {
-    padding: 0;
-    margin: 0;
-  }
+    h1 {
+        margin-top: 30px;
+        padding-top: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
 </style>
