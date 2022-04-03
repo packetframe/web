@@ -75,7 +75,7 @@
     <div class="pf-bg-trigger-3" id="pf-bg-trigger-3"></div>
 </div>
 
-<NotificationBar/>
+<!--<NotificationBar/>-->
 
 <div class:hidden={!loadContent}>
     <Navbar homepage/>
