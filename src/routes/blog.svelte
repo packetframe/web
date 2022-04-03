@@ -42,17 +42,27 @@
 </main>
 
 <style lang="scss">
-  .centered {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    color: white;
-    display: flex;
-    flex-direction: column;
-  }
+    .centered {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .blog-post {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
+    .blog-post {
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h2 {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
 </style>
