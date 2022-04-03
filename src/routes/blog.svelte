@@ -52,8 +52,6 @@
     }
 
     .blog-post {
-        margin-left: 4px;
-        margin-right: 4px;
         margin-top: 30px;
     }
 
