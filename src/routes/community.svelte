@@ -59,17 +59,26 @@
 </main>
 
 <style lang="scss">
-  .centered {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    color: white;
-    display: flex;
-    flex-direction: column;
-  }
+    .centered {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .content {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
+    .content {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+    p, h3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        text-decoration: underline;
+    }
 </style>
