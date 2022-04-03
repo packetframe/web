@@ -54,7 +54,7 @@
     .blog-post {
         margin-left: 4px;
         margin-right: 4px;
-        margin-bottom: 20px;
+        margin-top: 30px;
     }
 
     a {
@@ -63,6 +63,6 @@
 
     h2 {
         margin-top: 25px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 </style>

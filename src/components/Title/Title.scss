@@ -6,6 +6,7 @@
     border-bottom: $title-border-width solid $title-border-color;
 
     margin: $title-margin + $spacer;
+    margin-top: $title-margin + 25px;
     height: $spacer * 10;
 
     display: flex;
