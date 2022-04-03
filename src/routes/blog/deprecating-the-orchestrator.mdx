@@ -1,12 +1,17 @@
 ---
 id: deprecating-the-orchestrator
-title: Decrease your zone deploy times with one easy trick!
-date: April 1, 2022
+title: "Deprecating the Orchestrator: decrease your zone deploy times with one easy trick"
+date: April 2, 2022
 author: Nate Sales
 layout: blog
 ---
 
-Back when Packetframe was one giant Ansible playbook with on intentions of seeing more , we used SCP to
+Back when Packetframe was one giant Ansible playbook with no intention of growing beyond a few personal domains, Ansible copied zone files to the edge over SCP.
 
+Keeping all management over SSH was convenient because we already needed SSH for testing and debugging.
 
-Packetframe used to use SCP
+We kept this paradigm during the "great rewrite" for version 4, but replaced plain SCP with rsync and added an in-memory message queue with de-duplication to remove entries that would result in an equivalent state. Record deploy times increased linearly with the number of edge nodes, so as the number of zones and edge nodes in the network grew, the queued rsync updates started to become a problem. Furthermore, SSH is slow! With edge locations spread all over the world, network latency can reach hundreds of milliseconds, so it was time to design something new.
+
+Today, Packetframe's old queued rsync orchestrator has been replaced replace it with with an entirely new record deployment system! The new system, known as edged (the edge daemon), runs on each edge node and maintains a local cache of zone serials. It compares it's own state with that of the database, and if there are any differences, modifies the local zone files to reflect the new data.
+
+The result? Records now propagate to the edge in less than 2 seconds!
