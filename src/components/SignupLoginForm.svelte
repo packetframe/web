@@ -3,6 +3,7 @@
     import Card from "./Card/Card.svelte";
     import Input from "./Input/Input.svelte";
     import Button from "./Button/Button.svelte";
+    import {onMount} from "svelte";
 
     type Options = "signup" | "login";
     export let mode: Options = undefined;
@@ -16,6 +17,13 @@
     let passwordError = "";
     let repeatPasswordError = "";
     let howDidYouHearAboutUsError = "";
+
+    onMount(() => {
+        let partner = new URLSearchParams(window.location.search).get("partner");
+        if (partner) {
+            howDidYouHearAboutUs = partner.toUpperCase();
+        }
+    })
 
     function handleClick() {
         // Clear errors
@@ -114,11 +122,21 @@
 
     <Card>
         <form on:submit|preventDefault={handleClick}>
-            <Input bind:error={emailError} bind:value={email} fixErrorHeight={false} label="Email" placeholder="Enter email..." style="margin-bottom: 10px" type="text"/>
-            <Input bind:error={passwordError} bind:value={password} fixErrorHeight={false} label="Password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
+            <Input bind:error={emailError} bind:value={email} fixErrorHeight={false} label="Email"
+                   placeholder="Enter email..." style="margin-bottom: 10px" type="text"/>
+            <Input bind:error={passwordError} bind:value={password} fixErrorHeight={false} label="Password"
+                   placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
             {#if mode === "signup"}
-                <Input fixErrorHeight={false} bind:error={repeatPasswordError} bind:value={repeatPassword} label="Repeat password" placeholder="Enter password..." style="margin-bottom: 10px" type="password"/>
-                <Input fixErrorHeight={false} bind:error={howDidYouHearAboutUsError} bind:value={howDidYouHearAboutUs} label="How did you hear about Packetframe?" placeholder="I heard about Packetframe from..." type="text"/>
+                <Input fixErrorHeight={false} bind:error={repeatPasswordError} bind:value={repeatPassword}
+                       label="Repeat password" placeholder="Enter password..." style="margin-bottom: 10px"
+                       type="password"/>
+                {#if howDidYouHearAboutUs}
+                    <Input disabled fixErrorHeight={false} bind:value={howDidYouHearAboutUs} label="Partner" type="text"/>
+                {:else}
+                    <Input fixErrorHeight={false} bind:error={howDidYouHearAboutUsError}
+                           bind:value={howDidYouHearAboutUs} label="How did you hear about Packetframe?"
+                           placeholder="I heard about Packetframe from..." type="text"/>
+                {/if}
             {/if}
             <p>
                 {mode === "signup" ? "Already have an account?" : "Need an account?"}

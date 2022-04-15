@@ -69,4 +69,10 @@
     border-top-left-radius: $input-border-radius;
     border-bottom-left-radius: $input-border-radius;
   }
+
+  .disabled {
+    cursor: not-allowed;
+    //border: 1px solid #444444;
+    //color: #444444;
+  }
 }

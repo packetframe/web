@@ -30,7 +30,7 @@
 </style>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label class="pf-input {userClasses}" class:focus class:error={$$slots.error || error}>
+<label class="pf-input {userClasses}" class:focus class:disabled class:error={$$slots.error || error}>
   {label}
   <div class="pf-input__wrapper">
     {#if icon}
