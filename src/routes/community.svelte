@@ -18,7 +18,7 @@
         {link: "https://www.hivane.net", name: "Hivane", tagline: "Hivane offers DNS / MX / WWW services to non-for-profit projects. Check out https://www.hivane.net/ for more information."},
         {link: "https://misaka.io/", name: "Misaka Network", tagline: "Superb cloud infrastructure with low latency. All our services are carefully designed to provide high performance, reliable and scalable at a reasonably price."},
         {link: "https://www.virtua.cloud/", name: "Virtua Systems", tagline: "Virtua.Cloud is a cloud hosting company, providing affordable Linux VPS and Windows VPS in Europe with instant setup and hourly billing."},
-        {link: "https://ginernet.com", name: "GINERNET", tagline: "Hosting powerful servers in Spain. Service stability, high availability network and priority technical support."}
+        {link: "https://ginernet.com", name: "GINERNET", tagline: "Hosting powerful servers in Spain. Service stability, high availability network and priority technical support."},
         {link: "https://xenyth.net", name: "Xenyth Cloud", tagline: "Xenyth Cloud offers premium cloud and infrastructure offerings in Toronto, Canada. Offerings cover the entire spectrum of needs with custom dashboards and tools. Services range from as little as 2.5$/m VMs to fully Dedicated, Colocation, and IP Transit. Rest easy knowing our experts will help you with every step of the process and ensure you the best experience!"},
     ]
 
