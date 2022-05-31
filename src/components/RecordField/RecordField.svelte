@@ -85,6 +85,10 @@
     function submit() {
         error = "";
 
+        if (record["type"] !== "A" && record["type"] !== "AAAA") {
+            record.proxy = false;
+        }
+
         // record["type"] = type;
         record.ttl = parseInt(record.ttl);
         record.zone = parentZoneID;
