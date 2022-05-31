@@ -238,7 +238,9 @@
             <Input class="small" type="number" label="Port" min="0" bind:value={port}/>
             <Input bind:value={srvHost} label="Target"/>
         {/if}
-        <Button icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>
+        {#if record["type"] === "A" || record["type"] === "AAAA"}
+            <Button type="button" icon={record.proxy ? "cloud_queue" : "cloud_off"} on:click={() => record.proxy = !record.proxy} variant="secondary"/>
+        {/if}
         <Button type="submit" variant="secondary">{isInDropdown ? "Save" : "Add"}</Button>
         {#if mobile}
             <Button danger icon="delete_outline" on:click={deleteSelfRecord}/>
