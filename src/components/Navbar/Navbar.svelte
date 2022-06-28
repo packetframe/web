@@ -19,6 +19,7 @@
             elements = [
                 {label: "Blog", href: "/blog"},
                 {label: "Community", href: "/community"},
+                {label: "Network", href: "/network"},
                 {label: "Dashboard", href: "/dashboard"},
             ]
         } else {
