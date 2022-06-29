@@ -43,20 +43,10 @@
     })
 </script>
 
-<svelte:head>
-    <link crossorigin="" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          rel="stylesheet"/>
-    <script crossorigin=""
-            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-</svelte:head>
-
 <main>
     <Navbar homepage/>
     <br>
 
-    <div id="netmap"></div>
     <div class="body">
         <h1>Packetframe Network</h1>
 
@@ -85,12 +75,14 @@
             {#each nodes as node}
                 <tr>
                     <td>{node.name.toUpperCase()}</td>
-                    <td>968:0:{node.id}</td>
+                    <td>968:33:{node.id}</td>
                 </tr>
             {/each}
             </tbody>
         </table>
     </div>
+
+    <div id="netmap"></div>
 
     <Footer/>
 </main>
