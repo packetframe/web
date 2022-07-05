@@ -17,6 +17,7 @@
 
 <style global lang="scss">
   @import "../../styles/global";
+  @import "../../styles/generic/reset";
 
   main.pf-layout {
     max-width: 900px;
