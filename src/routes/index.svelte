@@ -86,7 +86,13 @@
     <h1 class="pf-header-2">Packetframe</h1>
 
     <div class="hero" class:animate={scrollContent}>
-        <p>Welcome to Packetframe, the Open Source CDN for technology enthusiasts. The platform is currently in private beta; if you're affiliated with an open source project, reach out for more information.</p>
+        <p>
+            The Open Cloud Platform.
+        </p>
+
+        <p style="font-size: 14pt">
+            Packetframe is an open-source content delivery network and distributed cloud platform supporting open source projects, nonprofits, and communities with open infrastructure.
+        </p>
     </div>
 
     <Dig/>
@@ -255,8 +261,8 @@
     }
 
     h1.pf-header-2 {
-        margin-top: 0.25rem;
-        margin-bottom: 0px;
+        margin-top: 0.7rem;
+        margin-bottom: 0;
     }
 
     .pf-header.animate {
@@ -292,12 +298,12 @@
     }
 
     .hero p {
-        margin-top: 20px;
+        margin-top: 0;
         margin-bottom: 15px;
     }
 
     div.hero.animate {
-        padding-top: 0px;
+        padding-top: 0;
         transition: ease padding-top 1s;
         text-align: center;
     }
