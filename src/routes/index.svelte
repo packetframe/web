@@ -91,7 +91,7 @@
         </p>
 
         <p style="font-size: 14pt">
-            Packetframe is an open-source content delivery network and distributed cloud platform supporting open source projects, nonprofits, and communities with open infrastructure.
+            Packetframe is an open-source content delivery network and distributed cloud platform supporting open-source projects, nonprofits, and communities with open infrastructure.
         </p>
     </div>
 
@@ -99,7 +99,7 @@
 
     <SplashCard title="Globally Distributed">
         <div slot="text">
-            Packetframe is present on all 6 consumer-inhabited continents in over 40 cities. (If you know of a datacenter in Antarctica, let me know!)
+            Packetframe is present on all 6 consumer-inhabited continents in over 40 cities worldwide. Temporary cache nodes are available to serve a local region during large events, coordinated tests, and disaster scenarios.
         </div>
         <SpinningGlobe/>
     </SplashCard>
@@ -117,7 +117,8 @@
 
     <SplashCard title="Community Centric">
         <div slot="text">
-            The open source community plays a huge role in the CDN infrastructure. Want to get involved? Feel free to send an email to
+            Packetframe is designed to support open-source projects, nonprofits, and communities with open infrastructure. We are committed to providing a platform that is free to use and open to all.
+            Want to get involved? Feel free to send an email to
             <Email/>
             or hop in #packetframe on <a href='https://libera.chat/guides/connect'>Libera.Chat</a>.
         </div>

@@ -94,6 +94,7 @@
 
     #netmap {
         height: 50vh;
+        margin-top: 25px;
     }
 
     .body {

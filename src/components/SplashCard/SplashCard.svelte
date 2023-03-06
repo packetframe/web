@@ -44,7 +44,8 @@
     }
 
     h2 {
-        margin: 1rem 0;
+        padding-top: 0;
+        margin-top: 0;
         background: #D53BAB;
         background: -webkit-linear-gradient(to right, #D53BAB 0%, #AB2AFF 100%);
         background: -moz-linear-gradient(to right, #D53BAB 0%, #AB2AFF 100%);
