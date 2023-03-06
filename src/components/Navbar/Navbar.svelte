@@ -4,11 +4,7 @@
 
     export let sticky = true;
     export let homepage = false;
-    export let elements = [
-        {label: "DNS", href: "/dashboard/dns"},
-        // {label: "Containers", href: "/dashboard/containers"},
-        {label: "Account", href: "/dashboard/account"},
-    ];
+    export let elements = [];
 
     let open = false;
     let width;
@@ -23,7 +19,12 @@
                 {label: "Dashboard", href: "/dashboard"},
             ]
         } else {
-            elements.push({label: "Logout", href: "/dashboard/logout"})
+            elements = [
+                {label: "DNS", href: "/dashboard/dns"},
+                // {label: "Containers", href: "/dashboard/containers"},
+                {label: "Account", href: "/dashboard/account"},
+                {label: "Logout", href: "/dashboard/logout"},
+            ]
             fetch("/api/user/info", {
                 method: "GET",
                 credentials: "include",
@@ -44,10 +45,6 @@
                 })
         }
     })
-
-    // $: if ($location !== "") {
-    // 	open = false;
-    // }
 
     $: if (width > 825) {
         open = false;
