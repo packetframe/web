@@ -5,7 +5,6 @@
     import Email from "../components/Email.svelte";
 
     let infrastructureSponsors = [
-        {link: "https://fosshost.org/", name: "Fosshost", tagline: "The Fosshost project is a non-profit organisation that exists to serve the hosting needs of the global open source community."},
         {link: "https://heficed.com/", name: "Heficed", tagline: "Heficed provides full-range infrastructure services. Heficed serves around 60 multi-billion industries starting from hosting to automotive or healthcare. With more than a decade of industry experience and operations globally, Heficed can meet any demand needs."},
         {link: "https://terrahost.no/", name: "Terrahost", tagline: "Our vision is to offer solutions of high quality at an affordable price. Our services are delivered from our own datacenter in Sandefjord. In that way we can ensure high stability and safety. We work around the clock to give you the best price and service on the market."},
         {link: "https://hostus.us/", name: "HostUS", tagline: "We offer cPanel Web Hosting, Reseller Hosting, OpenVZ VPS, KVM VPS and Managed VPS in 10 datacenter locations across 4 continents. All backed by our amazing 24/7 support team."},
