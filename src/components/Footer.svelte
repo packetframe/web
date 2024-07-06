@@ -1,5 +1,5 @@
 <main>
-    <p>&copy; Packetframe 2022</p>
+    <p>&copy; Packetframe {new Date().getFullYear()}</p>
 </main>
 
 <style>
