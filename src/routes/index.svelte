@@ -60,6 +60,10 @@
     })
 </script>
 
+<svelte:head>
+    <title>Packetframe | The Open Cloud Platform.</title>
+</svelte:head>
+
 <div class="wrapper" class:hidden={loadContent}>
     <main class="index-wrapper">
         <img alt="Under Construction" class="pf-hole" class:hidden={animateLogo} src="pf-hole.png">
