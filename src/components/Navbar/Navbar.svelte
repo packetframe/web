@@ -10,13 +10,20 @@
     let width;
 
     onMount(() => {
-        if (homepage) {
+        let u = $page.url.pathname;
+        if (u.endsWith("/")) {
+            u = u.slice(0, -1);
+        }
+
+        if (u === "/dashboard/signup" || u === "/dashboard/login" || u === "/dashboard/password_reset") {
+            elements = [];
+        } else if (homepage) {
             sticky = false;
             elements = [
                 {label: "Blog", href: "/blog"},
                 {label: "Community", href: "/community"},
                 {label: "Network", href: "/network"},
-                {label: "Dashboard", href: "/dashboard"},
+                {label: "Login", href: "/dashboard/login"},
             ]
         } else {
             elements = [
