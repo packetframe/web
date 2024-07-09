@@ -19,7 +19,7 @@
         {link: "https://www.virtua.cloud/", name: "Virtua Systems", tagline: "Virtua.Cloud is a cloud hosting company, providing affordable Linux VPS and Windows VPS in Europe with instant setup and hourly billing."},
         {link: "https://ginernet.com", name: "GINERNET", tagline: "Hosting powerful servers in Spain. Service stability, high availability network and priority technical support."},
         {link: "https://xenyth.net", name: "Xenyth Cloud", tagline: "Xenyth Cloud offers premium cloud and infrastructure offerings in Toronto, Canada. Offerings cover the entire spectrum of needs with custom dashboards and tools. Services range from as little as 2.5$/m VMs to fully Dedicated, Colocation, and IP Transit. Rest easy knowing our experts will help you with every step of the process and ensure you the best experience!"},
-        {link: "https://stellar.tech", name: "Stellar", tagline: "Stellar provides top-tier, enterprise-grade cloud and security services enhanced by premium white-glove assistance, elite expertise, and cutting-edge technologies. This combination elevates your cloud and security infrastructure, ensuring the best technology experience imaginable."},
+        {link: "https://stellar.tech", name: "Stellar Technologies", tagline: "Stellar provides top-tier, enterprise-grade cloud and security services enhanced by premium white-glove assistance, elite expertise, and cutting-edge technologies. This combination elevates your cloud and security infrastructure, ensuring the best technology experience imaginable."},
     ]
 
     let serviceSponsors = [
